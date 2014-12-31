@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+
+    <meta name="language" content="en" />
+    <meta name="keywords" content="IOS, tab bar, nav bar, navigation bar, menu, CSS, retina, Jquery Mobile, bartender, plugin, HTML, JQM, cross-browser" />
+    <meta name="description" content="the bartender-plugin is a CSS-only iOS-style tab bar for mobile and desktop browsers (based on the Jquery Mobile element structure)." />
+    <meta name="robots" content="index,follow">
+    <meta name="revisit-after" content="14 days">
+
+    <title>Bright by Three</title>
+
+    <!--- <link rel="stylesheet" href="http://code.jquery.com/mobile/1.0b3/jquery.mobile-1.0b3.min.css" /> --->
+    <link rel="stylesheet" href="http://code.jquery.com/mobile/1.2.0-alpha.1/jquery.mobile-1.2.0-alpha.1.min.css" />
+    <link rel="stylesheet" type="text/css" href="bartender.css" />
+
+    <link rel="canonical" href="http://www.stokkers.mobi/" >
+    </head>
+<body>
+<div data-role="page" id="contact">
+    <div data-role="header" data-position="fixed" data-theme="b">
+        <a href="#landing" data-icon="home" data-iconpos="notext" data-role="button" data-inline="true">Home</a>
+        <h1 class="">Tutorial Page</h1>
+    </div>
+
+    <div data-role="content" class="content">
+
+        <div data-role="collapsible-set" class="coll">
+            <div data-role="collapsible" data-icon="one" data-collapsed="true">
+
+                <h3>Dashboard</h3>
+                <p>If you are using Jquery Mobile, just copy &amp; paste the CSS and add a class of <span class="typewriter">apple-navbar-ui</span> plus a class of <span class="typewriter">comboSprite</span> (retina-regular combined sprite) or <span class="typewriter">
+			   soloSprite</span> (separate sprites &amp; media query) to the navbar &lt;ul&gt; element. In the CSS change the <span class="typewriter">data-icon="names"</span>
+                    and replace the sprite URL(s) with your own. That's it. If you want to use bartender on a stand-alone basis, make sure your &lt;ul&gt; has the following (JQM-rendered) element structure (you will still need some of
+                    JQM-CSS from both the containing divs):</p>
+
+                <p>As all gradients are CSS-made, you can change the gradient colors to fit your specific page theme. Matching to JQM data-themes is on my Todo list.</p>
+            </div>
+
+            <div data-role="collapsible" data-icon="two" data-collapsed="true">
+                <h3>BB3 Messages Library</h3>
+
+                <p>Since I don't think there is a way to stop IE-filters linear-gradients running across an element's full height, <span class="typewriter">ui-icon</span> has to be "wasted" for IE7+8.</p>
+                <p>Setting the outmost &lt;div&gt;'s background to black and ui-icon height to 50% takes care of IE7+8. The button backgrounds for all other browsers are inserted using pseudo-element
+                    <span class="typewriter">::before</span>, which is placed above .ui-icon and is thankfully ignored by both IE7 (<span class="typewriter">:before</span>) and IE8 (
+                    <span class="typewriter">::before</span>).
+                </p>
+
+                <div class="ui-footer ui-bar-a ui-footer-fixed ui-fixed-inline">
+                    <div class="ui-navbar">
+                        <ul class="apple-navbar-ui ui-grid-d">
+                            <li class="ui-block-a"><a href="#" class=""><span class=""><span class=""></span><span class="ui-icon"></span></span></a></li>
+                            <li class="ui-block-b"><a href="#" class=""><span class=""><span class=""></span><span class="ui-icon"></span></span></a></li>
+                            <li class="ui-block-c"><a href="#" class=""><span class=""><span class=""></span><span class="ui-icon"></span></span></a></li>
+                            <li class="ui-block-d"><a href="#" class=""><span class=""><span class=""></span><span class="ui-icon"></span></span></a></li>
+                            <li class="ui-block-e"><a href="#" class=""><span class=""><span class=""></span><span class="ui-icon"></span></span></a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <P>I figured this out using <a href="http://nicolasgallagher.com/multiple-backgrounds-and-borders-with-css2/" title="Nicolas Gallagher - Multiple Backgrounds and Borders">Nicolas Gallaghers "Multiple Backgrounds and Borders"</a> article,
+                    which helped me understand how to properly use pseudo-elements <span class="typewriter">::before</span> and <span class="typewriter">::after</span>
+                    as well as <a href="http://7synth.com/dev/gradients" title="Reinhard von der Waydbrink - Linear and Radial Gradients for all Browsers">Reinhard von der Waydbrinks "Linear and Radial Gradients for all Browsers Script"</a>, which I found to be an excellent source on how to get gradients on all browsers - especially IE.
+                </p>
+
+            </div>
+
+            <div data-role="collapsible" data-icon="three" data-collapsed="true">
+                <h3>Favorites</h3>
+
+                <p>For idle and hover-active state you will need to attach two gradient backgrounds to <span class="typewriter">ui-btn</span>. While the idle gradient is
+                    straightforward, the hover-active background is difficult, as it's using multiple linear and radial background-images, color-stops and transparency. </p>
+                <p>Too much for IE7+8, who get a plain linear gradient with transparency. All other browser are working smoothly - except for Opera, which supports multiple background-images with linear
+                    gradients only. Once you add a radial gradient the whole background breaks. There is a fallback .png image provided, but since some browsers load this although
+                    not being necessary, the fallback is commented out to not fire an unwanted http-request.
+                </p>
+
+                <div class="ui-footer ui-bar-a ui-footer-fixed ui-fixed-inline">
+                    <div class="ui-navbar">
+                        <ul class="apple-navbar-ui ui-grid-d">
+                            <li class="ui-block-a"><a href="#" class="ui-btn" ><span class=""><span class=""></span><span class="ui-icon"></span></span></a></li>
+                            <li class="ui-block-b"><a href="#" class="ui-btn" ><span class=""><span class=""></span><span class="ui-icon"></span></span></a></li>
+                            <li class="ui-block-c"><a href="#" class="ui-btn" ><span class=""><span class=""></span><span class="ui-icon"></span></span></a></li>
+                            <li class="ui-block-d"><a href="#" class="ui-btn" ><span class=""><span class=""></span><span class="ui-icon"></span></span></a></li>
+                            <li class="ui-block-e"><a href="#" class="ui-btn" ><span class=""><span class=""></span><span class="ui-icon"></span></span></a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <P>Credits for the gradients go to <a href="http://dribbble.com/shots/66678-iOS-Tab-Bar-Highlight-with-Webkit-CSS-Gradients" title="Jordan Dobson - iOS Tab Bar with Webkit CSS Gradients">Jordan Dobsons iOS Tab Bar with Webkit Gradients</a> for
+                    his excellent walkthrough on how to mimic the iOS active gradient with plain webkit-CSS (I still needed forever for all the other browsers) and to <a href="http://css3please.com/" title="CSS3 Please!">CSS3Please!</a> for showing how to get opacity into IE-filter.
+                    The current gradients aren't perfect. Feel free to chip in and make them closer to the original.
+                </p>
+
+            </div>
+
+            <div data-role="collapsible" data-icon="four" data-collapsed="true">
+                <h3>How do I login?</h3>
+
+                <p>As the Icon background required the &lt;a&gt; <span class="typewriter">ui-btn</span> to be shrunk to 30x30px, the clickable area needs to be reset.
+                    This is done using <span class="typewriter">ui-btn-text</span>, which has to be expanded to full button size and therefore also holds the <span class="typewriter">:hover</span>
+                    gradient. Here you need the only CSS-"Hack", as IE9 renders both the RGBA and MS-filter background resulting in stacked transparent gradients (20%+20% = looks bad). I found
+                    the "Dummy-Hack" solution on <a href="http://stackoverflow.com/questions/6506085/rgba-background-with-ie-filter-alternative-ie9-renders-both " title="IE9 with rgba background and IE filter renders both">Stack Overflow</a>.
+                </p>
+
+                <div class="ui-footer ui-bar-a ui-footer-fixed ui-fixed-inline">
+                    <div class="ui-navbar">
+                        <ul class="apple-navbar-ui ui-grid-d">
+                            <li class="ui-block-a"><a href="#" class="ui-btn" ><span class=""><span class="ui-btn-text">Features</span><span class="ui-icon"></span></span></a></li>
+                            <li class="ui-block-b"><a href="#" class="ui-btn" ><span class=""><span class="ui-btn-text">Brands</span><span class="ui-icon"></span></span></a></li>
+                            <li class="ui-block-c"><a href="#" class="ui-btn" ><span class=""><span class="ui-btn-text">Fees</span><span class="ui-icon"></span></span></a></li>
+                            <li class="ui-block-d"><a href="#" class="ui-btn" ><span class=""><span class="ui-btn-text">Contact</span><span class="ui-icon"></span></span></a></li>
+                            <li class="ui-block-e"><a href="#" class="ui-btn" ><span class=""><span class="ui-btn-text">About</span><span class="ui-icon"></span></span></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div data-role="collapsible" data-icon="five" data-collapsed="true">
+                <h3>How do I reset my password?</h3>
+
+                <p>
+                    Again test.
+                </p>
+
+            </div>
+
+            <div data-role="collapsible" data-icon="six" data-collapsed="true">
+                <h3>What are bonus points?</h3>
+
+                <p>Hi, this is a test.</p>
+
+                <div class="ui-footer ui-bar-a ui-footer-fixed ui-fixed-inline">
+                    <div class="ui-navbar comboSprite">
+                        <ul class="apple-navbar-ui ui-grid-d">
+                            <li class="ui-block-a"><a href="#" data-icon="features" class="ui-btn"><span class="ui-btn-inner"><span class="ui-btn-text">Features</span><span class="ui-icon"></span></span></a></li>
+                            <li class="ui-block-b"><a href="#" data-icon="brands" class="ui-btn"><span class="ui-btn-inner"><span class="ui-btn-text">Brands</span><span class="ui-icon"></span></span></a></li>
+                            <li class="ui-block-c"><a href="#" data-icon="fees" class="ui-btn"><span class="ui-btn-inner"><span class="ui-btn-text">Fees</span><span class="ui-icon"></span></span></a></li>
+                            <li class="ui-block-d"><a href="#" data-icon="contact" class="ui-btn"><span class="ui-btn-inner"><span class="ui-btn-text">Contact</span><span class="ui-icon"></span></span></a></li>
+                            <li class="ui-block-e"><a href="#" data-icon="about" class="ui-btn"><span class="ui-btn-inner"><span class="ui-btn-text">About</span><span class="ui-icon"></span></span></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div data-role="collapsible" data-icon="six" data-collapsed="true">
+                <h3>How do I know if a new message has arrived?</h3>
+
+                <p>You can also use the JQM class of <span class="typewriter">ui-li-count</span> to add count bubbles, which are CSS-ed into notifier icons. The bubbles expand automatically depending on
+                    included text and as the background is a gradient CSS, too, you can tweak the colors according to your desired theme as well.
+                </p>
+
+
+
+            </div>
+        </div>
+
+
+
+    </div>
+
+    <div data-role="footer" data-id="mainFooter" data-position="fixed">
+        <div data-role="navbar" data-grid="d">
+            <ul class="apple-navbar-ui comboSprite">
+                <li><a href="#features" data-iconpos="top" data-icon="features">Features</a></li>
+                <li><a href="#brands" data-iconpos="top" data-icon="brands">Brands<span class="ui-li-count">10</span></a></li>
+                <li><a href="favorites.html" data-iconpos="top" data-icon="fees">Fees</a></li>
+                <li><a href="#contact" class="ui-btn-active ui-state-persist" data-iconpos="top" data-icon="contact">Contact</a></li>
+                <li><a href="#about" data-iconpos="top" data-icon="about">About Us</a></li>
+            </ul>
+        </div>
+    </div>
+
+
+</div>
+
+</body>
+</html>

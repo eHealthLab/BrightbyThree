@@ -1,0 +1,90 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no;" />
+
+    <title>Bright By Three 1.0.0</title>
+
+    <link rel="stylesheet" href="style/jquery.mobile.1.0a4.1.min.css" />
+    <link rel="stylesheet" href="style/mothersmilk.css"/>
+
+    <script type="text/javascript" src="js/jquery.1.5.2.min.js"></script>
+    <script type="text/javascript" src="js/jquery.mobile.1.0a4.1.min.js"></script>
+
+
+    <script type="text/javascript" charset="utf-8" src="js/controls.js"></script>
+    <script type="text/javascript" charset="utf-8" src="js/cordova-1.7.0.js"></script>
+    <script type="text/javascript" charset="utf-8" src="js/NativeControls.js"></script>
+
+</head>
+<body>
+
+    <div data-role="page" id="home" ng-controller="stateController">  
+        <div data-role="header"> 
+            <img border="0"
+                 src="../images/BB3_logo_vert-tag_WEB_rgb.png" alt="Logo"
+                 style="float:left;display:inline;height:0.5in"/>
+            <h1>Bright By Three 1.0.0</h1> 
+            <div data-role="navbar" data-iconpos="top">
+                <ul>
+                    <li>
+                        <a href="pages/home.html" data-icon="home"
+                           class="ui-btn-active">
+                            Login
+                        </a>
+                    </li>
+                    <li>
+                        <a href="pages/tutorial.html" data-icon="info">
+                            Tutorial
+                        </a>
+                    </li>
+                    <li>
+                        <a href="pages/aboutUs.html" data-icon="star">
+                            About Us
+                        </a>
+                    </li>
+                    <li>
+                        <a href="pages/feedback.html" data-icon="settings">
+                            Feedback
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="ui-body ui-body-b">
+            <p>
+                Please enter your login information below and click the Login button.
+            </p>
+            <table align="center">
+
+                <tr>
+                    <td>
+
+                    </td>
+                    <td>
+                        <input type="email" placeholder="enter email">
+                        </input>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+
+                    </td>
+                    <td>
+                        <input type="password" placeholder="enter password">
+                        </input>
+                    </td>
+                </tr>
+
+            </table>
+            <div align="center"> 
+                <a href="pages/signup.html" data-role="button" 
+                   data-inline="true" data-theme="b" >Login</a> 
+            </div>
+        </div>  
+    </div>     
+    </body>
+</html>

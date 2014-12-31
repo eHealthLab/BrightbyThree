@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+
+    <meta name="language" content="en" />
+    <meta name="keywords" content="IOS, tab bar, nav bar, navigation bar, menu, CSS, retina, Jquery Mobile, bartender, plugin, HTML, JQM, cross-browser" />
+    <meta name="description" content="the bartender-plugin is a CSS-only iOS-style tab bar for mobile and desktop browsers (based on the Jquery Mobile element structure)." />
+    <meta name="robots" content="index,follow">
+    <meta name="revisit-after" content="14 days">
+
+    <title>Bright by Three</title>
+
+    <!--- <link rel="stylesheet" href="http://code.jquery.com/mobile/1.0b3/jquery.mobile-1.0b3.min.css" /> --->
+    <link rel="stylesheet" href="http://code.jquery.com/mobile/1.2.0-alpha.1/jquery.mobile-1.2.0-alpha.1.min.css" />
+    <link rel="stylesheet" type="text/css" href="bartender.css" />
+
+    <link rel="canonical" href="http://www.stokkers.mobi/" >
+
+</head>
+<body>
+<div data-role="page" id="landing">
+
+    <div data-role="header" data-position="fixed" data-theme="c">
+        <img src="images/BB3_logo_vert-tag_WEB_rgb.png">
+
+    </div>
+
+    <div data-role="content" class="content">
+
+        <p>
+            Bright Beginnings leads the design, delivery, and evaluation of innovative programs to promote the
+            healthy development of all children in the first three years of life. Our programs are offered at
+            no charge to all parents and caregivers throughout Colorado.
+        </p>
+
+        <p>
+            Bright by Three visits with parents and other caregivers and provides a three-step program to
+            make sure their little ones get the best start at life.
+            And it’s absolutely free for these families, supported entirely by charitable contributions.
+        </p>
+
+    </div>
+
+    <div data-role="footer" data-id="mainFooter" data-position="fixed">
+        <div data-role="navbar" data-grid="d">
+            <ul class="apple-navbar-ui comboSprite">
+                <li><a href="#dashboard" data-iconpos="top" data-icon="features">Dashboard</a></li>
+                <li><a href="#library" data-iconpos="top" data-icon="library">Library<span class="ui-li-count">10</span></a></li>
+                <li><a href="pages/favorites.html" data-iconpos="top" data-icon="fees">Favorites</a></li>
+                <li><a href="pages/tutorial.html" data-iconpos="top" data-icon="features">Tutorial</a></li>
+                <li><a href="#about" data-iconpos="top" data-icon="contact">About Us</a></li>
+            </ul>
+        </div>
+    </div>
+
+</div>
+
+<div data-role="page" id="dashboard">
+
+    <div data-role="header" data-position="fixed" data-theme="b">
+        <a href="#landing" data-icon="home" data-iconpos="notext"  data-role="button" data-inline="true">Home</a>
+        <h1 class="">Dashboard</h1>
+    </div>
+
+    <div data-role="content" class="content">
+        <p>This is the <strong>Dashboard</strong> page!</p>
+    </div>
+
+    <div data-role="footer" data-id="mainFooter" data-position="fixed">
+        <div data-role="navbar" data-grid="d">
+            <ul class="apple-navbar-ui comboSprite">
+                <li><a href="#dashboard" class="ui-btn-active ui-state-persist" data-iconpos="top" data-icon="features">Dashboard</a></li>
+                <li><a href="#library" data-iconpos="top" data-icon="library">Library<span class="ui-li-count">10</span></a></li>
+                <li><a href="#fees" data-iconpos="top" data-icon="fees">Fees</a></li>
+                <li><a href="#contact" data-iconpos="top" data-icon="contact">Contact</a></li>
+                <li><a href="#about" data-iconpos="top" data-icon="about">About Us</a></li>
+            </ul>
+        </div>
+    </div>
+
+</div>
+
+
+<div data-role="page" id="library">
+
+    <div data-role="header" data-position="fixed" data-theme="b">
+        <a href="#landing" data-icon="home" data-iconpos="notext" data-role="button" data-inline="true">Home</a>
+        <h1 class="">Messages Library</h1>
+    </div>
+
+    <div data-role="content" class="content">
+        <p>This is the <strong>Library</strong> page!</p>
+    </div>
+
+    <div data-role="footer" data-id="mainFooter" data-position="fixed">
+        <div data-role="navbar" data-grid="d">
+            <ul class="apple-navbar-ui comboSprite">
+                <li><a href="#dashboard" data-iconpos="top" data-icon="features">Dashboard</a></li>
+                <li><a href="#library" class="ui-btn-active ui-state-persist" data-iconpos="top" data-icon="library">Library<span class="ui-li-count">10</span></a></li>
+                <li><a href="#fees" data-iconpos="top" data-icon="fees">Fees</a></li>
+                <li><a href="#contact" data-iconpos="top" data-icon="contact">Contact</a></li>
+                <li><a href="#about" data-iconpos="top" data-icon="about">About Us</a></li>
+            </ul>
+        </div>
+    </div>
+
+</div>
+
+<div data-role="page" id="fees">
+
+    <div data-role="header" data-position="fixed" data-theme="b">
+        <a href="#landing" data-icon="home" data-iconpos="notext" data-role="button" data-inline="true">Home</a>
+        <h1 class="">Favorites</h1>
+    </div>
+
+    <div data-role="content" class="content">
+        <p>This is the <strong>Favorites</strong> page!</p>
+    </div>
+
+    <div data-role="footer" data-id="mainFooter" data-position="fixed">
+        <div data-role="navbar" data-grid="d">
+            <ul class="apple-navbar-ui comboSprite">
+                <li><a href="#dashboard" data-iconpos="top" data-icon="features">Dashboard</a></li>
+                <li><a href="#library" data-iconpos="top" data-icon="library">Library<span class="ui-li-count">10</span></a></li>
+                <li><a href="#fees" class="ui-btn-active ui-state-persist" data-iconpos="top" data-icon="fees">Fees</a></li>
+                <li><a href="#contact" data-iconpos="top" data-icon="contact">Contact</a></li>
+                <li><a href="#about" data-iconpos="top" data-icon="about">About Us</a></li>
+            </ul>
+        </div>
+    </div>
+
+</div>
+
+<div data-role="page" id="contact">
+
+
+
+</div>
+
+<div data-role="page" id="about">
+
+    <div data-role="header" data-position="fixed" data-theme="b">
+        <a href="#landing" data-icon="home" data-iconpos="notext" data-role="button" data-inline="true">Home</a>
+        <h1 class="">About Us</h1>
+    </div>
+
+    <div data-role="content" class="content">
+        <p>This is the <strong>About us</strong> page!</p>
+    </div>
+
+    <div data-role="footer" data-id="mainFooter" data-position="fixed">
+        <div data-role="navbar" data-grid="d">
+            <ul class="apple-navbar-ui comboSprite">
+                <li><a href="#dashboard" data-iconpos="top" data-icon="features">Dashboard</a></li>
+                <li><a href="#library" data-iconpos="top" data-icon="library">Library<span class="ui-li-count">10</span></a></li>
+                <li><a href="#fees" data-iconpos="top" data-icon="fees">Fees</a></li>
+                <li><a href="#contact" data-iconpos="top" data-icon="contact">Contact</a></li>
+                <li><a href="#about" class="ui-btn-active ui-state-persist" data-iconpos="top" data-icon="about">About Us</a></li>
+            </ul>
+        </div>
+    </div>
+
+</div>
+
+
+
+</body>
+<script src="http://code.jquery.com/jquery-1.7.2.min.js"></script>
+<script src="http://code.jquery.com/mobile/1.2.0-alpha.1/jquery.mobile-1.2.0-alpha.1.min.js"></script>
+
+<script type="text/javascript">
+
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-19087935-2']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+</script>
+
+</html>

@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<!--
+* MothersMilk
+* Copyright (C) 2013 Regents of the University of Colorado.
+*
+* This program is free software; you can redistribute it and/or
+* modify it under the terms of the GNU General Public License
+* as published by the Free Software Foundation; either version 2
+* of the License, or (at your option) any later version.
+*
+* This program is distributed in the hope that it will be useful,
+* but WITHOUT ANY WARRANTY; without even the implied warranty of
+* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+* GNU General Public License for more details.
+*
+* You should have received a copy of the GNU General Public License
+* along with this program; if not, write to the Free Software
+* Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+-->
+<html lang="en" ng-app="predictiveApp" >
+
+<head>
+    <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;" charset="utf-8"/>
+    <LINK REL="shortcut icon" href="/favicon.ico" type="image/x-icon">
+
+    <title>Predictive Modeling</title>
+
+    <script src="lib/jquery.min.js"></script>
+    <script src="lib/jquery-ui.min.js"></script>
+    <script src="lib/jquery.form.min.js"></script>
+    <script src="lib/highcharts.js"></script>
+    <script src="lib/exporting.js"></script>
+
+    <!-- order matters here, so be careful if you edit -->
+    <!-- bootstrap plugins - load after jquery -->
+    <script src="lib/bootstrap.min.js"></script>
+    <!-- Angular.js scripts -->
+
+
+    <!-- <link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1/themes/smoothness/jquery-ui.css" type="text/css" rel="stylesheet" />  -->
+
+    <link type="text/css" rel="stylesheet" href="css/bootstrap.min.css">
+    <link type="text/css" rel="stylesheet" href="css/ng-grid.css">
+    <link type="text/css" rel="stylesheet" href="css/mothersmilk.css">
+
+    <link rel="stylesheet" href="style/jquery.mobile.1.0a4.1.min.css" /> 
+    <link rel="stylesheet" href="style/mothersmilk.css"/>
+
+
+    <script type="text/javascript" src="js/jquery.1.5.2.min.js"></script>
+    <script type="text/javascript" src="js/jquery.mobile.1.0a4.1.min.js"></script>
+
+    <script type="text/javascript" charset="utf-8" src="js/controls.js"></script> 
+    <script type="text/javascript" charset="utf-8" src="js/cordova-1.7.0.js"></script> 
+    <script type="text/javascript" charset="utf-8" src="js/NativeControls.js">
+    </script>
+
+
+
+</head>
+
+<body>
+
+<div data-role="page">  
+    <div data-role="header"> 
+        <img border="0"
+             src="../images/BB3_logo_vert-tag_WEB_rgb.png" alt="Logo"
+             style="float:left;display:inline;height:0.5in"/>
+        <H1> Bright By Three 1.0.0 </H1>
+        <div data-role="navbar" data-iconpos="top">
+            <ul>
+                <li><a href="home.html"
+                       data-icon="home" data-transition="none"
+                        >Home</a></li>
+                <li><a href="tutorial.html"
+                       data-icon="info" data-transition="none"
+                        >Tutorial</a></li>
+                <li><a href="aboutUs.html" class="ui-btn-active"
+                       data-icon="star" data-transition="none">
+                    About Us</a></li>
+                <li><a href="feedback.html"
+                       data-icon="settings" data-transition="none">
+                    Feedback</a></li>
+            </ul>
+        </div><!-- /navbar -->
+    </div><!-- /footer -->
+
+    <div class="ui-body ui-body-b">
+        <h3>
+            About Us
+        </h3>
+        <table align="center">
+            <tr>
+                <td>
+
+                </td>
+
+                <td>
+                    <p>
+                        Bright by Three (formerly Bright Beginnings)
+                        is a Colorado-based statewide nonprofit organization
+                        that provides parents and caregivers of children
+                        aged 0-3 with the tools needed to promote a child’s
+                        readiness for lifelong learning and success.
+                    </p>
+                </td>
+            </tr>
+        </table>
+
+    </div>
+
+</div>     
+
+
+
+<script src="lib/angular.min.js"></script>
+<script src="lib/angular-touch.js"></script>
+<script src="lib/ng-grid-2.0.7.min.js"></script>
+<script src="lib/ui-bootstrap-tpls-0.6.0.min.js"></script>
+<script src="lib/highcharts-ng.js"></script>
+
+<!-- app specific scripts -->
+<script src="js/app.js"></script>
+
+<script src="js/controllers/controllers.js"></script>
+
+
+
+<script type="text/javascript" charset="utf-8" src="phonegap.js"></script>
+<!--<script type="text/javascript" charset="utf-8" src="jquery_1.5.2.min.js"></script>  -->
+<script type="text/javascript" src="PushNotification.js"></script>
+
+
+
+
+</body>
+</html>
