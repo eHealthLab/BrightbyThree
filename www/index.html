@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en" ng-app="bb3App">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
@@ -16,21 +16,44 @@
     <link rel="stylesheet" href="http://code.jquery.com/mobile/1.2.0-alpha.1/jquery.mobile-1.2.0-alpha.1.min.css" />
     <link rel="stylesheet" type="text/css" href="bartender.css" />
 
+    <link type="text/css" rel="stylesheet" href="css/bootstrap.min.css">
+    <link type="text/css" rel="stylesheet" href="css/ng-grid.css">
+    <link type="text/css" rel="stylesheet" href="css/bb3.css">
+
+    <link rel="stylesheet" href="//api.jquerymobile.com/jquery-wp-content/themes/jquery/css/base.css?v=1">
+    <link rel="stylesheet" href="//api.jquerymobile.com/jquery-wp-content/themes/api.jquerymobile.com/style.css">
+
+    <script src="//api.jquerymobile.com/jquery-wp-content/themes/jquery/js/modernizr.custom.2.6.2.min.js"></script>
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script>window.jQuery || document.write('<script src="//api.jquerymobile.com/jquery-wp-content/themes/jquery/js/jquery-1.9.1.min.js"><\/script>')</script>
+
+    <script src="//api.jquerymobile.com/jquery-wp-content/themes/jquery/js/plugins.js"></script>
+    <script src="//api.jquerymobile.com/jquery-wp-content/themes/jquery/js/main.js"></script>
+
+    <script src="//use.typekit.net/wde1aof.js"></script>
+
     <link rel="canonical" href="http://www.stokkers.mobi/" >
 
 </head>
 <body>
-<div data-role="page" id="landing">
+
+<div data-role="page" id="landing" ng-controller="stateController">
 
     <div data-role="header" data-position="fixed" data-theme="c">
-        <img src="images/BB3_logo_vert-tag_WEB_rgb.png">
 
     </div>
 
-    <div data-role="content" class="content">
+    <a
+            onclick="window.open('http://brightbythree.org', '_system', 'location=yes');">
+        <img src="images/BB3_logo_vert-tag_WEB_rgb.png"
+             width="270" height="150" border="0">
+    </a>
+
+    <div role="main" class="ui-content">
 
         <p>
-            Bright Beginnings leads the design, delivery, and evaluation of innovative programs to promote the
+            Bright by Three leads the design, delivery, and evaluation of innovative programs to promote the
             healthy development of all children in the first three years of life. Our programs are offered at
             no charge to all parents and caregivers throughout Colorado.
         </p>
@@ -41,130 +64,40 @@
             And it’s absolutely free for these families, supported entirely by charitable contributions.
         </p>
 
+        <p>
+            To start using the app, please tap on any of the links below. For a quick information,
+            please browse through the tutorial page.
+
+        </p>
+
+        {{login}}
+
     </div>
 
     <div data-role="footer" data-id="mainFooter" data-position="fixed">
-        <div data-role="navbar" data-grid="d">
-            <ul class="apple-navbar-ui comboSprite">
-                <li><a href="#dashboard" data-iconpos="top" data-icon="features">Dashboard</a></li>
-                <li><a href="#library" data-iconpos="top" data-icon="library">Library<span class="ui-li-count">10</span></a></li>
-                <li><a href="pages/favorites.html" data-iconpos="top" data-icon="fees">Favorites</a></li>
-                <li><a href="pages/tutorial.html" data-iconpos="top" data-icon="features">Tutorial</a></li>
-                <li><a href="#about" data-iconpos="top" data-icon="contact">About Us</a></li>
+        <div data-role="navbar" class="nav-glyphish-example" data-grid="d"
+             data-iconpos="top">
+            <ul>
+                <li><a href="pages/dashboard.html" data-icon="grid">Dashboard</a></li>
+                <li><a href="pages/library.html" id="email" data-icon="custom">Library</a></li>
+                <li><a href="pages/favorites.html" data-icon="star">Favorites</a></li>
+                <li><a href="pages/tutorial.html" data-icon="info">Tutorial</a></li>
+                <li><a href="pages/aboutUs.html" data-icon="search">About Us</a></li>
             </ul>
         </div>
     </div>
 
 </div>
 
-<div data-role="page" id="dashboard">
+<script src="lib/angular.min.js"></script>
+<script src="lib/angular-touch.js"></script>
+<script src="lib/ng-grid-2.0.7.min.js"></script>
+<script src="lib/ui-bootstrap-tpls-0.6.0.min.js"></script>
+<script src="lib/highcharts-ng.js"></script>
 
-    <div data-role="header" data-position="fixed" data-theme="b">
-        <a href="#landing" data-icon="home" data-iconpos="notext"  data-role="button" data-inline="true">Home</a>
-        <h1 class="">Dashboard</h1>
-    </div>
-
-    <div data-role="content" class="content">
-        <p>This is the <strong>Dashboard</strong> page!</p>
-    </div>
-
-    <div data-role="footer" data-id="mainFooter" data-position="fixed">
-        <div data-role="navbar" data-grid="d">
-            <ul class="apple-navbar-ui comboSprite">
-                <li><a href="#dashboard" class="ui-btn-active ui-state-persist" data-iconpos="top" data-icon="features">Dashboard</a></li>
-                <li><a href="#library" data-iconpos="top" data-icon="library">Library<span class="ui-li-count">10</span></a></li>
-                <li><a href="#fees" data-iconpos="top" data-icon="fees">Fees</a></li>
-                <li><a href="#contact" data-iconpos="top" data-icon="contact">Contact</a></li>
-                <li><a href="#about" data-iconpos="top" data-icon="about">About Us</a></li>
-            </ul>
-        </div>
-    </div>
-
-</div>
-
-
-<div data-role="page" id="library">
-
-    <div data-role="header" data-position="fixed" data-theme="b">
-        <a href="#landing" data-icon="home" data-iconpos="notext" data-role="button" data-inline="true">Home</a>
-        <h1 class="">Messages Library</h1>
-    </div>
-
-    <div data-role="content" class="content">
-        <p>This is the <strong>Library</strong> page!</p>
-    </div>
-
-    <div data-role="footer" data-id="mainFooter" data-position="fixed">
-        <div data-role="navbar" data-grid="d">
-            <ul class="apple-navbar-ui comboSprite">
-                <li><a href="#dashboard" data-iconpos="top" data-icon="features">Dashboard</a></li>
-                <li><a href="#library" class="ui-btn-active ui-state-persist" data-iconpos="top" data-icon="library">Library<span class="ui-li-count">10</span></a></li>
-                <li><a href="#fees" data-iconpos="top" data-icon="fees">Fees</a></li>
-                <li><a href="#contact" data-iconpos="top" data-icon="contact">Contact</a></li>
-                <li><a href="#about" data-iconpos="top" data-icon="about">About Us</a></li>
-            </ul>
-        </div>
-    </div>
-
-</div>
-
-<div data-role="page" id="fees">
-
-    <div data-role="header" data-position="fixed" data-theme="b">
-        <a href="#landing" data-icon="home" data-iconpos="notext" data-role="button" data-inline="true">Home</a>
-        <h1 class="">Favorites</h1>
-    </div>
-
-    <div data-role="content" class="content">
-        <p>This is the <strong>Favorites</strong> page!</p>
-    </div>
-
-    <div data-role="footer" data-id="mainFooter" data-position="fixed">
-        <div data-role="navbar" data-grid="d">
-            <ul class="apple-navbar-ui comboSprite">
-                <li><a href="#dashboard" data-iconpos="top" data-icon="features">Dashboard</a></li>
-                <li><a href="#library" data-iconpos="top" data-icon="library">Library<span class="ui-li-count">10</span></a></li>
-                <li><a href="#fees" class="ui-btn-active ui-state-persist" data-iconpos="top" data-icon="fees">Fees</a></li>
-                <li><a href="#contact" data-iconpos="top" data-icon="contact">Contact</a></li>
-                <li><a href="#about" data-iconpos="top" data-icon="about">About Us</a></li>
-            </ul>
-        </div>
-    </div>
-
-</div>
-
-<div data-role="page" id="contact">
-
-
-
-</div>
-
-<div data-role="page" id="about">
-
-    <div data-role="header" data-position="fixed" data-theme="b">
-        <a href="#landing" data-icon="home" data-iconpos="notext" data-role="button" data-inline="true">Home</a>
-        <h1 class="">About Us</h1>
-    </div>
-
-    <div data-role="content" class="content">
-        <p>This is the <strong>About us</strong> page!</p>
-    </div>
-
-    <div data-role="footer" data-id="mainFooter" data-position="fixed">
-        <div data-role="navbar" data-grid="d">
-            <ul class="apple-navbar-ui comboSprite">
-                <li><a href="#dashboard" data-iconpos="top" data-icon="features">Dashboard</a></li>
-                <li><a href="#library" data-iconpos="top" data-icon="library">Library<span class="ui-li-count">10</span></a></li>
-                <li><a href="#fees" data-iconpos="top" data-icon="fees">Fees</a></li>
-                <li><a href="#contact" data-iconpos="top" data-icon="contact">Contact</a></li>
-                <li><a href="#about" class="ui-btn-active ui-state-persist" data-iconpos="top" data-icon="about">About Us</a></li>
-            </ul>
-        </div>
-    </div>
-
-</div>
-
-
+<!-- app specific scripts -->
+<script src="js/app.js"></script>
+<script src="js/controllers/controllers.js"></script>
 
 </body>
 <script src="http://code.jquery.com/jquery-1.7.2.min.js"></script>

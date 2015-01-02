@@ -15,7 +15,7 @@ bb3App.controller('stateController',
         init();
         function init() {
 
-            $scope.login = 'false';
+            $scope.login = false;
         }
 
         $scope.getLoginStatus = function() {

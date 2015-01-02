@@ -1,17 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <widget xmlns = "http://www.w3.org/ns/widgets"
     xmlns:gap = "http://phonegap.com/ns/1.0"
-    id        = "com.phonegap.kitchensink"
-    version   = "0.1.0">
+    id        = "edu.ucdenver.brightbythree"
+    version   = "1.0.0">
 
-    <name>Kitchen Sink</name>
+    <name>Bright by Three</name>
 
     <description>
-        PhoneGap Kitchen Sink Demo
+        Bright by Three leads the design, delivery, and evaluation of innovative programs to promote the
+        healthy development of all children in the first three years of life.
     </description>
 
-    <author href="http://michaelbrooks.ca" email="michael.brooks@nitobi.com">
-        Michael Brooks
+    <author href="http://mhealthimpact.ucdenver.edu/" email="sheana.bull@ucdenver.edu">
+        Sheana Bull
     </author>
 
     <gap:platforms>

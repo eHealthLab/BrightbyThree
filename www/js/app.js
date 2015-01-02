@@ -2,15 +2,12 @@
 'use strict';
 
 /*
-* Main cbb application module
+* Main BB3 application module
  */
-var predictiveApp = angular.module('predictive', [])
-    .constant('predictiveConstants',{
+var bb3App = angular.module('bb3', [])
+    .constant('BB3Constants',{
         // debugging flag
         debug: true
-
-
-
     })
     .config(['$routeProvider', function($routeProvider) {
         /*
@@ -19,8 +16,8 @@ var predictiveApp = angular.module('predictive', [])
         $routeProvider
 
 
-            .when('/loginSignUp',
-            {templateUrl: 'partials/loginSignupView.html', controller: 'contactInfoController'}
+            .when('/favorites',
+            {templateUrl: 'pages/favorites.html', controller: 'contactInfoController'}
         )
 
             .when('/index',

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <meta charset="utf-8">
+<head lang="en">
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
 
     <meta name="language" content="en" />
@@ -10,7 +10,7 @@
     <meta name="robots" content="index,follow">
     <meta name="revisit-after" content="14 days">
 
-    <title>Bright by Three</title>
+    <title>Dashboard</title>
 
     <!--- <link rel="stylesheet" href="http://code.jquery.com/mobile/1.0b3/jquery.mobile-1.0b3.min.css" /> --->
     <link rel="stylesheet" href="http://code.jquery.com/mobile/1.2.0-alpha.1/jquery.mobile-1.2.0-alpha.1.min.css" />
@@ -21,31 +21,40 @@
 <body>
 <div data-role="page" id="contact">
     <div data-role="header" data-position="fixed" data-theme="b">
-        <a href="#landing" data-icon="home" data-iconpos="notext" data-role="button" data-inline="true">Home</a>
-        <h1 class="">About Us</h1>
+        <a href="#landing" data-icon="home"
+           data-iconpos="notext" data-role="button"
+           data-inline="true">
+            Home
+        </a>
+        <h1 class="">Library</h1>
         <img src="../images/BB3_logo_vert-tag_WEB_rgb.png" width="60"
              height="50"
              class="ui-btn-right">
-        </a>
+            </a>
     </div>
 
     <div role="main" class="ui-content">
+        <p>
+            This page displays the Bright by Three text messages library.
+            Please click on a subject line to display the corresponding
+            Bright by Three text message.
+        </p>
 
-        <ul data-role="listview" data-inset="true">
-            <li data-role="list-divider">Messages</li>
-            <li><a href="TutorialPages/age_Tut.html">Age</a></li>
-            <li><a href="TutorialPages/gender_Tut.html">Gender</a></li>
-            <li><a href="TutorialPages/race_Tut.html">Race/Ethnicity</a></li>
-            <li><a href="TutorialPages/ses_Tut.html">SES</a></li>
-            <li><a href="TutorialPages/primaryLanguage_Tut.html">Primary Language</a></li>
-        </ul>
-
-
+        <div>
+            <ul data-role="listview" data-inset="true">
+                <li data-role="list-divider">Bright by Three Text Messages</li>
+                <li><a href="trial.html">Subject1</a></li>
+                <li><a href="TutorialPages/gender_Tut.html">Subject2</a></li>
+                <li><a href="TutorialPages/race_Tut.html">Subject3</a></li>
+                <li><a href="TutorialPages/ses_Tut.html">Subject4</a></li>
+            </ul>
+        </div>
 
     </div>
 
     <div data-role="footer" data-id="mainFooter" data-position="fixed">
-        <div data-role="navbar" data-grid="d">
+        <div data-role="navbar" class="nav-glyphish-example" data-grid="d"
+             data-iconpos="top">
             <ul>
                 <li><a href="dashboard.html" data-icon="grid">Dashboard</a></li>
                 <li><a href="library.html" id="email" data-icon="custom">Library</a></li>
@@ -56,8 +65,7 @@
         </div>
     </div>
 
-
 </div>
-
 </body>
 </html>
+
