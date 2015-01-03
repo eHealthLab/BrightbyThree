@@ -1,7 +1,7 @@
 <!DOCTYPE html>
-<html>
-<head lang="en">
-    <meta charset="UTF-8">
+<html ng-app="bb3App">
+<head>
+    <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
 
     <meta name="language" content="en" />
@@ -10,20 +10,30 @@
     <meta name="robots" content="index,follow">
     <meta name="revisit-after" content="14 days">
 
-    <title>Dashboard</title>
+    <title>BB3-Dashboard</title>
 
     <!--- <link rel="stylesheet" href="http://code.jquery.com/mobile/1.0b3/jquery.mobile-1.0b3.min.css" /> --->
     <link rel="stylesheet" href="http://code.jquery.com/mobile/1.2.0-alpha.1/jquery.mobile-1.2.0-alpha.1.min.css" />
     <link rel="stylesheet" type="text/css" href="bartender.css" />
 
-    <link rel="canonical" href="http://www.stokkers.mobi/" >
+    <link type="text/css" rel="stylesheet" href="css/bootstrap.min.css">
+    <link type="text/css" rel="stylesheet" href="css/ng-grid.css">
+    <link type="text/css" rel="stylesheet" href="css/bb3.css">
+
+    <link rel="stylesheet" href="http://code.jquery.com/mobile/1.3.0/jquery.mobile-1.3.0.min.css"/>
+    <script src="http://code.jquery.com/jquery-1.8.2.min.js"></script>
+    <script src="http://code.jquery.com/mobile/1.3.0/jquery.mobile-1.3.0.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.6/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.6/angular-resource.min.js"></script>
+    <script src="http://underscorejs.org/underscore-min.js"></script>
+
 </head>
-<body>
+<body ng-controller="stateController">
 <div data-role="page" id="dashboard">
 
     <div data-role="header" data-position="fixed" data-theme="b">
-        <a href="#landing" data-icon="home" data-iconpos="notext" data-role="button" data-inline="true">Home</a>
-        <h1 class="">Dashboard</h1>
+        <a href="../index.html" data-icon="home" data-iconpos="notext" data-role="button" data-inline="true">Home</a>
+        <h1 class=""><strong>Dashboard</strong></h1>
         <img src="../images/BB3_logo_vert_WEB_rgb.png" width="50"
              height="35"
              class="ui-btn-right">
@@ -32,73 +42,63 @@
 
     <div role="main" class="ui-content">
 
-        <div class="well shaded-box ">
-            <h4>Welcome to Bright by Three</h4>
-            <p>
-                Please either login or sign up to continue.
-            </p>
 
+        <!--<div class="well shaded-box" align="center" ng-show="login">-->
 
-
-
-
-        <div align="center"> 
-            <div class="row vmargin15 hpadding0 box gray-box rounded-box" style="border: 0;">
-                <div align="center" class="col-md-3 col-sm-3 col-xs-12">
-                    <a href="#login" class="btn btn-primary"
-                       >
-                        Login
-                    </a>
+            <div ng-show="getLoginStatus()">
+                This is the default view of dashboard.
             </div>
-        </div>
 
-        <div align="center"> 
-            <div class="row vmargin15 hpadding0 box gray-box rounded-box" style="border: 0;">
-                <div align="center" class="col-md-3 col-sm-3 col-xs-12">
-                    <a href="#login" class="btn btn-primary"
-                            >
-                        SignUp
-                    </a>
+            <div align="center" ng-show="!login"> 
+                <div class="ui-body ui-body-b">
+
+                    <p>
+                        Please press login button to continue.
+                    </p>
+                    <a href="#popupLogin" data-rel="popup" data-position-to="window"
+                       data-role="button" data-inline="true"
+                       data-mini="true"
+                       data-theme="b" data-transition="flip">Login</a>
                 </div>
             </div>
 
-            <!--<table>
-                <tr>
-                    <td>
-                        Please login to continue.
-                    </td>
-                    <td>
-                        <a href="login.html" data-role="button" 
-                           data-mini="true" data-inline="true" data-theme="b" >Login</a> 
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        Not registered? Please Sign up to continue.
-                    </td>
-                    <td>
-                        <a href="signup.html" data-role="button" 
-                           data-mini="true" data-inline="true" data-theme="b" >Sign Up</a> 
-                    </td>
-                </tr>
-            </table>
-            -->
-        </div>
+            <div data-role="popup" id="popupMenu" data-theme="c">
+                <div data-role="popup" id="popupLogin" data-theme="d"
+                     class="ui-corner-all" data-overlay-theme="a">
+                    <form method="post">
+                        <div style="padding:10px 20px;">
+
+                            <h4>Enter login details</h4>
+                            <label for="un" class="ui-hidden-accessible">email:</label>
+                            <input type="text" name="user" id="un" value="" placeholder="email id"
+                                   data-theme="b" />
+
+                            <label for="pw" class="ui-hidden-accessible">Password:</label>
+                            <input type="password" name="pass" id="pw" value="" placeholder="password"
+                                   data-theme="b" />
+
+                            <button type="submit" data-theme="b" data-mini="true"
+                                    ng-click="changeLoginStatus()">Submit</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
 
 
-<!--
-    <div data-role="footer" data-id="mainFooter" data-position="fixed">
-        <div data-role="navbar" data-grid="d">
-            <ul class="apple-navbar-ui comboSprite">
-                <li><a href="dashboard.html" data-iconpos="top" data-icon="grid">Dashboard</a></li>
-                <li><a href="library.html" data-iconpos="top" data-icon="grid">Library<sup class="ui-li-count">10</sup></a></li>
-                <li><a href="favorites.html" class="ui-btn-active ui-state-persist" data-iconpos="top" data-icon="fees">Favorites</a></li>
-                <li><a href="tutorial.html"  data-iconpos="top" data-icon="contact">Tutorial</a></li>
-                <li><a href="aboutUs.html" data-iconpos="top" data-icon="about">About Us</a></li>
-            </ul>
+            <div align="center" ng-show="!login"> 
+                <div class="ui-body ui-body-b">
+
+                    <p>
+                        Not registered with Bright by Three? Please sign up first.
+                    </p>
+
+                    <a href="#signupPage" data-role="button" data-theme="b"
+                       data-mini="true" data-inline="true">
+                        Signup
+                    </a>
+                </div>
+            </div>
         </div>
-    </div>
--->
 
         <div data-role="footer" data-id="mainFooter" data-position="fixed">
             <div data-role="navbar" class="nav-glyphish-example" data-grid="d"
@@ -112,9 +112,111 @@
                 </ul>
             </div>
         </div>
-
     </div>
 </div>
+
+
+
+<div data-role="page" id="signupPage">
+
+    <div data-role="header" data-position="fixed" data-theme="b">
+    <a href="dashboard.html" data-icon="home"
+       data-iconpos="notext" data-role="button"
+       data-inline="true">
+        Home
+    </a>
+    <h1 class="">Signup</h1>
+    <img src="../images/BB3_logo_vert_WEB_rgb.png" width="50"
+         height="35"
+         class="ui-btn-right">
+    </a>
+</div>
+
+    <div data-role="content" class="content">
+        <p>Please enter the following information for sign up and press submit button.</p>
+
+        <div class="ui-body ui-body-b" ng-show="!login">
+
+            <div data-role="fieldcontain">
+                <label for="firstName">Your first name:</label>
+                <input type="text" name="firstName" id="firstName" value=""  />
+            </div>
+
+            <div data-role="fieldcontain">
+                <label for="lastName">Your last name:</label>
+                <input type="text" name="lastName" id="lastName" value=""  />
+            </div>
+
+            <div data-role="fieldcontain">
+                <label for="emailID">Your email id:</label>
+                <input type="text" name="emailID" id="emailID" value=""  />
+            </div>
+
+            <div data-role="fieldcontain">
+                <label for="password1">Password:</label>
+                <input type="text" name="password1" id="password1" value=""  />
+            </div>
+
+            <div data-role="fieldcontain">
+                <label for="password2">Confirm password:</label>
+                <input type="text" name="password2" id="password2" value=""  />
+            </div>
+
+            <div data-role="fieldcontain">
+                <label for="babyName">Your baby's name:</label>
+                <input type="text" name="babyName" id="babyName" value=""  />
+            </div>
+
+            <div data-role="fieldcontain">
+                <label for="babyBirthDate">Your baby's birthday:</label>
+                <input type="date" name="babyBirthDate" id="babyBirthDate" value=""  />
+            </div>
+
+            <div data-role="fieldcontain">
+                <label for="zipcode">Your zipcode:</label>
+                <input type="number" name="zipcode" id="zipcode" value=""  />
+            </div>
+
+            <div align="center">
+                <a href="" data-role="button" data-theme="b" data-inline="true"
+                        data-mini="true">
+                    Submit
+                </a>
+            </div>
+
+
+
+
+        </div><!-- /body-b -->
+
+    </div>
+
+    <div ng-show="login">
+
+        <p>
+            This is the default view. Once you are logged in, you will see this.
+        </p>
+
+    </div>
+
+    <div data-role="footer" data-id="mainFooter" data-position="fixed">
+        <div data-role="navbar" class="nav-glyphish-example" data-grid="d"
+             data-iconpos="top">
+            <ul>
+                <li><a href="dashboard.html" data-icon="grid">Dashboard</a></li>
+                <li><a href="library.html" id="email" data-icon="custom">Library</a></li>
+                <li><a href="favorites.html" data-icon="star">Favorites</a></li>
+                <li><a href="tutorial.html" data-icon="info">Tutorial</a></li>
+                <li><a href="aboutUs.html" data-icon="search">About Us</a></li>
+            </ul>
+        </div>
+    </div>
+
+</div>
+
+<!-- app specific scripts -->
+<script src="../js/app.js"></script>
+<script src="../js/controllers/controllers.js"></script>
 </body>
 </html>
 

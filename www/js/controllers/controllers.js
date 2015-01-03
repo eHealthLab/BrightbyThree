@@ -7,7 +7,7 @@
 var bb3App = angular.module('bb3App', []);
 
 bb3App.controller('stateController',
-    function($scope) {
+    function($scope, $window) {
 
         /**
          * Initialize the controller
@@ -19,6 +19,13 @@ bb3App.controller('stateController',
         }
 
         $scope.getLoginStatus = function() {
+            window.loginStatus = $scope.login;
             return $scope.login;
         };
+
+        $scope.changeLoginStatus = function() {
+            window.alert('called function');
+            $scope.login = true;
+            return;
+        }
 });

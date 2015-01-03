@@ -20,8 +20,8 @@ var bb3App = angular.module('bb3', [])
             {templateUrl: 'pages/favorites.html', controller: 'contactInfoController'}
         )
 
-            .when('/index',
-            {templateUrl: 'index.html', controller: 'participantsController' }
+            .when('/dashboard',
+            {templateUrl: 'pages/dashboard.html', controller: 'stateController' }
         )
             .when('/home',
             {templateUrl: 'partials/home.html'}
@@ -61,10 +61,6 @@ var bb3App = angular.module('bb3', [])
             {templateUrl: 'partials/contactInfoView.html', controller: 'contactInfoController' }
 
         )
-
-
-
-
             .when('/spanish/login',
             {templateUrl: 'partials/spanish/loginView.html', controller: 'participantsSpanishController' }
         )
