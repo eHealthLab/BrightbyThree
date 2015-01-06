@@ -26,6 +26,9 @@
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.6/angular-resource.min.js"></script>
     <script src="http://underscorejs.org/underscore-min.js"></script>
 
+    <script src="../js/app.js"></script>
+    <script src="../js/controllers/controllers.js"></script>
+
 </head>
 <body ng-controller="stateController">
 <div data-role="page" id="contact">
@@ -52,7 +55,7 @@
         <div>
             <ul data-role="listview" data-inset="true">
                 <li data-role="list-divider">Bright by Three Text Messages</li>
-                <li><a href="trial.html">Subject1</a></li>
+                <li><a href="../pages/trial.html">Subject1</a></li>
                 <li><a href="TutorialPages/gender_Tut.html">Subject2</a></li>
                 <li><a href="TutorialPages/race_Tut.html">Subject3</a></li>
                 <li><a href="TutorialPages/ses_Tut.html">Subject4</a></li>
@@ -61,7 +64,8 @@
 
     </div>
 
-    <div data-role="footer" data-id="mainFooter" data-position="fixed">
+    <div data-role="footer" data-id="mainFooter" data-position="fixed"
+         data-tap-toggle="false">
         <div data-role="navbar" class="nav-glyphish-example" data-grid="d"
              data-iconpos="top">
             <ul>
@@ -76,9 +80,7 @@
     {{login}}
 
 </div>
-<!-- app specific scripts -->
-<script src="../js/app.js"></script>
-<script src="../js/controllers/controllers.js"></script>
+
 </body>
 </html>
 

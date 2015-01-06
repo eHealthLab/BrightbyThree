@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="bb3">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
@@ -12,17 +12,29 @@
 
     <title>Bright by Three</title>
 
-    <!--- <link rel="stylesheet" href="http://code.jquery.com/mobile/1.0b3/jquery.mobile-1.0b3.min.css" /> --->
     <link rel="stylesheet" href="http://code.jquery.com/mobile/1.2.0-alpha.1/jquery.mobile-1.2.0-alpha.1.min.css" />
     <link rel="stylesheet" type="text/css" href="bartender.css" />
 
-    <link rel="canonical" href="http://www.stokkers.mobi/" >
+    <link type="text/css" rel="stylesheet" href="css/bootstrap.min.css">
+    <link type="text/css" rel="stylesheet" href="css/ng-grid.css">
+    <link type="text/css" rel="stylesheet" href="css/bb3.css">
+
+    <link rel="stylesheet" href="http://code.jquery.com/mobile/1.3.0/jquery.mobile-1.3.0.min.css"/>
+    <script src="http://code.jquery.com/jquery-1.8.2.min.js"></script>
+    <script src="http://code.jquery.com/mobile/1.3.0/jquery.mobile-1.3.0.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.6/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.6/angular-resource.min.js"></script>
+    <script src="http://underscorejs.org/underscore-min.js"></script>
+
+    <script src="../js/app.js"></script>
+    <script src="../js/controllers/controllers.js"></script>
     </head>
 <body>
-<div data-role="page" id="contact">
-    <div data-role="header" data-position="fixed" data-theme="b">
-        <a href="#landing" data-icon="home" data-iconpos="notext" data-role="button" data-inline="true">Home</a>
-        <h1 class="">Tutorial Page</h1>
+<div data-role="page" id="contact" ng-controller="personalInfoController">
+    <div data-role="header" data-position="fixed" data-theme="b"
+         data-tap-toggle="false">
+        <a href="../index.html" data-icon="home" data-iconpos="notext" data-role="button" data-inline="true">Home</a>
+        <h1 class="">BB3 Tutorial</h1>
         <img src="../images/BB3_logo_vert_WEB_rgb.png" width="50"
              height="35"
              class="ui-btn-right">
@@ -32,26 +44,40 @@
     <div role="main" class="ui-content">
 
         <div>
-
             <p>
-
                 This page provides details on how to use the Bright by Three app.
                 Please click on a title to display the corresponding details.
-
             </p>
-
         </div>
 
 
         <div data-role="collapsible-set" class="coll">
 
-            <div data-role="collapsible" data-icon="four" data-collapsed="true">
-                <h3>How do I login?</h3>
+            <div data-role="collapsible" data-icon="four" data-collapsed="true" id="bb3info">
+                <h3>What is Bright by Three?</h3>
 
-                <p>As the Icon background required the &lt;a&gt; <span class="typewriter">ui-btn</span> to be shrunk to 30x30px, the clickable area needs to be reset.
-                    This is done using <span class="typewriter">ui-btn-text</span>, which has to be expanded to full button size and therefore also holds the <span class="typewriter">:hover</span>
-                    gradient. Here you need the only CSS-"Hack", as IE9 renders both the RGBA and MS-filter background resulting in stacked transparent gradients (20%+20% = looks bad). I found
-                    the "Dummy-Hack" solution on <a href="http://stackoverflow.com/questions/6506085/rgba-background-with-ie-filter-alternative-ie9-renders-both " title="IE9 with rgba background and IE filter renders both">Stack Overflow</a>.
+                <p>
+                    The mission of <a onclick="window.open('http://brightbythree.org/', '_system', 'location=yes');">
+                    Bright by Three</a>
+                    (formerly Bright Beginnings) is to provide a bright beginning for all Colorado
+                    children by helping families support their children’s physical, emotional, and
+                    intellectual development during the critical first three years of life.
+                    You can find more information about Bright by Three and our other sponsors under
+                    “about” tab at the top of your screen.
+                    The Bright by Three app is designed to bring information about how you can
+                    help {{babyName}} learn and develop directly to your phone several times per week.
+                    You will receive this information via messages that contain useful information and
+                    activities that you can engage in with {{babyName}}.  You can set your own goals and
+                    earn badges and prizes for reading with your child and completing recommended activities.
+
+                </p>
+                <p>
+                    The Bright by Three app is designed to bring information about how you can help {{babyName}}
+                    learn and develop directly to your phone several times per week.
+                    You will receive this information via messages that contain useful information and activities
+                    that you can engage in with {{babyName}}.  You can set your own <a href="$.mobile.silentScroll($('#goals').offset().top)">goals</a>
+                    and earn <a href="#badgesAndPrizes">badges and prizes</a>
+                    for reading with your child and completing recommended activities.
                 </p>
 
                 <div class="ui-footer ui-bar-a ui-footer-fixed ui-fixed-inline">
@@ -67,35 +93,56 @@
                 </div>
             </div>
 
-            <div data-role="collapsible" data-icon="five" data-collapsed="true">
-                <h3>How do I reset my password?</h3>
 
-                <p>
-                    Again test.
-                </p>
-
-            </div>
 
             <div data-role="collapsible" data-icon="one" data-collapsed="true">
 
                 <h3>What is Dashboard?</h3>
-                <p>If you are using Jquery Mobile, just copy &amp; paste the CSS and add a class of <span class="typewriter">apple-navbar-ui</span> plus a class of <span class="typewriter">comboSprite</span> (retina-regular combined sprite) or <span class="typewriter">
-			   soloSprite</span> (separate sprites &amp; media query) to the navbar &lt;ul&gt; element. In the CSS change the <span class="typewriter">data-icon="names"</span>
-                    and replace the sprite URL(s) with your own. That's it. If you want to use bartender on a stand-alone basis, make sure your &lt;ul&gt; has the following (JQM-rendered) element structure (you will still need some of
-                    JQM-CSS from both the containing divs):</p>
+                <p>The dashboard is the screen through which you can access many of the features of the BB3 app.
+                    Tap on the appropriate button to set your goals, log minutes, track points, view your badges,
+                    change your settings, or access the BB3 Facebook page.</p>
+            </div>
 
-                <p>As all gradients are CSS-made, you can change the gradient colors to fit your specific page theme. Matching to JQM data-themes is on my Todo list.</p>
+            <div data-role="collapsible" data-icon="five" data-collapsed="true" id="goals">
+                <h3>How can I set goals?</h3>
+
+                <p>
+                    Set your reading goals! Looking at books together is a great way to teach
+                    {{babyName}} new words and converse with <him//her>.
+                    Reading aloud at least 6 days per week helps to prepare children for school.
+                    Set your reading goals by <a href="">selecting the number of days</a>
+                    that you plan to read for at
+                    least 10 minutes with {{babyName}}. Challenge yourself to increase your goal every
+                    2 weeks until you reading with {{babyName}} at least 6 times per week.
+                </p>
+
             </div>
 
             <div data-role="collapsible" data-icon="two" data-collapsed="true">
-                <h3>Where do I see my Bright by Three Text Messages?</h3>
+                <h3>How do I earn points?</h3>
 
-                <p>Since I don't think there is a way to stop IE-filters linear-gradients running across an element's full height, <span class="typewriter">ui-icon</span> has to be "wasted" for IE7+8.</p>
-                <p>Setting the outmost &lt;div&gt;'s background to black and ui-icon height to 50% takes care of IE7+8. The button backgrounds for all other browsers are inserted using pseudo-element
-                    <span class="typewriter">::before</span>, which is placed above .ui-icon and is thankfully ignored by both IE7 (<span class="typewriter">:before</span>) and IE8 (
-                    <span class="typewriter">::before</span>).
+                <p>
+                    You earn points when you log your reading minutes and by
+                    completing challenges.
                 </p>
 
+                <p>
+                    <a href="">Log the number of minutes</a> that you read with {{babyName}} each day.
+                    For every minute of shared reading, you will earn <1> point.
+                </p>
+
+                <p>
+                    Challenges will display in your message library once a week.
+                    These tasks are designated with a special icon
+                    <img src="../images/challenge.png" width="15" height="15">.
+
+                    Once you have completed the challenge, you can tap the
+                    <a href="">“We did it!”</a> button at the bottom of the screen and
+                    <10> bonus points will be added to your total.
+                    <a href="">You may also be invited to post a photo of you and
+                        {{babyName}}
+                    doing the activity for the opportunity to earn extra points.</a>
+                </p>
                 <div class="ui-footer ui-bar-a ui-footer-fixed ui-fixed-inline">
                     <div class="ui-navbar">
                         <ul class="apple-navbar-ui ui-grid-d">
@@ -107,22 +154,20 @@
                         </ul>
                     </div>
                 </div>
-
-                <P>I figured this out using <a href="http://nicolasgallagher.com/multiple-backgrounds-and-borders-with-css2/" title="Nicolas Gallagher - Multiple Backgrounds and Borders">Nicolas Gallaghers "Multiple Backgrounds and Borders"</a> article,
-                    which helped me understand how to properly use pseudo-elements <span class="typewriter">::before</span> and <span class="typewriter">::after</span>
-                    as well as <a href="http://7synth.com/dev/gradients" title="Reinhard von der Waydbrink - Linear and Radial Gradients for all Browsers">Reinhard von der Waydbrinks "Linear and Radial Gradients for all Browsers Script"</a>, which I found to be an excellent source on how to get gradients on all browsers - especially IE.
-                </p>
-
             </div>
 
             <div data-role="collapsible" data-icon="three" data-collapsed="true">
-                <h3>Can I bookmark Bright by Three text messages?</h3>
+                <h3>How can I track my points?</h3>
 
-                <p>For idle and hover-active state you will need to attach two gradient backgrounds to <span class="typewriter">ui-btn</span>. While the idle gradient is
-                    straightforward, the hover-active background is difficult, as it's using multiple linear and radial background-images, color-stops and transparency. </p>
-                <p>Too much for IE7+8, who get a plain linear gradient with transparency. All other browser are working smoothly - except for Opera, which supports multiple background-images with linear
-                    gradients only. Once you add a radial gradient the whole background breaks. There is a fallback .png image provided, but since some browsers load this although
-                    not being necessary, the fallback is commented out to not fire an unwanted http-request.
+                <p>
+                    The BB3 app automatically <a href="">tracks points</a> that you earn for reading aloud with
+                    {{babyName}} and completing <a href="">challenges</a>.Your point total will automatically update
+                    when you log minutes or earn <a href="">challenge points</a>.  You can view your
+                    point total on the same <a href="">screen</a> where you log your minutes.  You can
+                    earn <a href="">badges and prizes</a>  for accumulating points.  You can also view
+                    how you are doing compared with other users by tapping on the <a ref="">graph image.</a>
+                    A progress bar will show you how close you are to meeting your weekly goal
+                    <a href="">Insert image</a>.
                 </p>
 
                 <div class="ui-footer ui-bar-a ui-footer-fixed ui-fixed-inline">
@@ -136,18 +181,21 @@
                         </ul>
                     </div>
                 </div>
-
-                <P>Credits for the gradients go to <a href="http://dribbble.com/shots/66678-iOS-Tab-Bar-Highlight-with-Webkit-CSS-Gradients" title="Jordan Dobson - iOS Tab Bar with Webkit CSS Gradients">Jordan Dobsons iOS Tab Bar with Webkit Gradients</a> for
-                    his excellent walkthrough on how to mimic the iOS active gradient with plain webkit-CSS (I still needed forever for all the other browsers) and to <a href="http://css3please.com/" title="CSS3 Please!">CSS3Please!</a> for showing how to get opacity into IE-filter.
-                    The current gradients aren't perfect. Feel free to chip in and make them closer to the original.
-                </p>
-
             </div>
 
             <div data-role="collapsible" data-icon="six" data-collapsed="true">
-                <h3>What are bonus points?</h3>
+                <h3>How do I earn badges and prizes?</h3>
 
-                <p>Hi, this is a test.</p>
+                <p>
+                    Virtual badges will be awarded after you earn a <a href="">
+                    pre-determined number of points</a>.
+                    You can track the badges that you have earned by tapping on the badge button on the
+                    dashboard <img src="../images/challenge.png">. Once you have earned a badge, a special
+                    <a ref="">notification screen</a> will display.  Badges can be shared with friends on
+                    Facebook by clicking  on the <a ref="">upload image</a> at the bottom of the  notification
+                    screen <a ref="">Insert image</a>. <a href="">For every <500> points you will be able to select
+                    a book for {{babyName}} which will be mailed to your home.</a>
+                </p>
 
                 <div class="ui-footer ui-bar-a ui-footer-fixed ui-fixed-inline">
                     <div class="ui-navbar comboSprite">
@@ -160,25 +208,101 @@
                         </ul>
                     </div>
                 </div>
+
             </div>
 
             <div data-role="collapsible" data-icon="six" data-collapsed="true">
-                <h3>How do I know if a new message has arrived?</h3>
+                <h3>How can I change my password and log-in information?</h3>
 
-                <p>You can also use the JQM class of <span class="typewriter">ui-li-count</span> to add count bubbles, which are CSS-ed into notifier icons. The bubbles expand automatically depending on
-                    included text and as the background is a gradient CSS, too, you can tweak the colors according to your desired theme as well.
+                <p>
+                    You can change your password and log in information (including your email address
+                    and user name) by tapping on the Settings button on the dashboard
+                    <img src="../images/settings.png">.
+                    You can also choose to “Like” the BB3 Facebook page if you did not already
+                    “Like” the BB3 Facebook page when you registered for the app
+                    <img src="../images/like-us-on-facebook-logo.jpg" width="26" height="26">.  When you
+                    “Like” the BB3 Facebook page you will receive messages and information
+                    from BB3 on your Facebook newsfeed.
                 </p>
-
-
-
             </div>
+
+            <div data-role="collapsible" data-icon="six" data-collapsed="true">
+                    <h3>How can I access the BB3 Facebook page?</h3>
+
+                    <p>
+                        You can access the BB3 Facebook page by tapping on the
+                        Facebook button on your dashboard
+                        <img src="../images/Social-Network-Facebook-icon_0.png"
+                           width="26" height="26">.  This will take you
+                        to the BB3 Facebook page where you can read and comment
+                        on posts with information about early child development.
+                        You can receive posts from the BB3 Facebook page directly
+                        to your Facebook newsfeed if you “Like” the BB3 page when
+                        you register for the app or when you tap on the “Settings”
+                        button on your dashboard <img src="../images/settings.png">.
+                    </p>
+            </div>
+
+            <div data-role="collapsible" data-icon="six" data-collapsed="true">
+                <h3>How can I view messages?</h3>
+
+                <p>
+                    You will receive 3-4 messages per week in your message
+                    library.  Messages will contain information about different
+                    ways that you can help {{babyName}} learn.  When a new
+                    message is available, a notification will display on the
+                    <a href="">BB3 app icon</a> and your <a href="">tab bar</a>.
+                    Some messages will contain
+                    a video of a parent and child performing the activity.
+                    Often messages will also have helpful links that you can
+                    tap on for additional information to help you complete the
+                    activity.  Tap the “Why” button for more information about
+                    how the activity can help {{babyName}} learn INSERT IMAGE.  Tap on the
+                    camera INSERT IMAGE  to take a photo of your child performing
+                    the activity
+                    and share it on the <a href="">BB3 Facebook page</a>.
+                    You can also “rate” the
+                    message  INSERT IMAGE, save it as a favorite  INSERT IMAGE,
+                    or share it on Facebook INSERT IMAGE.  Once
+                    you receive a message it will be saved  in the message library and
+                    you can view it at any time.
+                </p>
+            </div>
+
+        <div data-role="collapsible" data-icon="six" data-collapsed="true">
+            <h3>How can I save favorite messages?</h3>
+
+            <p>
+                You can designate a message as favorite by tapping on
+                the “Favorite” button on your <a href="">message screen</a>
+                INSERT IMAGE.
+                Once you
+                have selected a message as a “favorite” it will be stored
+                under your favorites tab.  This option allows you to access
+                your favorite messages quickly and easily.  If no longer want
+                a message in your favorites library, simply tap the “Remove
+                favorite” button on the message screen under the favorites tab
+                INSER IMAGE.
+            </p>
         </div>
 
+        <div data-role="collapsible" data-icon="six" data-collapsed="true">
+            <h3>Other Questions?</h3>
 
+            <p>
+                If you cannot find the answer to your question in this tutorial
+                or you are having any problems with the app, simply tap
+                “Contact Us”  and send us your question. We will email a
+                response within 24-48 hours.
+            </p>
+        </div>
 
     </div>
 
-    <div data-role="footer" data-id="mainFooter" data-position="fixed">
+    </div>
+
+    <div data-role="footer" data-id="mainFooter" data-position="fixed"
+         data-tap-toggle="false">
         <div data-role="navbar" class="nav-glyphish-example" data-grid="d"
              data-iconpos="top">
             <ul>
@@ -192,6 +316,10 @@
     </div>
 
 
+</div>
+
+<div role="page" id="goals2">
+    try this.
 </div>
 
 </body>

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" ng-app="bb3App">
+<html lang="en" id="ng-app" ng-app="bb3">
 <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
@@ -12,6 +12,36 @@
 
         <title>Bright by Three</title>
 
+        <script type="text/javascript">
+
+            var _gaq = _gaq || [];
+            _gaq.push(['_setAccount', 'UA-19087935-2']);
+            _gaq.push(['_trackPageview']);
+
+            (function() {
+                var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+                ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+                var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+            })();
+        </script>
+
+
+    <script src="http://code.jquery.com/jquery-1.8.2.min.js"></script>
+    <script src="http://code.jquery.com/mobile/1.3.0/jquery.mobile-1.3.0.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.6/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.6/angular-resource.min.js"></script>
+
+       <!-- <script src="http://code.jquery.com/jquery-1.8.2.min.js"></script>
+        <script src="http://code.jquery.com/mobile/1.3.0/jquery.mobile-1.3.0.min.js"></script>
+
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.6/angular.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.6/angular-resource.min.js"></script>
+        <script src="http://underscorejs.org/underscore-min.js"></script>
+-->
+        <!-- app specific scripts -->
+        <script src="js/app.js"></script>
+        <script src="js/controllers/controllers.js"></script>
+
         <!--- <link rel="stylesheet" href="http://code.jquery.com/mobile/1.0b3/jquery.mobile-1.0b3.min.css" /> --->
         <link rel="stylesheet" href="http://code.jquery.com/mobile/1.2.0-alpha.1/jquery.mobile-1.2.0-alpha.1.min.css" />
         <link rel="stylesheet" type="text/css" href="bartender.css" />
@@ -21,11 +51,6 @@
         <link type="text/css" rel="stylesheet" href="css/bb3.css">
 
         <link rel="stylesheet" href="http://code.jquery.com/mobile/1.3.0/jquery.mobile-1.3.0.min.css"/>
-        <script src="http://code.jquery.com/jquery-1.8.2.min.js"></script>
-        <script src="http://code.jquery.com/mobile/1.3.0/jquery.mobile-1.3.0.min.js"></script>
-        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.6/angular.min.js"></script>
-        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.6/angular-resource.min.js"></script>
-        <script src="http://underscorejs.org/underscore-min.js"></script>
 
         <script type="text/javascript">
 
@@ -34,9 +59,9 @@
 
 </head>
 
-<body ng-controller="stateController">
+<body>
 
-        <div data-role="page" id="landing">
+        <div data-role="page" id="landing" ng-controller="stateController">
 
             <div data-role="header" data-position="fixed" data-theme="c">
 
@@ -66,14 +91,19 @@
 
                 </p>
 
+                <p>
+                    {{login}}
+                </p>
+
             </div>
 
-            <div data-role="footer" data-id="mainFooter" data-position="fixed">
+            <div data-role="footer" data-id="mainFooter" data-position="fixed"
+                 data-tap-toggle="false">
                 <div data-role="navbar" class="nav-glyphish-example" data-grid="d"
                      data-iconpos="top">
                     <ul>
-                        <li><a href="pages/dashboard.html" data-icon="grid" onclick="getLoginStatus()">Dashboard</a></li>
-                        <li><a href="pages/library.html" id="email" data-icon="custom">Library</a></li>
+                        <li><a href="pages/dashboard.html" data-icon="grid">Dashboard</a></li>
+                        <li><a href="pages/library.html" data-icon="custom">Library</a></li>
                         <li><a href="pages/favorites.html" data-icon="star">Favorites</a></li>
                         <li><a href="pages/tutorial.html" data-icon="info">Tutorial</a></li>
                         <li><a href="pages/aboutUs.html" data-icon="search">About Us</a></li>
@@ -83,24 +113,11 @@
 
         </div>
 
-        <!-- app specific scripts -->
-        <script src="js/app.js"></script>
-        <script src="js/controllers/controllers.js"></script>
+
 
 </body>
 
 
-<script type="text/javascript">
 
-    var _gaq = _gaq || [];
-    _gaq.push(['_setAccount', 'UA-19087935-2']);
-    _gaq.push(['_trackPageview']);
-
-    (function() {
-        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-    })();
-</script>
 
 </html>
