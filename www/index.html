@@ -1,123 +1,292 @@
 <!DOCTYPE html>
-<html lang="en" id="ng-app" ng-app="bb3">
-<head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-
-        <meta name="language" content="en" />
-        <meta name="keywords" content="IOS, tab bar, nav bar, navigation bar, menu, CSS, retina, Jquery Mobile, bartender, plugin, HTML, JQM, cross-browser" />
-        <meta name="description" content="the bartender-plugin is a CSS-only iOS-style tab bar for mobile and desktop browsers (based on the Jquery Mobile element structure)." />
-        <meta name="robots" content="index,follow">
-        <meta name="revisit-after" content="14 days">
-
-        <title>Bright by Three</title>
-
-        <script type="text/javascript">
-
-            var _gaq = _gaq || [];
-            _gaq.push(['_setAccount', 'UA-19087935-2']);
-            _gaq.push(['_trackPageview']);
-
-            (function() {
-                var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-                ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-                var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-            })();
-        </script>
-
-
-    <script src="http://code.jquery.com/jquery-1.8.2.min.js"></script>
-    <script src="http://code.jquery.com/mobile/1.3.0/jquery.mobile-1.3.0.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.6/angular.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.6/angular-resource.min.js"></script>
-
-       <!-- <script src="http://code.jquery.com/jquery-1.8.2.min.js"></script>
-        <script src="http://code.jquery.com/mobile/1.3.0/jquery.mobile-1.3.0.min.js"></script>
-
-        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.6/angular.min.js"></script>
-        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.6/angular-resource.min.js"></script>
-        <script src="http://underscorejs.org/underscore-min.js"></script>
+<!--
+* GLIMMPSE (General Linear Multivariate Model Power and Sample size)
+* Copyright (C) 2013 Regents of the University of Colorado.
+*
+* This program is free software; you can redistribute it and/or
+* modify it under the terms of the GNU General Public License
+* as published by the Free Software Foundation; either version 2
+* of the License, or (at your option) any later version.
+*
+* This program is distributed in the hope that it will be useful,
+* but WITHOUT ANY WARRANTY; without even the implied warranty of
+* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+* GNU General Public License for more details.
+*
+* You should have received a copy of the GNU General Public License
+* along with this program; if not, write to the Free Software
+* Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 -->
-        <!-- app specific scripts -->
-        <script src="js/app.js"></script>
-        <script src="js/controllers/controllers.js"></script>
+<html lang="en" id="ng-app" ng-app="glimmpse">
 
-        <!--- <link rel="stylesheet" href="http://code.jquery.com/mobile/1.0b3/jquery.mobile-1.0b3.min.css" /> --->
-        <link rel="stylesheet" href="http://code.jquery.com/mobile/1.2.0-alpha.1/jquery.mobile-1.2.0-alpha.1.min.css" />
-        <link rel="stylesheet" type="text/css" href="bartender.css" />
+<head>
+    <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;" />
+    <LINK REL="shortcut icon" href="/favicon.ico" type="image/x-icon">
 
-        <link type="text/css" rel="stylesheet" href="css/bootstrap.min.css">
-        <link type="text/css" rel="stylesheet" href="css/ng-grid.css">
-        <link type="text/css" rel="stylesheet" href="css/bb3.css">
+    <title>Bright by Three</title>
 
-        <link rel="stylesheet" href="http://code.jquery.com/mobile/1.3.0/jquery.mobile-1.3.0.min.css"/>
+    <script type="text/javascript">
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-21939703-1']);
+        _gaq.push(['_trackPageview']);
 
-        <script type="text/javascript">
+        (function() {
+            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        })();
+    </script>
 
-            var loginStatus = false;
-        </script>
+    <!-- replaced by gruntfile when building for mobile -->
+    <!-- PHONEGAPJS -->
+
+
+
+    <!-- build:js js/libraries.js -->
+    <script src="lib/jquery.min.js"></script>
+    <script src="lib/jquery-ui.min.js"></script>
+    <script src="lib/jquery.form.min.js"></script>
+    <script src="lib/highcharts.js"></script>
+    <script src="lib/exporting.js"></script>
+
+    <!-- order matters here, so be careful if you edit -->
+    <!-- Angular.js scripts -->
+    <script src="lib/angular.min.js"></script>
+    <script src="lib/angular-touch.js"></script>
+    <script src="lib/ng-grid-2.0.7.min.js"></script>
+    <script src="lib/highcharts-ng.js"></script>
+    <!-- bootstrap plugins - load after jquery -->
+    <script src="lib/bootstrap.min.js"></script>
+    <script src="lib/ui-bootstrap-tpls-0.6.0.min.js"></script>
+
+    <!-- endbuild -->
+
+    <!-- app specific scripts -->
+    <!-- build:js js/glimmpse.js -->
+    <script src="js/app.js"></script>
+    <script src="js/controllers/controllers.js"></script>
+    <!-- endbuild -->
+
+    <!-- build:css css/glimmpse.css -->
+
+    <link href="data:text/css;charset=utf-8,"
+          data-href="css/bootstrap-theme.min.css"
+          rel="stylesheet" id="bs-theme-stylesheet">
+
+    <link type="text/css" rel="stylesheet" href="css/bootstrap.min.css">
+    <link href="css/bootstrap.css" rel="stylesheet" media="screen">
+    <link type="text/css" rel="stylesheet" href="css/ng-grid.css">
+    <link type="text/css" rel="stylesheet" href="css/bb3.css">
+    <!-- endbuild -->
+
+    <style>
+
+        .navbar-brand-centered {
+            display: block;
+            max-width: 200px;
+            margin-left: auto;
+            margin-right: auto;
+         }
+
+        .navbar-default {
+            background-color: #3090C7;/*#F5F5F5 #357EC7*/
+            border-color: #E7E7E7;
+        }
+        /* title */
+        .navbar-default .navbar-brand {
+            color: #FFFFFF;
+            text-align: center;
+        }
+        .navbar-default .navbar-brand:hover,
+        .navbar-default .navbar-brand:focus {
+            color: #5E5E5E;
+        }
+        /* link */
+        .navbar-default .navbar-nav > li > a {
+            color: #777;
+        }
+        .navbar-default .navbar-nav > li > a:hover,
+        .navbar-default .navbar-nav > li > a:focus {
+            color: #333;
+        }
+        .navbar-default .navbar-nav > .active > a,
+        .navbar-default .navbar-nav > .active > a:hover,
+        .navbar-default .navbar-nav > .active > a:focus {
+            color: #555;
+            background-color: #E7E7E7;
+        }
+        .navbar-default .navbar-nav > .open > a,
+        .navbar-default .navbar-nav > .open > a:hover,
+        .navbar-default .navbar-nav > .open > a:focus {
+            color: #555;
+            background-color: #D5D5D5;
+        }
+        /* caret */
+        .navbar-default .navbar-nav > .dropdown > a .caret {
+            border-top-color: #777;
+            border-bottom-color: #777;
+        }
+        .navbar-default .navbar-nav > .dropdown > a:hover .caret,
+        .navbar-default .navbar-nav > .dropdown > a:focus .caret {
+            border-top-color: #333;
+            border-bottom-color: #333;
+        }
+        .navbar-default .navbar-nav > .open > a .caret,
+        .navbar-default .navbar-nav > .open > a:hover .caret,
+        .navbar-default .navbar-nav > .open > a:focus .caret {
+            border-top-color: #555;
+            border-bottom-color: #555;
+        }
+        /* mobile version */
+        .navbar-default .navbar-toggle {
+            border-color: #DDD;
+        }
+        .navbar-default .navbar-toggle:hover,
+        .navbar-default .navbar-toggle:focus {
+            background-color: #DDD;
+        }
+        .navbar-default .navbar-toggle .icon-bar {
+            background-color: #CCC;
+        }
+        @media (max-width: 767px) {
+            .navbar-default .navbar-nav .open .dropdown-menu > li > a {
+                color: #777;
+            }
+            .navbar-default .navbar-nav .open .dropdown-menu > li > a:hover,
+            .navbar-default .navbar-nav .open .dropdown-menu > li > a:focus {
+                color: #333;
+            }
+        }
+
+        .brand { margin-left: auto; margin-right: auto; }
+
+    </style>
+
+    <script>$("div.navbar-fixed-top").autoHidingNavbar();</script>
 
 </head>
 
 <body>
 
-        <div data-role="page" id="landing" ng-controller="stateController">
+<!--<div class="container" ng-controller="stateController">-->
+    <!-- header bar -->
+<div class="container">
 
-            <div data-role="header" data-position="fixed" data-theme="c">
+    <nav class="navbar navbar-default navbar-fixed-top
+    ">
+        <div class="container">
+            <div class="navbar-header">
+                <a style="margin-right: 10px" class="navbar-right pull-right">
+                    <img src="images/BB3_logo-icon_WEB_rgb_icon.png">
+                </a>
+
+
+
+                <a class="navbar-brand" style="margin-left: 100px
+                    ; margin-top: 10px"
+                   onclick="window.open('http://brightbythree.org',
+                        '_system', 'location=yes');">
+                    <strong>Bright by Three</strong>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!--<div class="navbar navbar-default padding-bottom: 70px;">
+        <div class="container">
+            <div class="navbar-header">
+                <a>
+                    <img src="images/BB3_logo_horiz-tag_rgb.png">
+                </a>
+
+
+
 
             </div>
+        </div>
+    </div>-->
 
-            <a onclick="window.open('http://brightbythree.org', '_system', 'location=yes');">
-                <img src="images/BB3_logo_vert-tag_WEB_rgb.png"
-                     width="350" height="220" border="1">
-            </a>
 
-            <div role="main" class="ui-body ui-body-b">
-                <p>
-                    Bright by Three leads the design, delivery, and evaluation of innovative programs to promote the
-                    healthy development of all children in the first three years of life. Our programs are offered at
-                    no charge to all parents and caregivers throughout Colorado.
-                </p>
 
-                <p>
-                    Bright by Three visits with parents and other caregivers and provides a three-step program to
-                    make sure their little ones get the best start at life.
-                    And it’s absolutely free for these families, supported entirely by charitable contributions.
-                </p>
+    <div class="well shaded-box">
+        <img src="images/BB3_logo_vert-tag_WEB_rgb.png"
+                >
+    </div>
 
-                <p>
-                    To start using the app, please tap on any of the links below. For a quick information,
-                    please browse through the tutorial page.
+    <!-- main Web application panel -->
+    <div class="well white-box shaded-box">
 
-                </p>
+        <p>
+            Bright by Three leads the design, delivery, and evaluation of innovative programs to promote the
+            healthy development of all children in the first three years of life. Our programs are offered at
+            no charge to all parents and caregivers throughout Colorado.
+        </p>
 
-                <p>
-                    {{login}}
-                </p>
+        <p>
+            Bright by Three visits with parents and other caregivers and provides a three-step program to
+            make sure their little ones get the best start at life.
+            And it's absolutely free for these families, supported entirely by charitable contributions.
+        </p>
 
-            </div>
+       <p>
+            To start using the app, please tap on any of the links below. For a quick information,
+            please browse through the tutorial page.
+        </p>
 
-            <div data-role="footer" data-id="mainFooter" data-position="fixed"
-                 data-tap-toggle="false">
-                <div data-role="navbar" class="nav-glyphish-example" data-grid="d"
-                     data-iconpos="top">
-                    <ul>
-                        <li><a href="pages/dashboard.html" data-icon="grid">Dashboard</a></li>
-                        <li><a href="pages/library.html" data-icon="custom">Library</a></li>
-                        <li><a href="pages/favorites.html" data-icon="star">Favorites</a></li>
-                        <li><a href="pages/tutorial.html" data-icon="info">Tutorial</a></li>
-                        <li><a href="pages/aboutUs.html" data-icon="search">About Us</a></li>
-                    </ul>
+
+    </div>
+
+    <div class="navbar navbar-default navbar-fixed-bottom">
+        <div class="container">
+            <div class="navbar-header">
+
+                <div class="bs-component">
+                    <!--
+                         style="margin-bottom: 15px;
+                    -->
+                    <div class="btn-group btn-group-justified">
+
+                        <a href="pages/dashboard.html" class="btn btn-primary btn-lg">
+                <span class="glyphicon glyphicon-th"
+                      aria-hidden="true"></span>
+                        </a>
+                        <a href="pages/library.html" class="btn btn-primary" >
+                <span class="glyphicon glyphicon-envelope"
+                      aria-hidden="true"></span>
+                            <span class="badge">2</span>
+                        </a>
+                        <a href="pages/favorites.html" class="btn btn-primary">
+                <span class="glyphicon glyphicon-star"
+                      aria-hidden="true"></span>
+                        </a>
+                        <a href="pages/tutorial.html" class="btn btn-primary">
+                <span class="glyphicon glyphicon-info-sign"
+                      aria-hidden="true"></span>
+                        </a>
+                        <a href="pages/aboutUs.html" class="btn btn-primary">
+                <span class="glyphicon glyphicon-user"
+                      aria-hidden="true"></span>
+                        </a>
+
+                    </div>
                 </div>
             </div>
-
         </div>
+    </div>
 
+    <!-- footer -->
+<!--
+    <div class="row">
+        <div class="col-md-12 text-center vmargin15">
+            <div>Copyright 2012 University of Colorado Denver. GLIMMPSE is released under the
+                <a href="http://www.gnu.org/licenses/gpl-2.0.html">GNU Public License version 2.0</a>.</div>
+            <div>
+                Put grant info here.
+            </div>
+        </div>
+    </div>
+-->
 
-
+</div>
 </body>
-
-
-
-
 </html>

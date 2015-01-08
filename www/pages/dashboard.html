@@ -1,5 +1,3 @@
-<!--
-
 <!DOCTYPE html>
 <html lang="en" ng-app="bb3">
 <head>
@@ -14,187 +12,6 @@
 
     <title>Dashboard</title>
 
-
-    <link rel="stylesheet" href="http://code.jquery.com/mobile/1.2.0-alpha.1/jquery.mobile-1.2.0-alpha.1.min.css" />
-    <link rel="stylesheet" type="text/css" href="../bartender.css" />
-
-    <link type="text/css" rel="stylesheet" href="../css/bootstrap.min.css">
-    <link type="text/css" rel="stylesheet" href="../css/ng-grid.css">
-    <link type="text/css" rel="stylesheet" href="../css/bb3.css">
-
-    <link rel="stylesheet" href="http://code.jquery.com/mobile/1.3.0/jquery.mobile-1.3.0.min.css"/>
-    <script src="http://code.jquery.com/jquery-1.8.2.min.js"></script>
-    <script src="http://code.jquery.com/mobile/1.3.0/jquery.mobile-1.3.0.min.js"></script>
-
-
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.6/angular-resource.min.js"></script>
-    <script src="http://underscorejs.org/underscore-min.js"></script>
-
-    <script src="../js/app.js"></script>
-    <script src="../js/controllers/controllers.js"></script>
-
-</head>
-<body>
-
-
-
-
-
-<div data-role="page" id="dashboard">
-
-        <div data-role="header" data-position="fixed" data-theme="b">
-            <a href="../index.html" data-icon="home" data-iconpos="notext"
-               data-role="button" data-inline="true">Home</a>
-            <h1 class=""><strong>Dashboard</strong></h1>
-            <img src="../images/BB3_logo_vert_WEB_rgb.png" width="50"
-                 height="35"
-                 class="ui-btn-right">
-            </a>
-        </div>
-
-    <div role="main" class="ui-content" ng-controller="stateController">
-
-
-        <div class="well shaded-box" align="center" ng-show="login"
-        >
-
-                    <div align="center" ng-show="!login"
-                            > 
-                        <div >
-
-                            <p>
-                                Please press login button to continue.
-                            </p>
-                            {{login}}
-                            <a href="#popupLogin" data-rel="popup"
-                               data-position-to="window"
-                               data-role="button" data-inline="true"
-                               data-mini="true"
-                               data-theme="b" data-transition="flip"
-                                    ng-click="changeLoginStatus()">Login</a>
-                        </div>
-
-                    </div>
-
-                    <div data-role="popup" id="popupMenu" data-theme="c">
-                        <div data-role="popup" id="popupLogin" data-theme="d"
-                             class="ui-corner-all" data-overlay-theme="a">
-                            <form method="post">
-                                <div style="padding:10px 20px;">
-
-                                    <h4>Enter login details</h4>
-                                    <label for="un" class="ui-hidden-accessible">email:</label>
-                                    <input type="text" name="user" id="un" value="" placeholder="email id"
-                                           data-theme="b" />
-
-                                    <label for="pw" class="ui-hidden-accessible">Password:</label>
-                                    <input type="password" name="pass" id="pw" value="" placeholder="password"
-                                           data-theme="b" />
-
-                                    <button data-theme="b" data-mini="true"
-                                            onclick="changeLoginStatus()">Submit</button>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-
-
-                    <div align="center" ng-show="!login"
-                            > 
-                        <div class="ui-body ui-body-b">
-
-                            <p>
-                                Not registered with Bright by Three? Please sign up first.
-                            </p>
-
-                            <a href="#popupSignup" data-rel="popup" data-position-to="window"
-                               data-role="button" data-inline="true"
-                               data-mini="true"
-                               data-theme="b" data-transition="flip">Signup</a>
-
-                            <a href="signup.html" data-prefetch data-role="button" data-theme="b"
-                               data-mini="true" data-inline="true">
-                                Signup
-                            </a>
-                            {{login}}
-                        </div>
-                    </div>
-
-                <div data-role="popup" id="popupMenu2" data-theme="c">
-                    <div data-role="popup" id="popupSignup" data-theme="d"
-                         class="ui-corner-all" data-overlay-theme="a">
-                        <form method="post">
-                            <div style="padding:10px 20px;">
-
-                                <h4>Enter login details</h4>
-                                <label for="un" class="ui-hidden-accessible">email:</label>
-                                <input type="text" name="user" id="un" value="" placeholder="email id"
-                                       data-theme="b" />
-
-                                <label for="pw" class="ui-hidden-accessible">Password:</label>
-                                <input type="password" name="pass" id="pw" value="" placeholder="password"
-                                       data-theme="b" />
-
-                                <button type="submit" data-theme="b" data-mini="true"
-                                        ng-click="changeLoginStatus()">Submit</button>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-
-
-        </div>
-
-        <div data-role="footer" data-id="mainFooter" data-position="fixed"
-             data-tap-toggle="false">
-             <div data-role="navbar" class="nav-glyphish-example" data-grid="d"
-                 data-iconpos="top">
-                    <ul>
-                        <li><a href="dashboard.html" data-icon="grid">Dashboard</a></li>
-                        <li><a href="library.html" id="email" data-icon="custom">Library</a></li>
-                        <li><a href="favorites.html" data-icon="star">Favorites</a></li>
-                        <li><a href="tutorial.html" data-icon="info">Tutorial</a></li>
-                        <li><a href="aboutUs.html" data-icon="search">About Us</a></li>
-                    </ul>
-             </div>
-        </div>
-    </div>
-</div>
-
-</body>
-
-<script type="text/javascript">
-
-    var _gaq = _gaq || [];
-    _gaq.push(['_setAccount', 'UA-19087935-2']);
-    _gaq.push(['_trackPageview']);
-
-    (function() {
-        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-    })();
-</script>
-
-</html>
-
--->
-
-<!DOCTYPE html>
-<html lang="en" ng-app="bb3" xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html">
-<head>
-
-<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
-
-    <script src="../lib/angular.min.js"></script>
-    <script src="../lib/angular-touch.js"></script>
-
-    <script src="../lib/bootstrap.min.js"></script>
-    <script src="../lib/ui-bootstrap-tpls-0.6.0.min.js"></script>
-
-    <script src="../js/app.js"></script>
-    <script src="../js/controllers/controllers.js"></script>
-
     <script type="text/javascript">
         var _gaq = _gaq || [];
         _gaq.push(['_setAccount', 'UA-21939703-1']);
@@ -207,13 +24,508 @@
         })();
     </script>
 
+    <!-- replaced by gruntfile when building for mobile -->
+    <!-- PHONEGAPJS -->
+
+
+
+    <!-- build:js js/libraries.js -->
+    <script src="../lib/jquery.min.js"></script>
+    <script src="../lib/jquery-ui.min.js"></script>
+    <script src="../lib/jquery.form.min.js"></script>
+    <script src="../lib/highcharts.js"></script>
+    <script src="../lib/exporting.js"></script>
+
+    <!-- order matters here, so be careful if you edit -->
+    <!-- Angular.js scripts -->
+    <script src="../lib/angular.min.js"></script>
+    <script src="../lib/angular-touch.js"></script>
+
+    <!-- bootstrap plugins - load after jquery -->
+    <script src="../lib/bootstrap.min.js"></script>
+    <script src="../lib/ui-bootstrap-tpls-0.6.0.min.js"></script>
+
+    <!-- endbuild -->
+
+    <!-- app specific scripts -->
+    <!-- build:js js/glimmpse.js -->
+    <script src="../js/app.js"></script>
+    <script src="../js/controllers/controllers.js"></script>
+    <!-- endbuild -->
+
+    <!-- build:css css/glimmpse.css -->
+
+    <link href="data:text/css;charset=utf-8,"
+          data-href="css/bootstrap-theme.min.css"
+          rel="stylesheet" id="bs-theme-stylesheet">
+
+    <link type="text/css" rel="stylesheet" href="../css/bootstrap.min.css">
+
+    <link type="text/css" rel="stylesheet" href="../css/ng-grid.css">
+    <link type="text/css" rel="stylesheet" href="../css/bb3.css">
+    <link href="../css/bootstrap-social.css" rel="stylesheet" >
+    <!-- endbuild -->
+
+    <style>
+
+        .navbar-brand-centered {
+            display: block;
+            max-width: 200px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .navbar-default {
+            background-color: #3090C7;/*#F5F5F5 #357EC7*/
+            border-color: #E7E7E7;
+        }
+        /* title */
+        .navbar-default .navbar-brand {
+            color: #FFFFFF;
+            text-align: center;
+        }
+        .navbar-default .navbar-brand:hover,
+        .navbar-default .navbar-brand:focus {
+            color: #5E5E5E;
+        }
+        /* link */
+        .navbar-default .navbar-nav > li > a {
+            color: #777;
+        }
+        .navbar-default .navbar-nav > li > a:hover,
+        .navbar-default .navbar-nav > li > a:focus {
+            color: #333;
+        }
+        .navbar-default .navbar-nav > .active > a,
+        .navbar-default .navbar-nav > .active > a:hover,
+        .navbar-default .navbar-nav > .active > a:focus {
+            color: #555;
+            background-color: #E7E7E7;
+        }
+        .navbar-default .navbar-nav > .open > a,
+        .navbar-default .navbar-nav > .open > a:hover,
+        .navbar-default .navbar-nav > .open > a:focus {
+            color: #555;
+            background-color: #D5D5D5;
+        }
+        /* caret */
+        .navbar-default .navbar-nav > .dropdown > a .caret {
+            border-top-color: #777;
+            border-bottom-color: #777;
+        }
+        .navbar-default .navbar-nav > .dropdown > a:hover .caret,
+        .navbar-default .navbar-nav > .dropdown > a:focus .caret {
+            border-top-color: #333;
+            border-bottom-color: #333;
+        }
+        .navbar-default .navbar-nav > .open > a .caret,
+        .navbar-default .navbar-nav > .open > a:hover .caret,
+        .navbar-default .navbar-nav > .open > a:focus .caret {
+            border-top-color: #555;
+            border-bottom-color: #555;
+        }
+        /* mobile version */
+        .navbar-default .navbar-toggle {
+            border-color: #DDD;
+        }
+        .navbar-default .navbar-toggle:hover,
+        .navbar-default .navbar-toggle:focus {
+            background-color: #DDD;
+        }
+        .navbar-default .navbar-toggle .icon-bar {
+            background-color: #CCC;
+        }
+        @media (max-width: 767px) {
+            .navbar-default .navbar-nav .open .dropdown-menu > li > a {
+                color: #777;
+            }
+            .navbar-default .navbar-nav .open .dropdown-menu > li > a:hover,
+            .navbar-default .navbar-nav .open .dropdown-menu > li > a:focus {
+                color: #333;
+            }
+        }
+
+        .brand { margin-left: auto; margin-right: auto; }
+
+        .btn-circle {
+            width: 30px;
+            height: 30px;
+            text-align: center;
+            padding: 6px 0;
+            font-size: 12px;
+            line-height: 1.428571429;
+            border-radius: 15px;
+        }
+        .btn-circle.btn-lg {
+            width: 50px;
+            height: 50px;
+            padding: 10px 16px;
+            font-size: 18px;
+            line-height: 1.33;
+            border-radius: 25px;
+        }
+        .btn-circle.btn-xl {
+            width: 70px;
+            height: 70px;
+            padding: 10px 16px;
+            font-size: 24px;
+            line-height: 1.33;
+            border-radius: 35px;
+        }
+
+    </style>
+
+    <script>$("div.navbar-fixed-top").autoHidingNavbar();</script>
+
 </head>
 <body>
-<div class="well" ng-controller="stateController">
-    {{login}}
-    <input type="email">Email</input>
-    <input type="password">Password</input>
-    <button type="submit" data-ng-click="changeLoginStatus()">Login</button>
+
+<div class="container" ng-controller="stateController">
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <a style="margin-right: 10px" class="navbar-right pull-right">
+                    <img src="../images/BB3_logo-icon_WEB_rgb_icon.png">
+                </a>
+
+                <a style="margin-top: 10px; margin-left: 10px" class="navbar-left pull-left
+                            btn btn-danger btn-circle btn-sm"
+                   href="../index.html">
+                                <span class="glyphicon glyphicon-home"
+                                      aria-hidden="true"></span>
+                </a>
+
+                <a class="navbar-brand" style="margin-left: 80px
+                ; margin-top: 10px"
+                   onclick="window.open('http://brightbythree.org',
+                    '_system', 'location=yes');">
+                    <strong>Dashboard</strong>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+
+    <div class="container" ng-show="!login">
+        <table align="center">
+            <tr>
+                <td>
+
+                </td>
+                <td align="center">
+                    Please either login or signup to
+                    access your Bright by Three account.
+                </td>
+            </tr>
+        </table>
+
+        <div class="well">
+            <table align="center">
+                <tr>
+                    <td align="center">
+
+                    </td>
+                    <td align="center">
+                        <button class="btn btn-success btn-circle btn-xl"
+                                data-toggle="modal"
+                                data-target="#loginModal">
+                            <i class="glyphicon glyphicon-link"></i>
+                        </button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+
+                    </td>
+                    <td align="center">
+                        <strong>Login</strong>
+                    </td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="well">
+            <table align="center">
+                <tr>
+                    <td align="center">
+
+                    </td>
+                    <td align="center">
+                        <a href="signup.html">
+                            <span class="btn btn-warning btn-circle btn-xl">
+                                <i style="margin-top: 5px"
+                                   class="glyphicon glyphicon-edit">
+
+                                </i>
+                            </span>
+                        </a>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+
+                    </td>
+                    <td align="center">
+                        <strong>Signup</strong>
+                    </td>
+                </tr>
+            </table>
+        </div>
+
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="loginModal" tabindex="-1"
+         role="dialog" aria-labelledby="loginModal" aria-hidden="true">
+        <form id="loginForm" enctype="multipart/form-data"
+              name="emailDesignForm" method="post">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h3>Login</h3>
+                        <label>Please enter your email id and password
+                            used to register with BB3.</label>
+                    </div>
+                    <div class="modal-body">
+                        <div class="processing rounded-box" ng-show="designEmailProcessing">
+                            <label>Processing</label>
+                        </div>
+                        <div class="alert alert-success" ng-show="!designEmailProcessing && designEmailSuccess !== undefined && designEmailSuccess">
+                            Your email has been sent.
+                        </div>
+                        <div class="alert alert-danger" ng-show="!designEmailProcessing && designEmailSuccess !== undefined && !designEmailSuccess">
+                            We're sorry, but we were unable to submit your request at this time.  Please try again.
+                        </div>
+                        <div class="well">
+
+
+                            <div class="form-group">
+                                <label>Email</label>
+                                <input class="form-control" type="email"
+                                       placeholder="Enter your email id" name="email"
+                                       ng-model="emailID" required />
+                            </div>
+                            <div class="form-group">
+                                <label>Password</label>
+                                <input class="form-control" type="password"
+                                       placeholder="Enter your password"
+                                       name="password" ng-model="password" required />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" ng-click="submitLoginInfo()"
+                                class="btn btn-primary" aria-hidden="true"
+                                ng-disabled="!emailDesignForm.$valid">
+                            Login
+                        </button>
+                        <button class="btn btn-danger" data-dismiss="modal" ng-click="designEmailSuccess = undefined"
+                                aria-hidden="true">Cancel</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+    <!-- endModal -->
+
+    <div class="container" ng-show="login">
+
+        <div class="well">
+            <table align="center">
+                <tr>
+                    <td align="center">
+                        <a href="goals.html">
+                            <span class="btn btn-success btn-circle btn-xl">
+                                <i style="margin-top: 5px" class="glyphicon glyphicon-hand-right"></i>
+                            </span>
+                        </a>
+                    </td>
+                    <td width="70px">
+                    </td>
+                    <td>
+                    </td>
+                    <td align="center">
+                        <a href="#" ng-click="updateFacebookClicks()"
+                           onclick="window.open('https://m.facebook.com/pages/Mothers-Milk-Messaging/570287563090720?ref=tn_tnmn', '_blank', 'location=yes')">
+
+                            <span class="btn btn-info btn-circle btn-xl">
+                                <i style="margin-top: 8px" class="glyphicon glyphicon-record"></i>
+                            </span>
+                        </a>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td align="center">
+                        <strong>Set Goals</strong>
+                    </td>
+                    <td width="70px">
+
+                    </td>
+                    <td>
+
+                    </td>
+                    <td align="center">
+                        <strong>Facebook</strong>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td align="center">
+                        <a href="badge.html">
+                            <span class="btn btn-warning btn-circle btn-xl">
+                                <img src="../images/glyphish-icons/85-trophy.png" style="margin-top: 10px"></i>
+                            </span>
+                        </a>
+                    </td>
+                    <td width="70px">
+                    </td>
+                    <td>
+                    </td>
+                    <td align="center">
+                        <a href="network.html">
+                            <span class="btn btn-danger btn-circle btn-xl">
+                                <i class="glyphicon glyphicon-stats" style="margin-top: 5px; margin-left: -0.05px"></i>
+                            </span>
+                        </a>
+                    </td>
+
+                </tr>
+                <tr>
+                    <td align="center">
+                        <strong>Badge</strong>
+                    </td>
+                    <td width="70px">
+
+                    </td>
+                    <td>
+
+                    </td>
+                    <td align="center">
+                        <strong>Network</strong>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td width="70px">
+
+                    </td>
+                    <td align="center">
+                        <a href="minutes.html">
+                            <span class="btn btn-primary btn-circle btn-xl">
+                                <i style="margin-top: 8px" class="glyphicon glyphicon-pencil"></i>
+                            </span>
+                        </a>
+                    </td>
+
+                    <td>
+                    </td>
+
+
+                </tr>
+                <tr>
+                    <td width="100">
+
+                    </td>
+                    <td align="center">
+                        <strong>Log in minutes</strong>
+                    </td>
+
+                </tr>
+            </table>
+        </div>
+
+
+    </div>
+
+    <!-- bottom Navbar -->
+    <div class="navbar navbar-default navbar-fixed-bottom">
+        <div class="container">
+            <div class="navbar-header">
+                <div class="bs-component">
+                    <div class="btn-group btn-group-justified">
+                        <a href="dashboard.html" class="btn btn-primary btn-lg">
+                <span class="glyphicon glyphicon-th"
+                      aria-hidden="true"></span>
+                        </a>
+                        <a href="library.html" class="btn btn-primary" >
+                <span class="glyphicon glyphicon-envelope"
+                      aria-hidden="true"></span><sup>
+                            <span class="badge">2</span></sup>
+                        </a>
+                        <a href="favorites.html" class="btn btn-primary">
+                <span class="glyphicon glyphicon-star"
+                      aria-hidden="true"></span>
+                        </a>
+                        <a href="tutorial.html" class="btn btn-primary">
+                <span class="glyphicon glyphicon-info-sign"
+                      aria-hidden="true"></span>
+                        </a>
+                        <a href="aboutUs.html" class="btn btn-primary">
+                <span class="glyphicon glyphicon-user"
+                      aria-hidden="true"></span>
+                        </a>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div><!-- end bottom Navbar -->
+
 </div>
 </body>
+
+
+
 </html>
+
+

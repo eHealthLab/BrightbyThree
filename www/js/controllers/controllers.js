@@ -23,6 +23,8 @@ bb3App.controller('stateController',
             //return $scope.login;
         };
 
+
+
         $scope.changeLoginStatus = function() {
             window.alert('called function');
             $scope.login = true;
@@ -52,6 +54,13 @@ bb3App.controller('stateController',
     function ($scope, $window) {
         init();
         function init() {
+            $scope.firstName = "default";
+            $scope.lastName = "default";
+            $scope.emailID = "default";
+            $scope.password1 = "default";
+            $scope.password2 = "default";
+            $scope.phoneNumber = null;
+            $scope.zipcode = null;
             $scope.babyName = "default";
         }
 
@@ -65,5 +74,11 @@ bb3App.controller('stateController',
             window.alert('signup pressed');
 
         };
+
+        $scope.submitLoginInfo = function() {
+            window.alert('login pressed');
+
+        };
+
 
     });

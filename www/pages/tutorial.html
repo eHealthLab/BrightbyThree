@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html ng-app="bb3">
+<html lang="en" ng-app="bb3">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
@@ -10,317 +10,397 @@
     <meta name="robots" content="index,follow">
     <meta name="revisit-after" content="14 days">
 
-    <title>Bright by Three</title>
+    <title>Dashboard</title>
 
-    <link rel="stylesheet" href="http://code.jquery.com/mobile/1.2.0-alpha.1/jquery.mobile-1.2.0-alpha.1.min.css" />
-    <link rel="stylesheet" type="text/css" href="bartender.css" />
+    <script type="text/javascript">
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-21939703-1']);
+        _gaq.push(['_trackPageview']);
 
-    <link type="text/css" rel="stylesheet" href="css/bootstrap.min.css">
-    <link type="text/css" rel="stylesheet" href="css/ng-grid.css">
-    <link type="text/css" rel="stylesheet" href="css/bb3.css">
+        (function() {
+            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        })();
+    </script>
 
-    <link rel="stylesheet" href="http://code.jquery.com/mobile/1.3.0/jquery.mobile-1.3.0.min.css"/>
-    <script src="http://code.jquery.com/jquery-1.8.2.min.js"></script>
-    <script src="http://code.jquery.com/mobile/1.3.0/jquery.mobile-1.3.0.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.6/angular.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.6/angular-resource.min.js"></script>
-    <script src="http://underscorejs.org/underscore-min.js"></script>
+    <!-- replaced by gruntfile when building for mobile -->
+    <!-- PHONEGAPJS -->
 
+
+
+    <!-- build:js js/libraries.js -->
+    <script src="../lib/jquery.min.js"></script>
+    <script src="../lib/jquery-ui.min.js"></script>
+    <script src="../lib/jquery.form.min.js"></script>
+    <script src="../lib/highcharts.js"></script>
+    <script src="../lib/exporting.js"></script>
+
+    <!-- order matters here, so be careful if you edit -->
+    <!-- Angular.js scripts -->
+    <script src="../lib/angular.min.js"></script>
+    <script src="../lib/angular-touch.js"></script>
+
+    <!-- bootstrap plugins - load after jquery -->
+    <script src="../lib/bootstrap.min.js"></script>
+    <script src="../lib/ui-bootstrap-tpls-0.6.0.min.js"></script>
+
+    <!-- endbuild -->
+
+    <!-- app specific scripts -->
+    <!-- build:js js/glimmpse.js -->
     <script src="../js/app.js"></script>
     <script src="../js/controllers/controllers.js"></script>
-    </head>
+    <!-- endbuild -->
+
+    <!-- build:css css/glimmpse.css -->
+
+    <link href="data:text/css;charset=utf-8,"
+          data-href="css/bootstrap-theme.min.css"
+          rel="stylesheet" id="bs-theme-stylesheet">
+
+    <link type="text/css" rel="stylesheet" href="../css/bootstrap.min.css">
+
+    <link type="text/css" rel="stylesheet" href="../css/ng-grid.css">
+    <link type="text/css" rel="stylesheet" href="../css/bb3.css">
+    <!-- endbuild -->
+
+    <style>
+
+        .navbar-brand-centered {
+            display: block;
+            max-width: 200px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .navbar-default {
+            background-color: #3090C7;/*#F5F5F5 #357EC7*/
+            border-color: #E7E7E7;
+        }
+        /* title */
+        .navbar-default .navbar-brand {
+            color: #FFFFFF;
+            text-align: center;
+        }
+        .navbar-default .navbar-brand:hover,
+        .navbar-default .navbar-brand:focus {
+            color: #5E5E5E;
+        }
+        /* link */
+        .navbar-default .navbar-nav > li > a {
+            color: #777;
+        }
+        .navbar-default .navbar-nav > li > a:hover,
+        .navbar-default .navbar-nav > li > a:focus {
+            color: #333;
+        }
+        .navbar-default .navbar-nav > .active > a,
+        .navbar-default .navbar-nav > .active > a:hover,
+        .navbar-default .navbar-nav > .active > a:focus {
+            color: #555;
+            background-color: #E7E7E7;
+        }
+        .navbar-default .navbar-nav > .open > a,
+        .navbar-default .navbar-nav > .open > a:hover,
+        .navbar-default .navbar-nav > .open > a:focus {
+            color: #555;
+            background-color: #D5D5D5;
+        }
+        /* caret */
+        .navbar-default .navbar-nav > .dropdown > a .caret {
+            border-top-color: #777;
+            border-bottom-color: #777;
+        }
+        .navbar-default .navbar-nav > .dropdown > a:hover .caret,
+        .navbar-default .navbar-nav > .dropdown > a:focus .caret {
+            border-top-color: #333;
+            border-bottom-color: #333;
+        }
+        .navbar-default .navbar-nav > .open > a .caret,
+        .navbar-default .navbar-nav > .open > a:hover .caret,
+        .navbar-default .navbar-nav > .open > a:focus .caret {
+            border-top-color: #555;
+            border-bottom-color: #555;
+        }
+        /* mobile version */
+        .navbar-default .navbar-toggle {
+            border-color: #DDD;
+        }
+        .navbar-default .navbar-toggle:hover,
+        .navbar-default .navbar-toggle:focus {
+            background-color: #DDD;
+        }
+        .navbar-default .navbar-toggle .icon-bar {
+            background-color: #CCC;
+        }
+        @media (max-width: 767px) {
+            .navbar-default .navbar-nav .open .dropdown-menu > li > a {
+                color: #777;
+            }
+            .navbar-default .navbar-nav .open .dropdown-menu > li > a:hover,
+            .navbar-default .navbar-nav .open .dropdown-menu > li > a:focus {
+                color: #333;
+            }
+        }
+
+        .brand { margin-left: auto; margin-right: auto; }
+
+        .btn-circle {
+            width: 30px;
+            height: 30px;
+            text-align: center;
+            padding: 6px 0;
+            font-size: 12px;
+            line-height: 1.428571429;
+            border-radius: 15px;
+        }
+        .btn-circle.btn-lg {
+            width: 50px;
+            height: 50px;
+            padding: 10px 16px;
+            font-size: 18px;
+            line-height: 1.33;
+            border-radius: 25px;
+        }
+        .btn-circle.btn-xl {
+            width: 70px;
+            height: 70px;
+            padding: 10px 16px;
+            font-size: 24px;
+            line-height: 1.33;
+            border-radius: 35px;
+        }
+
+    </style>
+
+    <script>$("div.navbar-fixed-top").autoHidingNavbar();</script>
+
+</head>
 <body>
-<div data-role="page" id="contact" ng-controller="personalInfoController">
-    <div data-role="header" data-position="fixed" data-theme="b"
-         data-tap-toggle="false">
-        <a href="../index.html" data-icon="home" data-iconpos="notext" data-role="button" data-inline="true">Home</a>
-        <h1 class="">BB3 Tutorial</h1>
-        <img src="../images/BB3_logo_vert_WEB_rgb.png" width="50"
-             height="35"
-             class="ui-btn-right">
-        </a>
-    </div>
 
-    <div role="main" class="ui-content">
+<div class="container" ng-controller="stateController">
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <a style="margin-right: 10px" class="navbar-right pull-right">
+                    <img src="../images/BB3_logo-icon_WEB_rgb_icon.png">
+                </a>
 
-        <div>
-            <p>
-                This page provides details on how to use the Bright by Three app.
-                Please click on a title to display the corresponding details.
-            </p>
+                <a style="margin-top: 10px; margin-left: 10px" class="navbar-left pull-left
+                                btn btn-danger btn-circle btn-sm"
+                   href="../index.html">
+                                    <span class="glyphicon glyphicon-home"
+                                          aria-hidden="true"></span>
+                </a>
+
+                <a class="navbar-brand" style="margin-left: 80px
+                    ; margin-top: 10px"
+                   onclick="window.open('http://brightbythree.org',
+                        '_system', 'location=yes');">
+                    <strong>Tutorial</strong>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+
+    <div class="container" ng-show="!login">
+        <table align="center">
+            <tr>
+                <td>
+
+                </td>
+                <td align="center">
+                    Please either login or signup to
+                    access your Bright by Three account.
+                </td>
+            </tr>
+        </table>
+
+        <div class="well">
+            <table align="center">
+                <tr>
+                    <td align="center">
+
+                    </td>
+                    <td align="center">
+                        <button class="btn btn-success btn-circle btn-xl"
+                                data-toggle="modal"
+                                data-target="#loginModal">
+                            <i class="glyphicon glyphicon-link"></i>
+                        </button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+
+                    </td>
+                    <td align="center">
+                        <strong>Login</strong>
+                    </td>
+                </tr>
+            </table>
         </div>
 
+        <div class="well">
+            <table align="center">
+                <tr>
+                    <td align="center">
 
-        <div data-role="collapsible-set" class="coll">
+                    </td>
+                    <td align="center">
+                        <a href="signup.html">
+                            <span class="btn btn-warning btn-circle btn-xl">
+                                <i style="margin-top: 5px"
+                                   class="glyphicon glyphicon-edit">
 
-            <div data-role="collapsible" data-icon="four" data-collapsed="true" id="bb3info">
-                <h3>What is Bright by Three?</h3>
+                                </i>
+                            </span>
+                        </a>
 
-                <p>
-                    The mission of <a onclick="window.open('http://brightbythree.org/', '_system', 'location=yes');">
-                    Bright by Three</a>
-                    (formerly Bright Beginnings) is to provide a bright beginning for all Colorado
-                    children by helping families support their children’s physical, emotional, and
-                    intellectual development during the critical first three years of life.
-                    You can find more information about Bright by Three and our other sponsors under
-                    “about” tab at the top of your screen.
-                    The Bright by Three app is designed to bring information about how you can
-                    help {{babyName}} learn and develop directly to your phone several times per week.
-                    You will receive this information via messages that contain useful information and
-                    activities that you can engage in with {{babyName}}.  You can set your own goals and
-                    earn badges and prizes for reading with your child and completing recommended activities.
+                    </td>
+                </tr>
+                <tr>
+                    <td>
 
-                </p>
-                <p>
-                    The Bright by Three app is designed to bring information about how you can help {{babyName}}
-                    learn and develop directly to your phone several times per week.
-                    You will receive this information via messages that contain useful information and activities
-                    that you can engage in with {{babyName}}.  You can set your own <a href="$.mobile.silentScroll($('#goals').offset().top)">goals</a>
-                    and earn <a href="#badgesAndPrizes">badges and prizes</a>
-                    for reading with your child and completing recommended activities.
-                </p>
-
-                <div class="ui-footer ui-bar-a ui-footer-fixed ui-fixed-inline">
-                    <div class="ui-navbar">
-                        <ul class="apple-navbar-ui ui-grid-d">
-                            <li class="ui-block-a"><a href="#" class="ui-btn" ><span class=""><span class="ui-btn-text">Features</span><span class="ui-icon"></span></span></a></li>
-                            <li class="ui-block-b"><a href="#" class="ui-btn" ><span class=""><span class="ui-btn-text">Brands</span><span class="ui-icon"></span></span></a></li>
-                            <li class="ui-block-c"><a href="#" class="ui-btn" ><span class=""><span class="ui-btn-text">Fees</span><span class="ui-icon"></span></span></a></li>
-                            <li class="ui-block-d"><a href="#" class="ui-btn" ><span class=""><span class="ui-btn-text">Contact</span><span class="ui-icon"></span></span></a></li>
-                            <li class="ui-block-e"><a href="#" class="ui-btn" ><span class=""><span class="ui-btn-text">About</span><span class="ui-icon"></span></span></a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-
-
-
-            <div data-role="collapsible" data-icon="one" data-collapsed="true">
-
-                <h3>What is Dashboard?</h3>
-                <p>The dashboard is the screen through which you can access many of the features of the BB3 app.
-                    Tap on the appropriate button to set your goals, log minutes, track points, view your badges,
-                    change your settings, or access the BB3 Facebook page.</p>
-            </div>
-
-            <div data-role="collapsible" data-icon="five" data-collapsed="true" id="goals">
-                <h3>How can I set goals?</h3>
-
-                <p>
-                    Set your reading goals! Looking at books together is a great way to teach
-                    {{babyName}} new words and converse with <him//her>.
-                    Reading aloud at least 6 days per week helps to prepare children for school.
-                    Set your reading goals by <a href="">selecting the number of days</a>
-                    that you plan to read for at
-                    least 10 minutes with {{babyName}}. Challenge yourself to increase your goal every
-                    2 weeks until you reading with {{babyName}} at least 6 times per week.
-                </p>
-
-            </div>
-
-            <div data-role="collapsible" data-icon="two" data-collapsed="true">
-                <h3>How do I earn points?</h3>
-
-                <p>
-                    You earn points when you log your reading minutes and by
-                    completing challenges.
-                </p>
-
-                <p>
-                    <a href="">Log the number of minutes</a> that you read with {{babyName}} each day.
-                    For every minute of shared reading, you will earn <1> point.
-                </p>
-
-                <p>
-                    Challenges will display in your message library once a week.
-                    These tasks are designated with a special icon
-                    <img src="../images/challenge.png" width="15" height="15">.
-
-                    Once you have completed the challenge, you can tap the
-                    <a href="">“We did it!”</a> button at the bottom of the screen and
-                    <10> bonus points will be added to your total.
-                    <a href="">You may also be invited to post a photo of you and
-                        {{babyName}}
-                    doing the activity for the opportunity to earn extra points.</a>
-                </p>
-                <div class="ui-footer ui-bar-a ui-footer-fixed ui-fixed-inline">
-                    <div class="ui-navbar">
-                        <ul class="apple-navbar-ui ui-grid-d">
-                            <li class="ui-block-a"><a href="#" class=""><span class=""><span class=""></span><span class="ui-icon"></span></span></a></li>
-                            <li class="ui-block-b"><a href="#" class=""><span class=""><span class=""></span><span class="ui-icon"></span></span></a></li>
-                            <li class="ui-block-c"><a href="#" class=""><span class=""><span class=""></span><span class="ui-icon"></span></span></a></li>
-                            <li class="ui-block-d"><a href="#" class=""><span class=""><span class=""></span><span class="ui-icon"></span></span></a></li>
-                            <li class="ui-block-e"><a href="#" class=""><span class=""><span class=""></span><span class="ui-icon"></span></span></a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-
-            <div data-role="collapsible" data-icon="three" data-collapsed="true">
-                <h3>How can I track my points?</h3>
-
-                <p>
-                    The BB3 app automatically <a href="">tracks points</a> that you earn for reading aloud with
-                    {{babyName}} and completing <a href="">challenges</a>.Your point total will automatically update
-                    when you log minutes or earn <a href="">challenge points</a>.  You can view your
-                    point total on the same <a href="">screen</a> where you log your minutes.  You can
-                    earn <a href="">badges and prizes</a>  for accumulating points.  You can also view
-                    how you are doing compared with other users by tapping on the <a ref="">graph image.</a>
-                    A progress bar will show you how close you are to meeting your weekly goal
-                    <a href="">Insert image</a>.
-                </p>
-
-                <div class="ui-footer ui-bar-a ui-footer-fixed ui-fixed-inline">
-                    <div class="ui-navbar">
-                        <ul class="apple-navbar-ui ui-grid-d">
-                            <li class="ui-block-a"><a href="#" class="ui-btn" ><span class=""><span class=""></span><span class="ui-icon"></span></span></a></li>
-                            <li class="ui-block-b"><a href="#" class="ui-btn" ><span class=""><span class=""></span><span class="ui-icon"></span></span></a></li>
-                            <li class="ui-block-c"><a href="#" class="ui-btn" ><span class=""><span class=""></span><span class="ui-icon"></span></span></a></li>
-                            <li class="ui-block-d"><a href="#" class="ui-btn" ><span class=""><span class=""></span><span class="ui-icon"></span></span></a></li>
-                            <li class="ui-block-e"><a href="#" class="ui-btn" ><span class=""><span class=""></span><span class="ui-icon"></span></span></a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-
-            <div data-role="collapsible" data-icon="six" data-collapsed="true">
-                <h3>How do I earn badges and prizes?</h3>
-
-                <p>
-                    Virtual badges will be awarded after you earn a <a href="">
-                    pre-determined number of points</a>.
-                    You can track the badges that you have earned by tapping on the badge button on the
-                    dashboard <img src="../images/challenge.png">. Once you have earned a badge, a special
-                    <a ref="">notification screen</a> will display.  Badges can be shared with friends on
-                    Facebook by clicking  on the <a ref="">upload image</a> at the bottom of the  notification
-                    screen <a ref="">Insert image</a>. <a href="">For every <500> points you will be able to select
-                    a book for {{babyName}} which will be mailed to your home.</a>
-                </p>
-
-                <div class="ui-footer ui-bar-a ui-footer-fixed ui-fixed-inline">
-                    <div class="ui-navbar comboSprite">
-                        <ul class="apple-navbar-ui ui-grid-d">
-                            <li class="ui-block-a"><a href="#" data-icon="features" class="ui-btn"><span class="ui-btn-inner"><span class="ui-btn-text">Features</span><span class="ui-icon"></span></span></a></li>
-                            <li class="ui-block-b"><a href="#" data-icon="brands" class="ui-btn"><span class="ui-btn-inner"><span class="ui-btn-text">Brands</span><span class="ui-icon"></span></span></a></li>
-                            <li class="ui-block-c"><a href="#" data-icon="fees" class="ui-btn"><span class="ui-btn-inner"><span class="ui-btn-text">Fees</span><span class="ui-icon"></span></span></a></li>
-                            <li class="ui-block-d"><a href="#" data-icon="contact" class="ui-btn"><span class="ui-btn-inner"><span class="ui-btn-text">Contact</span><span class="ui-icon"></span></span></a></li>
-                            <li class="ui-block-e"><a href="#" data-icon="about" class="ui-btn"><span class="ui-btn-inner"><span class="ui-btn-text">About</span><span class="ui-icon"></span></span></a></li>
-                        </ul>
-                    </div>
-                </div>
-
-            </div>
-
-            <div data-role="collapsible" data-icon="six" data-collapsed="true">
-                <h3>How can I change my password and log-in information?</h3>
-
-                <p>
-                    You can change your password and log in information (including your email address
-                    and user name) by tapping on the Settings button on the dashboard
-                    <img src="../images/settings.png">.
-                    You can also choose to “Like” the BB3 Facebook page if you did not already
-                    “Like” the BB3 Facebook page when you registered for the app
-                    <img src="../images/like-us-on-facebook-logo.jpg" width="26" height="26">.  When you
-                    “Like” the BB3 Facebook page you will receive messages and information
-                    from BB3 on your Facebook newsfeed.
-                </p>
-            </div>
-
-            <div data-role="collapsible" data-icon="six" data-collapsed="true">
-                    <h3>How can I access the BB3 Facebook page?</h3>
-
-                    <p>
-                        You can access the BB3 Facebook page by tapping on the
-                        Facebook button on your dashboard
-                        <img src="../images/Social-Network-Facebook-icon_0.png"
-                           width="26" height="26">.  This will take you
-                        to the BB3 Facebook page where you can read and comment
-                        on posts with information about early child development.
-                        You can receive posts from the BB3 Facebook page directly
-                        to your Facebook newsfeed if you “Like” the BB3 page when
-                        you register for the app or when you tap on the “Settings”
-                        button on your dashboard <img src="../images/settings.png">.
-                    </p>
-            </div>
-
-            <div data-role="collapsible" data-icon="six" data-collapsed="true">
-                <h3>How can I view messages?</h3>
-
-                <p>
-                    You will receive 3-4 messages per week in your message
-                    library.  Messages will contain information about different
-                    ways that you can help {{babyName}} learn.  When a new
-                    message is available, a notification will display on the
-                    <a href="">BB3 app icon</a> and your <a href="">tab bar</a>.
-                    Some messages will contain
-                    a video of a parent and child performing the activity.
-                    Often messages will also have helpful links that you can
-                    tap on for additional information to help you complete the
-                    activity.  Tap the “Why” button for more information about
-                    how the activity can help {{babyName}} learn INSERT IMAGE.  Tap on the
-                    camera INSERT IMAGE  to take a photo of your child performing
-                    the activity
-                    and share it on the <a href="">BB3 Facebook page</a>.
-                    You can also “rate” the
-                    message  INSERT IMAGE, save it as a favorite  INSERT IMAGE,
-                    or share it on Facebook INSERT IMAGE.  Once
-                    you receive a message it will be saved  in the message library and
-                    you can view it at any time.
-                </p>
-            </div>
-
-        <div data-role="collapsible" data-icon="six" data-collapsed="true">
-            <h3>How can I save favorite messages?</h3>
-
-            <p>
-                You can designate a message as favorite by tapping on
-                the “Favorite” button on your <a href="">message screen</a>
-                INSERT IMAGE.
-                Once you
-                have selected a message as a “favorite” it will be stored
-                under your favorites tab.  This option allows you to access
-                your favorite messages quickly and easily.  If no longer want
-                a message in your favorites library, simply tap the “Remove
-                favorite” button on the message screen under the favorites tab
-                INSER IMAGE.
-            </p>
-        </div>
-
-        <div data-role="collapsible" data-icon="six" data-collapsed="true">
-            <h3>Other Questions?</h3>
-
-            <p>
-                If you cannot find the answer to your question in this tutorial
-                or you are having any problems with the app, simply tap
-                “Contact Us”  and send us your question. We will email a
-                response within 24-48 hours.
-            </p>
+                    </td>
+                    <td align="center">
+                        <strong>Signup</strong>
+                    </td>
+                </tr>
+            </table>
         </div>
 
     </div>
 
-    </div>
+    <!-- Modal -->
+    <div class="modal fade" id="loginModal" tabindex="-1"
+         role="dialog" aria-labelledby="loginModal" aria-hidden="true">
+        <form id="loginForm" enctype="multipart/form-data"
+              name="emailDesignForm" method="post">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h3>Login</h3>
+                        <label>Please enter your email id and password
+                            used to register with BB3.</label>
+                    </div>
+                    <div class="modal-body">
+                        <div class="processing rounded-box" ng-show="designEmailProcessing">
+                            <label>Processing</label>
+                        </div>
+                        <div class="alert alert-success" ng-show="!designEmailProcessing && designEmailSuccess !== undefined && designEmailSuccess">
+                            Your email has been sent.
+                        </div>
+                        <div class="alert alert-danger" ng-show="!designEmailProcessing && designEmailSuccess !== undefined && !designEmailSuccess">
+                            We're sorry, but we were unable to submit your request at this time.  Please try again.
+                        </div>
+                        <div class="well">
 
-    <div data-role="footer" data-id="mainFooter" data-position="fixed"
-         data-tap-toggle="false">
-        <div data-role="navbar" class="nav-glyphish-example" data-grid="d"
-             data-iconpos="top">
-            <ul>
-                <li><a href="dashboard.html" data-icon="grid">Dashboard</a></li>
-                <li><a href="library.html" id="email" data-icon="custom">Library</a></li>
-                <li><a href="favorites.html" data-icon="star">Favorites</a></li>
-                <li><a href="tutorial.html" data-icon="info">Tutorial</a></li>
-                <li><a href="aboutUs.html" data-icon="search">About Us</a></li>
-            </ul>
+
+                            <div class="form-group">
+                                <label>Email</label>
+                                <input class="form-control" type="email"
+                                       placeholder="Enter your email id" name="email"
+                                       ng-model="emailID" required />
+                            </div>
+                            <div class="form-group">
+                                <label>Password</label>
+                                <input class="form-control" type="password"
+                                       placeholder="Enter your password"
+                                       name="password" ng-model="password" required />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" ng-click="submitLoginInfo()"
+                                class="btn btn-primary" aria-hidden="true"
+                                ng-disabled="!emailDesignForm.$valid">
+                            Login
+                        </button>
+                        <button class="btn btn-danger" data-dismiss="modal" ng-click="designEmailSuccess = undefined"
+                                aria-hidden="true">Cancel</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+    <!-- endModal -->
+
+    <div class="container" ng-show="login">
+
+        <div class="well">
+            <table align="center">
+                <tr>
+                    <td align="center">
+                        <a href="signup.html">
+                            <span class="btn btn-success btn-circle btn-xl">
+                                <i class="glyphicon glyphicon-record"></i>
+                            </span>
+                        </a>
+                    </td>
+                    <td width="100px">
+
+                    </td>
+                    <td>
+
+                    </td>
+                    <td align="center">
+                        <a href="signup.html">
+                            <span class="btn btn-warning btn-circle btn-xl">
+                                <i class="glyphicon glyphicon-record"></i>
+                            </span>
+                        </a>
+
+                    </td>
+                </tr>
+            </table>
         </div>
+
+
     </div>
 
+    <!-- bottom Navbar -->
+    <div class="navbar navbar-default navbar-fixed-bottom">
+        <div class="container">
+            <div class="navbar-header">
+                <div class="bs-component">
+                    <div class="btn-group btn-group-justified">
+                        <a href="dashboard.html" class="btn btn-primary btn-lg">
+                <span class="glyphicon glyphicon-th"
+                      aria-hidden="true"></span>
+                        </a>
+                        <a href="library.html" class="btn btn-primary" >
+                <span class="glyphicon glyphicon-envelope"
+                      aria-hidden="true"></span>
+                            <sup>
+                                <span class="badge">2</span></sup>
+                        </a>
+                        <a href="favorites.html" class="btn btn-primary">
+                <span class="glyphicon glyphicon-star"
+                      aria-hidden="true"></span>
+                        </a>
+                        <a href="tutorial.html" class="btn btn-primary">
+                <span class="glyphicon glyphicon-info-sign"
+                      aria-hidden="true"></span>
+                        </a>
+                        <a href="aboutUs.html" class="btn btn-primary">
+                <span class="glyphicon glyphicon-user"
+                      aria-hidden="true"></span>
+                        </a>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div><!-- end bottom Navbar -->
 
 </div>
-
-<div role="page" id="goals2">
-    try this.
-</div>
-
 </body>
+
+
+
 </html>
+
+
