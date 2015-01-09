@@ -174,7 +174,6 @@
 
     </style>
 
-    <script>$("div.navbar-fixed-top").autoHidingNavbar();</script>
 
 </head>
 <body>
@@ -205,161 +204,302 @@
     </nav>
 
 
-    <div class="container" ng-show="!login">
-        <table align="center">
-            <tr>
-                <td>
+    <div class="container">
 
-                </td>
-                <td align="center">
-                    Please either login or signup to
-                    access your Bright by Three account.
-                </td>
-            </tr>
-        </table>
+        <div id="accordion" class="panel-group">
 
-        <div class="well">
-            <table align="center">
-                <tr>
-                    <td align="center">
+            <div class="panel panel-danger">
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                        <a data-toggle="collapse" data-parent="#accordion"
+                           href="#collapseOne">What is Bright by Three?</a>
+                    </h4>
+                </div>
+                <div id="collapseOne" class="panel-collapse collapse">
+                    <div class="panel-body">
+                        <p>
+                            The mission of <a onclick="window.open('http://brightbythree.org/', '_system', 'location=yes');">
+                            Bright by Three</a>
+                            (formerly Bright Beginnings) is to provide a bright beginning for all Colorado
+                            children by helping families support their children’s physical, emotional, and
+                            intellectual development during the critical first three years of life.
+                            You can find more information about Bright by Three and our other sponsors under
+                            “about” tab at the top of your screen.
+                            The Bright by Three app is designed to bring information about how you can
+                            help {{babyName}} learn and develop directly to your phone several times per week.
+                            You will receive this information via messages that contain useful information and
+                            activities that you can engage in with {{babyName}}.  You can set your own goals and
+                            earn badges and prizes for reading with your child and completing recommended activities.
 
-                    </td>
-                    <td align="center">
-                        <button class="btn btn-success btn-circle btn-xl"
-                                data-toggle="modal"
-                                data-target="#loginModal">
-                            <i class="glyphicon glyphicon-link"></i>
-                        </button>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-
-                    </td>
-                    <td align="center">
-                        <strong>Login</strong>
-                    </td>
-                </tr>
-            </table>
-        </div>
-
-        <div class="well">
-            <table align="center">
-                <tr>
-                    <td align="center">
-
-                    </td>
-                    <td align="center">
-                        <a href="signup.html">
-                            <span class="btn btn-warning btn-circle btn-xl">
-                                <i style="margin-top: 5px"
-                                   class="glyphicon glyphicon-edit">
-
-                                </i>
-                            </span>
-                        </a>
-
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-
-                    </td>
-                    <td align="center">
-                        <strong>Signup</strong>
-                    </td>
-                </tr>
-            </table>
-        </div>
-
-    </div>
-
-    <!-- Modal -->
-    <div class="modal fade" id="loginModal" tabindex="-1"
-         role="dialog" aria-labelledby="loginModal" aria-hidden="true">
-        <form id="loginForm" enctype="multipart/form-data"
-              name="emailDesignForm" method="post">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h3>Login</h3>
-                        <label>Please enter your email id and password
-                            used to register with BB3.</label>
-                    </div>
-                    <div class="modal-body">
-                        <div class="processing rounded-box" ng-show="designEmailProcessing">
-                            <label>Processing</label>
-                        </div>
-                        <div class="alert alert-success" ng-show="!designEmailProcessing && designEmailSuccess !== undefined && designEmailSuccess">
-                            Your email has been sent.
-                        </div>
-                        <div class="alert alert-danger" ng-show="!designEmailProcessing && designEmailSuccess !== undefined && !designEmailSuccess">
-                            We're sorry, but we were unable to submit your request at this time.  Please try again.
-                        </div>
-                        <div class="well">
-
-
-                            <div class="form-group">
-                                <label>Email</label>
-                                <input class="form-control" type="email"
-                                       placeholder="Enter your email id" name="email"
-                                       ng-model="emailID" required />
-                            </div>
-                            <div class="form-group">
-                                <label>Password</label>
-                                <input class="form-control" type="password"
-                                       placeholder="Enter your password"
-                                       name="password" ng-model="password" required />
-                            </div>
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" ng-click="submitLoginInfo()"
-                                class="btn btn-primary" aria-hidden="true"
-                                ng-disabled="!emailDesignForm.$valid">
-                            Login
-                        </button>
-                        <button class="btn btn-danger" data-dismiss="modal" ng-click="designEmailSuccess = undefined"
-                                aria-hidden="true">Cancel</button>
+                        </p>
+                        <p>
+                            The Bright by Three app is designed to bring information about how you can help {{babyName}}
+                            learn and develop directly to your phone several times per week.
+                            You will receive this information via messages that contain useful information and activities
+                            that you can engage in with {{babyName}}.  You can set your own <a href="$.mobile.silentScroll($('#goals').offset().top)">goals</a>
+                            and earn <a href="#badgesAndPrizes">badges and prizes</a>
+                            for reading with your child and completing recommended activities.
+                        </p>
                     </div>
                 </div>
             </div>
-        </form>
+
+            <div class="panel panel-danger">
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                        <a data-toggle="collapse" data-parent="#accordion"
+                           href="#collapseTwo">What is Dashboard?</a>
+                    </h4>
+                </div>
+                <div id="collapseTwo" class="panel-collapse collapse in">
+                    <div class="panel-body">
+                        <p>The dashboard is the screen through which you can access many of the features of the BB3 app.
+                            Tap on the appropriate button to set your goals, log minutes, track points, view your badges,
+                            change your settings, or access the BB3 Facebook page.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="panel panel-danger">
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                        <a data-toggle="collapse" data-parent="#accordion"
+                           href="#collapseThree">How can I set goals?</a>
+                    </h4>
+                </div>
+                <div id="collapseThree" class="panel-collapse collapse in">
+                    <div class="panel-body">
+                        <p>
+                            Set your reading goals! Looking at books together is a great way to teach
+                            {{babyName}} new words and converse with <him//her>.
+                            Reading aloud at least 6 days per week helps to prepare children for school.
+                            Set your reading goals by <a href="">selecting the number of days</a>
+                            that you plan to read for at
+                            least 10 minutes with {{babyName}}. Challenge yourself to increase your goal every
+                            2 weeks until you reading with {{babyName}} at least 6 times per week.
+                        </p>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="panel panel-danger">
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                        <a data-toggle="collapse" data-parent="#accordion"
+                           href="#collapseFour">How do I earn points?</a>
+                    </h4>
+                </div>
+                <div id="collapseFour" class="panel-collapse collapse in">
+                    <div class="panel-body">
+                        <p>
+                            You earn points when you log your reading minutes and by
+                            completing challenges.
+                        </p>
+
+                        <p>
+                            <a href="">Log the number of minutes</a> that you read with {{babyName}} each day.
+                            For every minute of shared reading, you will earn <1> point.
+                        </p>
+
+                        <p>
+                            Challenges will display in your message library once a week.
+                            These tasks are designated with a special icon
+                            <img src="../images/challenge.png" width="15" height="15">.
+
+                            Once you have completed the challenge, you can tap the
+                            <a href="">“We did it!”</a> button at the bottom of the screen and
+                            <10> bonus points will be added to your total.
+                            <a href="">You may also be invited to post a photo of you and
+                                {{babyName}}
+                                doing the activity for the opportunity to earn extra points.</a>
+                        </p>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="panel panel-danger">
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                        <a data-toggle="collapse" data-parent="#accordion"
+                           href="#collapseFive">How can I track my points?</a>
+                    </h4>
+                </div>
+                <div id="collapseFive" class="panel-collapse collapse in">
+                    <div class="panel-body">
+                        <p>
+                            The BB3 app automatically <a href="">tracks points</a> that you earn for reading aloud with
+                            {{babyName}} and completing <a href="">challenges</a>.Your point total will automatically update
+                            when you log minutes or earn <a href="">challenge points</a>.  You can view your
+                            point total on the same <a href="">screen</a> where you log your minutes.  You can
+                            earn <a href="">badges and prizes</a>  for accumulating points.  You can also view
+                            how you are doing compared with other users by tapping on the <a ref="">graph image.</a>
+                            A progress bar will show you how close you are to meeting your weekly goal
+                            <a href="">Insert image</a>.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="panel panel-danger">
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                        <a data-toggle="collapse" data-parent="#accordion"
+                           href="#collapseSix">How do I earn badges and prizes?</a>
+                    </h4>
+                </div>
+                <div id="collapseSix" class="panel-collapse collapse in">
+                    <div class="panel-body">
+                        <p>
+                            Virtual badges will be awarded after you earn a <a href="">
+                            pre-determined number of points</a>.
+                            You can track the badges that you have earned by tapping on the badge button on the
+                            dashboard <img src="../images/challenge.png">. Once you have earned a badge, a special
+                            <a ref="">notification screen</a> will display.  Badges can be shared with friends on
+                            Facebook by clicking  on the <a ref="">upload image</a> at the bottom of the  notification
+                            screen <a ref="">Insert image</a>. <a href="">For every <500> points you will be able to select
+                            a book for {{babyName}} which will be mailed to your home.</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="panel panel-danger">
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                        <a data-toggle="collapse" data-parent="#accordion"
+                           href="#collapseSeven">How can I change my password and log-in information?</a>
+                    </h4>
+                </div>
+                <div id="collapseSeven" class="panel-collapse collapse in">
+                    <div class="panel-body">
+                        <p>
+                            You can change your password and log in information (including your email address
+                            and user name) by tapping on the Settings button on the dashboard
+                            <img src="../images/settings.png">.
+                            You can also choose to “Like” the BB3 Facebook page if you did not already
+                            “Like” the BB3 Facebook page when you registered for the app
+                            <img src="../images/like-us-on-facebook-logo.jpg" width="26" height="26">.  When you
+                            “Like” the BB3 Facebook page you will receive messages and information
+                            from BB3 on your Facebook newsfeed.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="panel panel-danger">
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                        <a data-toggle="collapse" data-parent="#accordion"
+                           href="#collapseEight">How can I access the BB3 Facebook page?</a>
+                    </h4>
+                </div>
+                <div id="collapseEight" class="panel-collapse collapse in">
+                    <div class="panel-body">
+                        <p>
+                            You can access the BB3 Facebook page by tapping on the
+                            Facebook button on your dashboard
+                            <img src="../images/Social-Network-Facebook-icon_0.png"
+                                 width="26" height="26">.  This will take you
+                            to the BB3 Facebook page where you can read and comment
+                            on posts with information about early child development.
+                            You can receive posts from the BB3 Facebook page directly
+                            to your Facebook newsfeed if you “Like” the BB3 page when
+                            you register for the app or when you tap on the “Settings”
+                            button on your dashboard <img src="../images/settings.png">.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="panel panel-danger">
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                        <a data-toggle="collapse" data-parent="#accordion"
+                           href="#collapseNine">How can I view messages?</a>
+                    </h4>
+                </div>
+                <div id="collapseNine" class="panel-collapse collapse in">
+                    <div class="panel-body">
+                        <p>
+                            You will receive 3-4 messages per week in your message
+                            library.  Messages will contain information about different
+                            ways that you can help {{babyName}} learn.  When a new
+                            message is available, a notification will display on the
+                            <a href="">BB3 app icon</a> and your <a href="">tab bar</a>.
+                            Some messages will contain
+                            a video of a parent and child performing the activity.
+                            Often messages will also have helpful links that you can
+                            tap on for additional information to help you complete the
+                            activity.  Tap the “Why” button for more information about
+                            how the activity can help {{babyName}} learn INSERT IMAGE.  Tap on the
+                            camera INSERT IMAGE  to take a photo of your child performing
+                            the activity
+                            and share it on the <a href="">BB3 Facebook page</a>.
+                            You can also “rate” the
+                            message  INSERT IMAGE, save it as a favorite  INSERT IMAGE,
+                            or share it on Facebook INSERT IMAGE.  Once
+                            you receive a message it will be saved  in the message library and
+                            you can view it at any time.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="panel panel-danger">
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                        <a data-toggle="collapse" data-parent="#accordion"
+                           href="#collapseTen">How can I save favorite messages?</a>
+                    </h4>
+                </div>
+                <div id="collapseTen" class="panel-collapse collapse in">
+                    <div class="panel-body">
+                        <p>
+                            You can designate a message as favorite by tapping on
+                            the “Favorite” button on your <a href="">message screen</a>
+                            INSERT IMAGE.
+                            Once you
+                            have selected a message as a “favorite” it will be stored
+                            under your favorites tab.  This option allows you to access
+                            your favorite messages quickly and easily.  If no longer want
+                            a message in your favorites library, simply tap the “Remove
+                            favorite” button on the message screen under the favorites tab
+                            INSERT IMAGE.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="panel panel-danger">
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                        <a data-toggle="collapse" data-parent="#accordion"
+                           href="#collapseEleven">Other Questions?</a>
+                    </h4>
+                </div>
+                <div id="collapseEleven" class="panel-collapse collapse in">
+                    <div class="panel-body">
+                        <p>
+                            If you cannot find the answer to your question in this tutorial
+                            or you are having any problems with the app, simply tap
+                            “Contact Us”  and send us your question. We will email a
+                            response within 24-48 hours.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
     </div>
-    <!-- endModal -->
 
-    <div class="container" ng-show="login">
 
-        <div class="well">
-            <table align="center">
-                <tr>
-                    <td align="center">
-                        <a href="signup.html">
-                            <span class="btn btn-success btn-circle btn-xl">
-                                <i class="glyphicon glyphicon-record"></i>
-                            </span>
-                        </a>
-                    </td>
-                    <td width="100px">
-
-                    </td>
-                    <td>
-
-                    </td>
-                    <td align="center">
-                        <a href="signup.html">
-                            <span class="btn btn-warning btn-circle btn-xl">
-                                <i class="glyphicon glyphicon-record"></i>
-                            </span>
-                        </a>
-
-                    </td>
-                </tr>
-            </table>
         </div>
 
 
-    </div>
+
+
 
     <!-- bottom Navbar -->
     <div class="navbar navbar-default navbar-fixed-bottom">
@@ -396,7 +536,7 @@
         </div>
     </div><!-- end bottom Navbar -->
 
-</div>
+
 </body>
 
 

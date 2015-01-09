@@ -78,7 +78,25 @@ bb3App.controller('stateController',
         $scope.submitLoginInfo = function() {
             window.alert('login pressed');
 
-        };
+            var email = $scope.emailID.toUpperCase();
 
+            $http.get('http://brightbythree.org/bb20:3000/loginSignup/' + email + '/' + $scope.newParticipant.password).
+                success(function(data, status, headers, config) {
+                    $scope.appsData = data;
+                    if ($scope.appsData != "false") {
+
+                    }
+                    else {
+                        $scope.loginErrorNotification = "check the info and login again.";
+                        window.alert('Check the login information and try again.');
+                    }
+                }).
+                error(function(data, status, headers, config) {
+                        window.alert("sorry, error");
+                        window.alert("Unable to contact server. Please try again later.");
+
+                });
+
+        }
 
     });
