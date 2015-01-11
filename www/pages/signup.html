@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" ng-app="bb3">
 <head>
+
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
 
@@ -12,31 +13,169 @@
 
     <title>Dashboard</title>
 
-    <link rel="stylesheet" href="../css/bootstrap.min.css">
-    <link href="../css/carousel.css" rel="stylesheet">
+    <script type="text/javascript">
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-21939703-1']);
+        _gaq.push(['_trackPageview']);
 
+        (function() {
+            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        })();
+    </script>
+
+    <!-- replaced by gruntfile when building for mobile -->
+    <!-- PHONEGAPJS -->
+
+
+
+    <!-- build:js js/libraries.js -->
+    <script src="../lib/jquery.min.js"></script>
+    <script src="../lib/jquery-ui.min.js"></script>
+    <script src="../lib/jquery.form.min.js"></script>
+    <script src="../lib/highcharts.js"></script>
+    <script src="../lib/exporting.js"></script>
+
+    <!-- order matters here, so be careful if you edit -->
+    <!-- Angular.js scripts -->
     <script src="../lib/angular.min.js"></script>
     <script src="../lib/angular-touch.js"></script>
 
+    <!-- bootstrap plugins - load after jquery -->
     <script src="../lib/bootstrap.min.js"></script>
     <script src="../lib/ui-bootstrap-tpls-0.6.0.min.js"></script>
 
-    <link rel="stylesheet" href="../css/bootstrap.css" media="screen">
-    <link rel="stylesheet" href="../css/bootswatch.min.css">
+    <!-- endbuild -->
 
+    <!-- app specific scripts -->
+    <!-- build:js js/glimmpse.js -->
     <script src="../js/app.js"></script>
     <script src="../js/controllers/controllers.js"></script>
+    <!-- endbuild -->
 
-<!--
-    <script type="text/javascript">
+    <!-- build:css css/glimmpse.css -->
 
-        function trialFunc() {
-            var trialVar = angular.element($('#dashboard')).scope().getBabyName();
-            window.alert(trialVar);
+    <link href="data:text/css;charset=utf-8,"
+          data-href="css/bootstrap-theme.min.css"
+          rel="stylesheet" id="bs-theme-stylesheet">
+
+    <link type="text/css" rel="stylesheet" href="../css/bootstrap.min.css">
+
+    <link type="text/css" rel="stylesheet" href="../css/ng-grid.css">
+    <link type="text/css" rel="stylesheet" href="../css/bb3.css">
+    <link href="../css/bootstrap-social.css" rel="stylesheet" >
+    <!-- endbuild -->
+
+    <style>
+
+        .navbar-brand-centered {
+            display: block;
+            max-width: 200px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
-    </script>
--->
+        .navbar-default {
+            background-color: #3090C7;/*#F5F5F5 #357EC7*/
+            border-color: #E7E7E7;
+        }
+        /* title */
+        .navbar-default .navbar-brand {
+            color: #FFFFFF;
+            text-align: center;
+        }
+        .navbar-default .navbar-brand:hover,
+        .navbar-default .navbar-brand:focus {
+            color: #5E5E5E;
+        }
+        /* link */
+        .navbar-default .navbar-nav > li > a {
+            color: #777;
+        }
+        .navbar-default .navbar-nav > li > a:hover,
+        .navbar-default .navbar-nav > li > a:focus {
+            color: #333;
+        }
+        .navbar-default .navbar-nav > .active > a,
+        .navbar-default .navbar-nav > .active > a:hover,
+        .navbar-default .navbar-nav > .active > a:focus {
+            color: #555;
+            background-color: #E7E7E7;
+        }
+        .navbar-default .navbar-nav > .open > a,
+        .navbar-default .navbar-nav > .open > a:hover,
+        .navbar-default .navbar-nav > .open > a:focus {
+            color: #555;
+            background-color: #D5D5D5;
+        }
+        /* caret */
+        .navbar-default .navbar-nav > .dropdown > a .caret {
+            border-top-color: #777;
+            border-bottom-color: #777;
+        }
+        .navbar-default .navbar-nav > .dropdown > a:hover .caret,
+        .navbar-default .navbar-nav > .dropdown > a:focus .caret {
+            border-top-color: #333;
+            border-bottom-color: #333;
+        }
+        .navbar-default .navbar-nav > .open > a .caret,
+        .navbar-default .navbar-nav > .open > a:hover .caret,
+        .navbar-default .navbar-nav > .open > a:focus .caret {
+            border-top-color: #555;
+            border-bottom-color: #555;
+        }
+        /* mobile version */
+        .navbar-default .navbar-toggle {
+            border-color: #DDD;
+        }
+        .navbar-default .navbar-toggle:hover,
+        .navbar-default .navbar-toggle:focus {
+            background-color: #DDD;
+        }
+        .navbar-default .navbar-toggle .icon-bar {
+            background-color: #CCC;
+        }
+        @media (max-width: 767px) {
+            .navbar-default .navbar-nav .open .dropdown-menu > li > a {
+                color: #777;
+            }
+            .navbar-default .navbar-nav .open .dropdown-menu > li > a:hover,
+            .navbar-default .navbar-nav .open .dropdown-menu > li > a:focus {
+                color: #333;
+            }
+        }
+
+        .brand { margin-left: auto; margin-right: auto; }
+
+        .btn-circle {
+            width: 30px;
+            height: 30px;
+            text-align: center;
+            padding: 6px 0;
+            font-size: 12px;
+            line-height: 1.428571429;
+            border-radius: 15px;
+        }
+        .btn-circle.btn-lg {
+            width: 50px;
+            height: 50px;
+            padding: 10px 16px;
+            font-size: 18px;
+            line-height: 1.33;
+            border-radius: 25px;
+        }
+        .btn-circle.btn-xl {
+            width: 70px;
+            height: 70px;
+            padding: 10px 16px;
+            font-size: 24px;
+            line-height: 1.33;
+            border-radius: 35px;
+        }
+
+    </style>
+
 </head>
 <body>
 
@@ -44,30 +183,36 @@
 
 <div class="container" ng-controller="stateController">
     <!-- header bar -->
-    <nav class="navbar navbar-default" role="navigation">
-        <!-- Brand and toggle get grouped for better mobile display -->
-        <div class="navbar-header">
 
-            <div class="nav navbar-nav">
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <a style="margin-right: 10px" class="navbar-right pull-right">
+                    <img src="../images/BB3_logo-icon_WEB_rgb_icon.png">
+                </a>
 
+                <a style="margin-top: 10px; margin-left: 10px"
+                   class="navbar-left pull-left
+                            btn btn-danger btn-circle btn-sm"
+                   href="../index.html">
+                                <span class="glyphicon glyphicon-th"
+                                      aria-hidden="true"></span>
+                </a>
+
+                <a class="navbar-brand" style="margin-left: 80px
+                ; margin-top: 10px"
+                   onclick="window.open('http://brightbythree.org',
+                    '_system', 'location=yes');">
+                    <strong>Signup</strong>
+                </a>
             </div>
-            <a class="navbar-brand ">
-                    <span class="logo">Signup</span>
-            </a>
-            <a href="../index.html" class="btn btn-primary"
-               data-iconpos="left"
-                    >
-                <span class="glyphicon glyphicon-th"
-                      aria-hidden="true"></span>
-                Dashboard
-            </a>
-
-
         </div>
-
-        <!-- Collect the nav links, forms, and other content for toggling -->
-
     </nav>
+
+
+
+
+
 
 
 
@@ -159,6 +304,40 @@
             </div>
         </div>
     </div>
+
+    <!-- bottom Navbar -->
+    <div class="navbar navbar-default navbar-fixed-bottom">
+        <div class="container">
+            <div class="navbar-header">
+                <div class="bs-component">
+                    <div class="btn-group btn-group-justified">
+                        <a href="dashboard.html" class="btn btn-primary btn-lg">
+                <span class="glyphicon glyphicon-th"
+                      aria-hidden="true"></span>
+                        </a>
+                        <a href="library.html" class="btn btn-primary" >
+                <span class="glyphicon glyphicon-envelope"
+                      aria-hidden="true"></span><sup>
+                            <span class="badge">2</span></sup>
+                        </a>
+                        <a href="favorites.html" class="btn btn-primary">
+                <span class="glyphicon glyphicon-star"
+                      aria-hidden="true"></span>
+                        </a>
+                        <a href="tutorial.html" class="btn btn-primary">
+                <span class="glyphicon glyphicon-info-sign"
+                      aria-hidden="true"></span>
+                        </a>
+                        <a href="aboutUs.html" class="btn btn-primary">
+                <span class="glyphicon glyphicon-user"
+                      aria-hidden="true"></span>
+                        </a>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div><!-- end bottom Navbar -->
 
 
 </div>

@@ -14,7 +14,6 @@ bb3App.controller('stateController',
          */
         init();
         function init() {
-
             $scope.login = false;
         }
 
@@ -99,4 +98,22 @@ bb3App.controller('stateController',
 
         }
 
-    });
+    })
+
+    .controller('textMessageController',
+    function ($scope, $window) {
+        init();
+
+        function init() {
+
+
+        }
+
+        $scope.addToFavorites = function(){
+            window.alert('add to favorites pressed');
+        }
+
+
+    })
+
+;

@@ -1,19 +1,78 @@
-<div role="tabpanel">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Example of Twitter Bootstrap 3 Accordion</title>
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/bootstrap-theme.min.css">
+    <script src="../js/jquery-1.8.2.min.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
+    <style type="text/css">
+        .bs-example{
+            margin: 20px;
+        }
+    </style>
+</head>
+<body>
+<div class="bs-example">
 
-    <!-- Nav tabs -->
-    <ul class="nav nav-tabs" role="tablist">
-        <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Home</a></li>
-        <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Profile</a></li>
-        <li role="presentation"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab">Messages</a></li>
-        <li role="presentation"><a href="#settings" aria-controls="settings" role="tab" data-toggle="tab">Settings</a></li>
-    </ul>
+    <div id="accordion" class="panel-group">
 
-    <!-- Tab panes -->
-    <div class="tab-content">
-        <div role="tabpanel" class="tab-pane active" id="home">...</div>
-        <div role="tabpanel" class="tab-pane" id="profile">...</div>
-        <div role="tabpanel" class="tab-pane" id="messages">...</div>
-        <div role="tabpanel" class="tab-pane" id="settings">...</div>
+        <div class="panel panel-danger">
+            <div class="panel-heading">
+                <h4 class="panel-title">
+                    <a data-toggle="collapse" data-parent="#accordion"
+                       href="#collapseOne">What is Bright by Three?</a>
+                </h4>
+            </div>
+            <div id="collapseOne" class="panel-collapse collapse in">
+                <div class="panel-body">
+                    <p>
+                        The mission of <a onclick="window.open('http://brightbythree.org/', '_system', 'location=yes');">
+                        Bright by Three</a>
+                        (formerly Bright Beginnings) is to provide a bright beginning for all Colorado
+                        children by helping families support their children’s physical, emotional, and
+                        intellectual development during the critical first three years of life.
+                        You can find more information about Bright by Three and our other sponsors under
+                        “about” tab at the top of your screen.
+                        The Bright by Three app is designed to bring information about how you can
+                        help {{babyName}} learn and develop directly to your phone several times per week.
+                        You will receive this information via messages that contain useful information and
+                        activities that you can engage in with {{babyName}}.  You can set your own goals and
+                        earn badges and prizes for reading with your child and completing recommended activities.
+
+                    </p>
+                    <p>
+                        The Bright by Three app is designed to bring information about how you can help {{babyName}}
+                        learn and develop directly to your phone several times per week.
+                        You will receive this information via messages that contain useful information and activities
+                        that you can engage in with {{babyName}}.  You can set your own <a href="$.mobile.silentScroll($('#goals').offset().top)">goals</a>
+                        and earn <a href="#badgesAndPrizes">badges and prizes</a>
+                        for reading with your child and completing recommended activities.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+
+    <div class="panel panel-danger">
+        <div class="panel-heading">
+            <h4 class="panel-title">
+                <a data-toggle="collapse" data-parent="#accordion"
+                   href="#collapseTwo">What is Dashboard?</a>
+            </h4>
+        </div>
+        <div id="collapseTwo" class="panel-collapse collapse">
+            <div class="panel-body">
+                <p>The dashboard is the screen through which you can access many of the features of the BB3 app.
+                    Tap on the appropriate button to set your goals, log minutes, track points, view your badges,
+                    change your settings, or access the BB3 Facebook page.</p>
+            </div>
+        </div>
+    </div>
     </div>
 
+    </div>
 </div>
+</body>
+</html>

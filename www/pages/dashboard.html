@@ -180,7 +180,7 @@
 </head>
 <body>
 
-<div class="container" ng-controller="personalInfoController">
+<div class="container" ng-controller="stateController">
     <nav class="navbar navbar-default navbar-fixed-top">
         <div class="container">
             <div class="navbar-header">
@@ -188,11 +188,13 @@
                     <img src="../images/BB3_logo-icon_WEB_rgb_icon.png">
                 </a>
 
-                <a style="margin-top: 10px; margin-left: 10px" class="navbar-left pull-left
-                            btn btn-danger btn-circle btn-sm"
-                   href="../index.html">
-                                <span class="glyphicon glyphicon-home"
-                                      aria-hidden="true"></span>
+                <a  ng-show="!login"
+                    style="margin-top: 10px; margin-left: 10px" class="navbar-left pull-left
+                    btn btn-danger btn-circle btn-sm"
+                    href="../index.html">
+                    <span class="glyphicon glyphicon-home"
+                          aria-hidden="true">
+                    </span>
                 </a>
 
                 <a class="navbar-brand" style="margin-left: 80px
@@ -320,7 +322,8 @@
                                 ng-disabled="!emailDesignForm.$valid">
                             Login
                         </button>
-                        <button class="btn btn-danger" data-dismiss="modal" ng-click="designEmailSuccess = undefined"
+                        <button class="btn btn-danger" data-dismiss="modal"
+                                ng-click="designEmailSuccess = undefined"
                                 aria-hidden="true">Cancel</button>
                     </div>
                 </div>
@@ -397,7 +400,7 @@
                 </tr>
                 <tr>
                     <td align="center">
-                        <a href="badge.html">
+                        <a href="badges.html">
                             <span class="btn btn-warning btn-circle btn-xl">
                                 <img src="../images/glyphish-icons/85-trophy.png" style="margin-top: 10px"></i>
                             </span>
@@ -414,11 +417,10 @@
                             </span>
                         </a>
                     </td>
-
                 </tr>
                 <tr>
                     <td align="center">
-                        <strong>Badge</strong>
+                        <strong>Badges</strong>
                     </td>
                     <td width="70px">
 
@@ -430,6 +432,7 @@
                         <strong>Network</strong>
                     </td>
                 </tr>
+
                 <tr>
                     <td>
 
@@ -455,32 +458,47 @@
 
                     </td>
                 </tr>
-                <tr>
-                    <td width="70px">
 
-                    </td>
+                <tr>
                     <td align="center">
                         <a href="minutes.html">
                             <span class="btn btn-primary btn-circle btn-xl">
-                                <i style="margin-top: 8px" class="glyphicon glyphicon-pencil"></i>
+                                <i style="margin-top: 8px"  class="glyphicon glyphicon-pencil" style="margin-top: 10px"></i>
+                            </span>
+                        </a>
+                    </td>
+                    <td width="70px">
+                    </td>
+                    <td>
+                    </td>
+                    <td align="center">
+                        <a href="network.html">
+                            <span class="btn btn-warning btn-circle btn-xl">
+
+                                <img src="../images/settings.png" style="margin-top: 8px"  >
                             </span>
                         </a>
                     </td>
 
-                    <td>
-                    </td>
-
-
                 </tr>
                 <tr>
-                    <td width="100">
-
-                    </td>
                     <td align="center">
                         <strong>Log in minutes</strong>
                     </td>
+                    <td width="70px">
 
+                    </td>
+                    <td>
+
+                    </td>
+                    <td align="center">
+                        <strong>Settings</strong>
+                    </td>
                 </tr>
+
+
+
+
             </table>
         </div>
 
