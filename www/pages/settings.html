@@ -205,60 +205,99 @@
     </nav>
 
     <div class="well">
-        MORE TO ADD HERE
-    </div>
 
-    <!-- Modal -->
-    <div class="modal fade" id="loginModal" tabindex="-1"
-         role="dialog" aria-labelledby="loginModal" aria-hidden="true">
-        <form id="loginForm" enctype="multipart/form-data"
-              name="emailDesignForm" method="post">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h3>Login</h3>
-                        <label>Please enter your email id and password
-                            used to register with BB3.</label>
-                    </div>
-                    <div class="modal-body">
-                        <div class="processing rounded-box" ng-show="designEmailProcessing">
-                            <label>Processing</label>
-                        </div>
-                        <div class="alert alert-success" ng-show="!designEmailProcessing && designEmailSuccess !== undefined && designEmailSuccess">
-                            Your email has been sent.
-                        </div>
-                        <div class="alert alert-danger" ng-show="!designEmailProcessing && designEmailSuccess !== undefined && !designEmailSuccess">
-                            We're sorry, but we were unable to submit your request at this time.  Please try again.
-                        </div>
-                        <div class="well">
-                            <div class="form-group">
-                                <label>Email</label>
-                                <input class="form-control" type="email"
-                                       placeholder="Enter your email id" name="email"
-                                       ng-model="emailID" required />
-                            </div>
-                            <div class="form-group">
-                                <label>Password</label>
-                                <input class="form-control" type="password"
-                                       placeholder="Enter your password"
-                                       name="password" ng-model="password" required />
-                            </div>
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" ng-click="submitLoginInfo()"
-                                class="btn btn-primary" aria-hidden="true"
-                                ng-disabled="!emailDesignForm.$valid">
-                            Login
-                        </button>
-                        <button class="btn btn-danger" data-dismiss="modal" ng-click="designEmailSuccess = undefined"
-                                aria-hidden="true">Cancel</button>
+        <div id="accordion" class="panel-group">
+
+            <div class="panel panel-danger">
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                        <a data-toggle="collapse" data-parent="#accordion"
+                           href="#collapseOne">Forgot to your email id?</a>
+                    </h4>
+                </div>
+                <div id="collapseOne" class="panel-collapse collapse">
+                    <div class="panel-body">
+                        <p>
+
+
+                        </p>
+
                     </div>
                 </div>
             </div>
-        </form>
+
+            <div class="panel panel-danger">
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                        <a data-toggle="collapse" data-parent="#accordion"
+                           href="#collapseTwo">Forgot your password?</a>
+                    </h4>
+                </div>
+                <div id="collapseTwo" class="panel-collapse collapse">
+                    <div class="panel-body">
+                        <p>
+
+                        </p>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="panel panel-danger">
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                        <a data-toggle="collapse" data-parent="#accordion"
+                           href="#collapseThree">Sample text 3</a>
+                    </h4>
+                </div>
+                <div id="collapseThree" class="panel-collapse collapse">
+                    <div class="panel-body">
+                        <p>
+                            You earn points when you log your reading minutes and by
+                            completing challenges.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="panel panel-danger">
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                        <a data-toggle="collapse" data-parent="#accordion"
+                           href="#collapseFour">Contact us</a>
+                    </h4>
+                </div>
+                <div id="collapseFour" class="panel-collapse collapse">
+                    <div class="panel-body">
+                        <p>
+                           Please see our contact info.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="panel panel-danger">
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                        <a data-toggle="collapse" data-parent="#accordion"
+                           href="#collapseFive">Submit Feedback</a>
+                    </h4>
+                </div>
+                <div id="collapseFive" class="panel-collapse collapse">
+                    <div class="panel-body">
+                        <p>
+                            Please see our contact info.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
     </div>
-    <!-- endModal -->
+
+
+
 
     <!-- bottom Navbar -->
     <div class="navbar navbar-default navbar-fixed-bottom">

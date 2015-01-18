@@ -61,7 +61,7 @@
           rel="stylesheet" id="bs-theme-stylesheet">
 
     <link type="text/css" rel="stylesheet" href="../css/bootstrap.min.css">
-
+    <link type="text/css" rel="stylesheet" href="../css/bootstrap-select.min.css">
     <link type="text/css" rel="stylesheet" href="../css/ng-grid.css">
     <link type="text/css" rel="stylesheet" href="../css/bb3.css">
     <link href="../css/bootstrap-social.css" rel="stylesheet" >
@@ -77,12 +77,12 @@
         }
 
         .navbar-default {
-            background-color: #3090C7;/*#F5F5F5 #357EC7*/
-            border-color: #E7E7E7;
+            background-color: #DCDCDC;/*#F5F5F5 #357EC7 #3090C7 */
+            border-color: #3090C7;
         }
         /* title */
         .navbar-default .navbar-brand {
-            color: #FFFFFF;
+            color: #3090C7;
             text-align: center;
         }
         .navbar-default .navbar-brand:hover,
@@ -193,8 +193,8 @@
 
                 <a style="margin-top: 10px; margin-left: 10px"
                    class="navbar-left pull-left
-                            btn btn-danger btn-circle btn-sm"
-                   href="../index.html">
+                            btn btn-primary btn-circle btn-sm"
+                   href="dashboard.html">
                                 <span class="glyphicon glyphicon-th"
                                       aria-hidden="true"></span>
                 </a>
@@ -208,13 +208,6 @@
             </div>
         </div>
     </nav>
-
-
-
-
-
-
-
 
     <div  ng-controller="personalInfoController"
             ng-show="!login">
@@ -281,6 +274,26 @@
                             </div>
 
                             <div class="form-group">
+                                <label for="inputBabyDOB" class="col-lg-2 control-label">Baby's date of birth</label>
+                                <div class="col-lg-10">
+                                    <input type="date" class="form-control" id="inputBabyDOB"
+                                           placeholder="enter your baby's date of birth">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="inputBabyGender" class="col-lg-2 control-label">
+                                    Baby's Gender</label>
+                                <div class="col-lg-10">
+                                    <select class="selectpicker" data-style="btn-primary">
+                                        <option>Female</option>
+                                        <option>Male</option>
+                                    </select>
+
+                                </div>
+                            </div>
+
+                            <div class="form-group">
                                 <label for="inputzipcode" class="col-lg-2 control-label">Zipcode</label>
                                 <div class="col-lg-10">
                                     <input type="number" class="form-control" id="inputzipcode"
@@ -290,7 +303,7 @@
 
                             <div class="form-group">
                                 <div class="col-lg-10 col-lg-offset-2">
-                                    <a href="../index.html" class="btn btn-danger">
+                                    <a href="dashboard.html" class="btn btn-danger">
                                         Cancel
                                     </a>
 

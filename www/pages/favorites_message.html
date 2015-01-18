@@ -77,12 +77,12 @@
         }
 
         .navbar-default {
-            background-color: #3090C7;/*#F5F5F5 #357EC7*/
-            border-color: #E7E7E7;
+            background-color: #DCDCDC;/*#F5F5F5 #357EC7 #3090C7 */
+            border-color: #3090C7;
         }
         /* title */
         .navbar-default .navbar-brand {
-            color: #FFFFFF;
+            color: #3090C7;
             text-align: center;
         }
         .navbar-default .navbar-brand:hover,
@@ -190,10 +190,12 @@
                 </a>
 
                 <a style="margin-top: 10px; margin-left: 10px" class="navbar-left pull-left
-                            btn btn-danger btn-circle btn-sm"
+                            btn btn-primary btn-circle btn-sm"
                    href="favorites.html">
-                                <span class="glyphicon glyphicon-star"
-                                      aria-hidden="true"></span>
+                                <span class="glyphicon glyphicon glyphicon-chevron-left"
+                                      aria-hidden="true">
+                                </span>
+
                 </a>
 
                 <a class="navbar-brand" style="margin-left: 80px
@@ -351,31 +353,44 @@
                 <div class="bs-component" align="right">
                     <!--<div class="btn-group btn-group-justified">-->
 
-                        <button class="btn btn-danger" ng-click="addToFavorites()">
-                        <span class="glyphicon glyphicon-star"
+                    <table>
+                        <tr>
+                            <td>
+                                <button class="btn btn-danger" ng-click="addToFavorites()">
+                        <span class="glyphicon glyphicon-remove"
                               aria-hidden="true"></span>
-                        </button>
+                                </button>
+                            </td>
 
-
-                            <span ng-click="addToFavorites()"
-                                    class="btn btn-warning btn-circle btn-lg">
+                            <td>
+                                <span ng-click="addToFavorites()"
+                                      class="btn btn-warning">
                                 <i class="glyphicon glyphicon-camera"
-                                        style="margin-right: 4px">
-                                    </i>
-                            </span>
+                                   style="margin-right: 4px">
+                                </i>
+                        </span>
+                            </td>
+                            <td>
+                                <button class="btn btn-primary"
+                                        data-toggle="modal"
+                                        data-target="#brainyBackgroundModal">
+                                    <i class="glyphicon glyphicon-cloud">
 
-                        <button class="btn btn-primary"
-                                ng-click="activityPerformed()">
-                            <span class="glyphicon glyphicon-ok-sign"
-                                aria-hidden="true">
-                            </span>
-                        </button>
-                    <a class="btn btn-social-icon btn-twitter">
-                        <i class="fa fa-twitter"></i>
-                    </a>
-                    <!--</div>-->
+                                    </i>
+                                </button>
+                            </td>
+                            <td>
+                                <button class="btn btn-success btn-primary"
+                                        data-toggle="modal"
+                                        data-target="#moreOptionsModal">
+                                    <i class="glyphicon glyphicon-share"></i>
+                                </button>
+                            </td>
+                        </tr>
+                        <tr>
+                        </tr>
+                    </table>
                 </div>
-            </div>
         </div>
    <!-- </div>--><!-- end bottom Navbar -->
 

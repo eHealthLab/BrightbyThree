@@ -73,14 +73,13 @@
             margin-left: auto;
             margin-right: auto;
         }
-
         .navbar-default {
-            background-color: #3090C7;/*#F5F5F5 #357EC7*/
-            border-color: #E7E7E7;
+            background-color: #DCDCDC;/*#F5F5F5 #357EC7 #3090C7 */
+            border-color: #3090C7;
         }
         /* title */
         .navbar-default .navbar-brand {
-            color: #FFFFFF;
+            color: #3090C7;
             text-align: center;
         }
         .navbar-default .navbar-brand:hover,
@@ -174,6 +173,7 @@
 
     </style>
 
+
 </head>
 <body>
 
@@ -186,118 +186,169 @@
                 </a>
 
                 <a style="margin-top: 10px; margin-left: 10px" class="navbar-left pull-left
-                            btn btn-danger btn-circle btn-sm"
+                                btn btn-primary btn-circle btn-sm"
                    href="dashboard.html">
-                                <span class="glyphicon glyphicon-th"
-                                      aria-hidden="true"></span>
+                                    <span class="glyphicon glyphicon-th"
+                                          aria-hidden="true"></span>
                 </a>
 
                 <a class="navbar-brand" style="margin-left: 80px
-                ; margin-top: 10px"
+                    ; margin-top: 10px"
                    onclick="window.open('http://brightbythree.org',
-                    '_system', 'location=yes');">
+                        '_system', 'location=yes');">
                     <strong>About Us</strong>
                 </a>
             </div>
         </div>
     </nav>
 
+
     <div class="well">
 
+        <div id="accordion" class="panel-group">
 
-    </div>
+            <div class="panel panel-danger">
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                        <a data-toggle="collapse" data-parent="#accordion"
+                           href="#collapseOne">Sample text 1</a>
+                    </h4>
+                </div>
+                <div id="collapseOne" class="panel-collapse collapse">
+                    <div class="panel-body">
+                        <p>
+                            The mission of <a onclick="window.open('http://brightbythree.org/', '_system', 'location=yes');">
+                            Bright by Three</a>
+                            (formerly Bright Beginnings) is to provide a bright beginning for all Colorado
+                            children by helping families support their children’s physical, emotional, and
+                            intellectual development during the critical first three years of life.
+                            You can find more information about Bright by Three and our other sponsors under
+                            “about” tab at the top of your screen.
+                            The Bright by Three app is designed to bring information about how you can
+                            help {{babyName}} learn and develop directly to your phone several times per week.
+                            You will receive this information via messages that contain useful information and
+                            activities that you can engage in with {{babyName}}.  You can set your own goals and
+                            earn badges and prizes for reading with your child and completing recommended activities.
 
-    <!-- Modal -->
-    <div class="modal fade" id="loginModal" tabindex="-1"
-         role="dialog" aria-labelledby="loginModal" aria-hidden="true">
-        <form id="loginForm" enctype="multipart/form-data"
-              name="emailDesignForm" method="post">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h3>Login</h3>
-                        <label>Please enter your email id and password
-                            used to register with BB3.</label>
-                    </div>
-                    <div class="modal-body">
-                        <div class="processing rounded-box" ng-show="designEmailProcessing">
-                            <label>Processing</label>
-                        </div>
-                        <div class="alert alert-success" ng-show="!designEmailProcessing && designEmailSuccess !== undefined && designEmailSuccess">
-                            Your email has been sent.
-                        </div>
-                        <div class="alert alert-danger" ng-show="!designEmailProcessing && designEmailSuccess !== undefined && !designEmailSuccess">
-                            We're sorry, but we were unable to submit your request at this time.  Please try again.
-                        </div>
-                        <div class="well">
-
-
-                            <div class="form-group">
-                                <label>Email</label>
-                                <input class="form-control" type="email"
-                                       placeholder="Enter your email id" name="email"
-                                       ng-model="emailID" required />
-                            </div>
-                            <div class="form-group">
-                                <label>Password</label>
-                                <input class="form-control" type="password"
-                                       placeholder="Enter your password"
-                                       name="password" ng-model="password" required />
-                            </div>
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" ng-click="submitLoginInfo()"
-                                class="btn btn-primary" aria-hidden="true"
-                                ng-disabled="!emailDesignForm.$valid">
-                            Login
-                        </button>
-                        <button class="btn btn-danger" data-dismiss="modal" ng-click="designEmailSuccess = undefined"
-                                aria-hidden="true">Cancel</button>
+                        </p>
+                        <p>
+                            The Bright by Three app is designed to bring information about how you can help {{babyName}}
+                            learn and develop directly to your phone several times per week.
+                            You will receive this information via messages that contain useful information and activities
+                            that you can engage in with {{babyName}}.  You can set your own <a href="$.mobile.silentScroll($('#goals').offset().top)">goals</a>
+                            and earn <a href="#badgesAndPrizes">badges and prizes</a>
+                            for reading with your child and completing recommended activities.
+                        </p>
                     </div>
                 </div>
             </div>
-        </form>
-    </div>
-    <!-- endModal -->
 
-    <!-- bottom Navbar -->
-    <div class="navbar navbar-default navbar-fixed-bottom">
-        <div class="container">
-            <div class="navbar-header">
-                <div class="bs-component">
-                    <div class="btn-group btn-group-justified">
-                        <a href="dashboard.html" class="btn btn-primary btn-lg">
-                <span class="glyphicon glyphicon-th"
-                      aria-hidden="true"></span>
-
-                        </a>
-                        <a href="library.html" class="btn btn-primary" >
-                <span class="glyphicon glyphicon-envelope"
-                      aria-hidden="true"></span>
-                            <sup>
-                                <span class="badge">2</span></sup>
-                        </a>
-                        <a href="favorites.html" class="btn btn-primary">
-                <span class="glyphicon glyphicon-star"
-                      aria-hidden="true"></span>
-                        </a>
-                        <a href="tutorial.html" class="btn btn-primary">
-                <span class="glyphicon glyphicon-info-sign"
-                      aria-hidden="true"></span>
-                        </a>
-                        <a href="aboutUs.html" class="btn btn-primary">
-                <span class="glyphicon glyphicon-user"
-                      aria-hidden="true"></span>
-                        </a>
+            <div class="panel panel-danger">
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                        <a data-toggle="collapse" data-parent="#accordion"
+                           href="#collapseThree">Sample text 2</a>
+                    </h4>
+                </div>
+                <div id="collapseThree" class="panel-collapse collapse">
+                    <div class="panel-body">
+                        <p>
+                            Set your reading goals! Looking at books together is a great way to teach
+                            {{babyName}} new words and converse with <him//her>.
+                            Reading aloud at least 6 days per week helps to prepare children for school.
+                            Set your reading goals by <a href="">selecting the number of days</a>
+                            that you plan to read for at
+                            least 10 minutes with {{babyName}}. Challenge yourself to increase your goal every
+                            2 weeks until you reading with {{babyName}} at least 6 times per week.
+                        </p>
 
                     </div>
+                </div>
+            </div>
+
+            <div class="panel panel-danger">
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                        <a data-toggle="collapse" data-parent="#accordion"
+                           href="#collapseFour">Sample text 3</a>
+                    </h4>
+                </div>
+                <div id="collapseFour" class="panel-collapse collapse">
+                    <div class="panel-body">
+                        <p>
+                            You earn points when you log your reading minutes and by
+                            completing challenges.
+                        </p>
+
+                        <p>
+                            <a href="">Log the number of minutes</a> that you read with {{babyName}} each day.
+                            For every minute of shared reading, you will earn <1> point.
+                        </p>
+
+                        <p>
+                            Challenges will display in your message library once a week.
+                            These tasks are designated with a special icon
+                            <img src="../images/challenge.png" width="15" height="15">.
+
+                            Once you have completed the challenge, you can tap the
+                            <a href="">“We did it!”</a> button at the bottom of the screen and
+                            <10> bonus points will be added to your total.
+                            <a href="">You may also be invited to post a photo of you and
+                                {{babyName}}
+                                doing the activity for the opportunity to earn extra points.</a>
+                        </p>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+
+</div>
+
+
+
+
+
+<!-- bottom Navbar -->
+<div class="navbar navbar-default navbar-fixed-bottom">
+    <div class="container">
+        <div class="navbar-header">
+            <div class="bs-component">
+                <div class="btn-group btn-group-justified">
+                    <a href="dashboard.html" class="btn btn-primary btn-lg">
+                <span class="glyphicon glyphicon-th"
+                      aria-hidden="true"></span>
+                    </a>
+                    <a href="library.html" class="btn btn-primary" >
+                <span class="glyphicon glyphicon-envelope"
+                      aria-hidden="true"></span>
+                        <sup>
+                            <span class="badge">2</span></sup>
+                    </a>
+                    <a href="favorites.html" class="btn btn-primary">
+                <span class="glyphicon glyphicon-star"
+                      aria-hidden="true"></span>
+                    </a>
+                    <a href="tutorial.html" class="btn btn-primary">
+                <span class="glyphicon glyphicon-info-sign"
+                      aria-hidden="true"></span>
+                    </a>
+                    <a href="aboutUs.html" class="btn btn-primary">
+                <span class="glyphicon glyphicon-user"
+                      aria-hidden="true"></span>
+                    </a>
+
                 </div>
             </div>
         </div>
-    </div><!-- end bottom Navbar -->
+    </div>
+</div><!-- end bottom Navbar -->
 
-</div>
+
 </body>
 
 

@@ -14,7 +14,7 @@ bb3App.controller('stateController',
          */
         init();
         function init() {
-            $scope.login = false;
+            $scope.login = true;
         }
 
         $scope.getLoginStatus = function() {
@@ -106,6 +106,11 @@ bb3App.controller('stateController',
 
         function init() {
 
+            $scope.sampleTextSubject = "Subject Line 1";
+            $scope.sampleTextContent = "This is Sample content 1 from scope " +
+            "variable in controller";
+            $scope.sampleTextImage = "../images/BB3_logo_vert_rgb.png";
+            $scope.sampleTextVideo = "https://www.youtube.com/embed/oVPr2LAyhRM";
 
         }
 
