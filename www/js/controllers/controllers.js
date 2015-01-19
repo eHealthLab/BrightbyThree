@@ -14,7 +14,7 @@ bb3App.controller('stateController',
          */
         init();
         function init() {
-            $scope.login = true;
+            $scope.login = false;
         }
 
         $scope.getLoginStatus = function() {
@@ -61,6 +61,8 @@ bb3App.controller('stateController',
             $scope.phoneNumber = null;
             $scope.zipcode = null;
             $scope.babyName = "default";
+            $scope.babyDOB = "default";
+            $scope.babyGender = "default";
         }
 
 
@@ -79,10 +81,11 @@ bb3App.controller('stateController',
 
             var email = $scope.emailID.toUpperCase();
 
-            $http.get('http://brightbythree.org/bb20:3000/loginSignup/' + email + '/' + $scope.newParticipant.password).
+            $http.get('http://brightbythree.org:3000/loginSignup/' + email + '/' + $scope.newParticipant.password).
                 success(function(data, status, headers, config) {
                     $scope.appsData = data;
                     if ($scope.appsData != "false") {
+                        window.alert('success');
 
                     }
                     else {
