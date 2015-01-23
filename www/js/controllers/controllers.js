@@ -7,7 +7,7 @@
 //var bb3App = angular.module('bb3', []);
 
 bb3App.controller('stateController',
-    function($scope, $window) {
+    function($scope, $window, $http) {
 
         /**
          * Initialize the controller
@@ -15,6 +15,10 @@ bb3App.controller('stateController',
         init();
         function init() {
             $scope.login = false;
+            $scope.loginMinutesEnabled = false;
+            $scope.badgesEnabled = false;
+            $scope.goalsEnabled = false;
+            $scope.networkStatsEnabled = false;
         }
 
         $scope.getLoginStatus = function() {
@@ -22,17 +26,14 @@ bb3App.controller('stateController',
             //return $scope.login;
         };
 
-
-
         $scope.changeLoginStatus = function() {
             window.alert('called function');
             $scope.login = true;
-
         }
 })
 
     .controller('dashboardController',
-    function ($scope, $window) {
+    function ($scope, $window, $http) {
 
         init();
         function init() {
@@ -50,7 +51,7 @@ bb3App.controller('stateController',
     })
 
     .controller('personalInfoController',
-    function ($scope, $window) {
+    function ($scope, $window, $http, $location, $element) {
         init();
         function init() {
             $scope.firstName = "default";
@@ -63,8 +64,10 @@ bb3App.controller('stateController',
             $scope.babyName = "default";
             $scope.babyDOB = "default";
             $scope.babyGender = "default";
-        }
+            $scope.password1 = "default";
+            $scope.loginSucessful = true;
 
+        }
 
         $scope.getBabyName = function() {
             $scope.babyName = "notDefault";
@@ -72,20 +75,22 @@ bb3App.controller('stateController',
         };
 
         $scope.submitSignupInfo = function() {
-            window.alert('signup pressed');
-
+            //window.alert('signup pressed');
         };
 
         $scope.submitLoginInfo = function() {
-            window.alert('login pressed');
+
 
             var email = $scope.emailID.toUpperCase();
 
-            $http.get('http://brightbythree.org:3000/loginSignup/' + email + '/' + $scope.newParticipant.password).
+            $http.get('http://brightbythree.org:3000/loginSignup/' + email + '/' + $scope.password).
                 success(function(data, status, headers, config) {
                     $scope.appsData = data;
                     if ($scope.appsData != "false") {
-                        window.alert('success');
+                        window.alert('Login successful');
+                        $scope.login = true;
+                        $location.path("dashboard.html");
+                        $scope.loginSucessful = true;
 
                     }
                     else {
@@ -96,7 +101,6 @@ bb3App.controller('stateController',
                 error(function(data, status, headers, config) {
                         window.alert("sorry, error");
                         window.alert("Unable to contact server. Please try again later.");
-
                 });
 
         }
@@ -110,18 +114,23 @@ bb3App.controller('stateController',
         function init() {
 
             $scope.sampleTextSubject = "Subject Line 1";
-            $scope.sampleTextContent = "This is Sample content 1 from scope " +
-            "variable in controller";
+            $scope.sampleTextContent = "Sample text content from library";
             $scope.sampleTextImage = "../images/BB3_logo_vert_rgb.png";
             $scope.sampleTextVideo = "https://www.youtube.com/embed/oVPr2LAyhRM";
 
         }
 
-        $scope.addToFavorites = function(){
+        $scope.addToFavoritesPressed = function(){
             window.alert('add to favorites pressed');
-        }
+        };
 
+        $scope.removeFromFavoritesPressed = function(){
+            window.alert('remove from favorites pressed');
+        };
 
+        $scope.startCameraPressed = function(){
+            window.alert('start camera pressed');
+        };
     })
 
 ;

@@ -187,8 +187,11 @@
     <nav class="navbar navbar-default navbar-fixed-top">
         <div class="container">
             <div class="navbar-header">
-                <a style="margin-right: 10px" class="navbar-right pull-right">
-                    <img src="../images/BB3_logo-icon_WEB_rgb_icon.png">
+                <a style="margin-right: 10px" class="navbar-right pull-right"
+                   onclick="window.open('http://brightbythree.org',
+                        '_system', 'location=yes');">
+                    <img src="../images/BB3_logo-icon_WEB_rgb.png"
+                         width="40" height="56">
                 </a>
 
                 <a style="margin-top: 10px; margin-left: 10px"
@@ -201,8 +204,7 @@
 
                 <a class="navbar-brand" style="margin-left: 80px
                 ; margin-top: 10px"
-                   onclick="window.open('http://brightbythree.org',
-                    '_system', 'location=yes');">
+                   >
                     <strong>Signup</strong>
                 </a>
             </div>
@@ -210,7 +212,7 @@
     </nav>
 
     <div  ng-controller="personalInfoController"
-            ng-show="!login">
+            ng-show="!loginSucessful">
 
         <div class="row">
             <div class="col-lg-6">
