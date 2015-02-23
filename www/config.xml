@@ -20,6 +20,9 @@
         <gap:platform name="blackberry" project="widgets"/>
     </gap:platforms>
 
+    <gap:plugin name="de.appplant.cordova.plugin.email-composer"
+                version="0.8.1" />
+
     <icon src="images/BB3_icon_200x200.png" />
     <icon gap:density="ldpi" gap:platform="android" src="res/icon/android/icon_36x36.png" />
     <icon gap:density="mdpi" gap:platform="android" src="res/icon/android/icon_48x48.png" />

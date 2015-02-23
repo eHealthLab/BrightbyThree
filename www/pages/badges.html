@@ -178,7 +178,7 @@
 
 <body>
 
-<div class="container" ng-controller="stateController">
+<div class="container" ng-controller="badgesController">
     <nav class="navbar navbar-default navbar-fixed-top
                 ">
         <div class="container">
@@ -207,60 +207,209 @@
     </nav>
 
     <div class="well">
-        MORE TO ADD HERE
+
+        <p align="center">
+            Congratulations! Here are the badges you have earned so far
+        </p>
+
+
+
+        <table>
+
+            <tr bgcolor="#faebd7" ng-show="status150">
+
+                <td align="center"
+                    width="200">
+                    Badge Name
+                </td>
+
+                <td>
+                    <img src="../images/Badge150.png"
+                         align="center" width="100" height="150"
+                         class="img-thumbnail"
+                         >
+                </td>
+
+            </tr>
+
+            <tr bgcolor="#ff7f50" ng-show="status400">
+
+                <td align="center"
+                    width="200">
+                    Badge Name
+                </td>
+
+                <td>
+                    <img src="../images/Badge400.png"
+                         align="center" width="100" height="150"
+                         class="img-thumbnail"
+                         >
+                </td>
+
+            </tr>
+
+            <tr bgcolor="#7fffd4" ng-show="status700">
+
+                <td align="center"
+                    width="200">
+                    Badge Name
+                </td>
+
+                <td>
+                    <img src="../images/Badge700.png"
+                         align="center" width="100" height="150"
+                         class="img-thumbnail"
+                         >
+                </td>
+
+            </tr>
+
+            <tr bgcolor="#87cefa" ng-show="status1000">
+
+                <td align="center"
+                    width="200">
+                    Badge Name
+                </td>
+
+                <td>
+                    <img src="../images/Badge1000.png"
+                         align="center" width="100" height="150"
+                         class="img-thumbnail"
+                         >
+                </td>
+
+            <tr bgcolor="#ff7f50" ng-show="status1500">
+
+                <td align="center"
+                    width="200">
+                    Badge Name
+                </td>
+
+                <td>
+                    <img src="../images/Badge1500.png"
+                         align="center" width="100" height="150"
+                         class="img-thumbnail"
+                         >
+                </td>
+
+            <tr bgcolor="#deb887" ng-show="status2000">
+
+                <td align="center"
+                    width="200">
+                    Badge Name
+                </td>
+
+                <td>
+                    <img src="../images/Badge2000.png"
+                         align="center" width="100" height="150"
+                         class="img-thumbnail"
+                         >
+                </td>
+
+            </tr>
+
+            <tr bgcolor="#90ee90" ng-show="status2500">
+
+                <td align="center"
+                    width="200">
+                    Badge Name
+                </td>
+
+                <td>
+                    <img src="../images/Badge2500.png"
+                         align="center" width="100" height="150"
+                         class="img-thumbnail"
+                         >
+                </td>
+
+            </tr>
+
+            <tr bgcolor="#87cefa" ng-show="status3000">
+
+                <td align="center"
+                    width="200">
+                    Badge Name
+                </td>
+
+                <td>
+                    <img src="../images/Badge3000.png"
+                         align="center" width="100" height="150"
+                         class="img-thumbnail"
+                         >
+                </td>
+
+            </tr>
+
+            <tr bgcolor="#deb887" ng-show="status3500">
+
+                <td align="center"
+                    width="200">
+                    Badge Name
+                </td>
+
+                <td>
+                    <img src="../images/Badge3500.png"
+                         align="center" width="100" height="150"
+                         class="img-thumbnail"
+                         >
+                </td>
+
+            </tr>
+
+            <tr bgcolor="#90ee90" ng-show="status4000">
+
+                <td align="center"
+                    width="200">
+                    Badge Name
+                </td>
+
+                <td>
+                    <img src="../images/Badge4000.png"
+                         align="center" width="100" height="150"
+                         class="img-thumbnail"
+                         >
+                </td>
+
+            </tr>
+
+            <tr bgcolor="#90ee90" ng-show="status4500">
+
+                <td align="center"
+                    width="200">
+                    Badge Name
+                </td>
+
+                <td>
+                    <img src="../images/Badge4500.png"
+                         align="center" width="100" height="150"
+                         class="img-thumbnail"
+                         >
+                </td>
+
+            </tr>
+
+            <tr bgcolor="#7fffd4" ng-show="status5000">
+
+                <td align="center"
+                    width="200">
+                    Badge Name
+                </td>
+
+                <td>
+                    <img src="../images/Badge5000.png"
+                         align="center" width="100" height="150"
+                         class="img-thumbnail"
+                         >
+                </td>
+
+            </tr>
+
+
+        </table>
+
     </div>
 
-    <!-- Modal -->
-    <div class="modal fade" id="loginModal" tabindex="-1"
-         role="dialog" aria-labelledby="loginModal" aria-hidden="true">
-        <form id="loginForm" enctype="multipart/form-data"
-              name="emailDesignForm" method="post">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h3>Login</h3>
-                        <label>Please enter your email id and password
-                            used to register with BB3.</label>
-                    </div>
-                    <div class="modal-body">
-                        <div class="processing rounded-box" ng-show="designEmailProcessing">
-                            <label>Processing</label>
-                        </div>
-                        <div class="alert alert-success" ng-show="!designEmailProcessing && designEmailSuccess !== undefined && designEmailSuccess">
-                            Your email has been sent.
-                        </div>
-                        <div class="alert alert-danger" ng-show="!designEmailProcessing && designEmailSuccess !== undefined && !designEmailSuccess">
-                            We're sorry, but we were unable to submit your request at this time.  Please try again.
-                        </div>
-                        <div class="well">
-                            <div class="form-group">
-                                <label>Email</label>
-                                <input class="form-control" type="email"
-                                       placeholder="Enter your email id" name="email"
-                                       ng-model="emailID" required />
-                            </div>
-                            <div class="form-group">
-                                <label>Password</label>
-                                <input class="form-control" type="password"
-                                       placeholder="Enter your password"
-                                       name="password" ng-model="password" required />
-                            </div>
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" ng-click="submitLoginInfo()"
-                                class="btn btn-primary" aria-hidden="true"
-                                ng-disabled="!emailDesignForm.$valid">
-                            Login
-                        </button>
-                        <button class="btn btn-danger" data-dismiss="modal" ng-click="designEmailSuccess = undefined"
-                                aria-hidden="true">Cancel</button>
-                    </div>
-                </div>
-            </div>
-        </form>
-    </div>
-    <!-- endModal -->
+
 
     <!-- bottom Navbar -->
     <div class="navbar navbar-default navbar-fixed-bottom">

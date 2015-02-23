@@ -217,14 +217,16 @@
         <div class="row">
             <div class="col-lg-6">
                 <div class="well bs-component">
-                    <form class="form-horizontal">
+                    <form class="form-horizontal" name="signupForm">
                         <fieldset>
 
                             <div class="form-group">
-                                <label for="inputFirstName" class="col-lg-2 control-label">First Name</label>
+                                <label for="inputFirstName"
+                                       class="col-lg-2 control-label">First Name</label>
                                 <div class="col-lg-10">
                                     <input type="text" class="form-control" id="inputFirstName"
-                                           placeholder="enter your first name">
+                                           placeholder="enter your first name"
+                                            ng-model="firstName" required />
                                 </div>
                             </div>
 
@@ -232,7 +234,8 @@
                                 <label for="inputLastName" class="col-lg-2 control-label">Last Name</label>
                                 <div class="col-lg-10">
                                     <input type="text" class="form-control" id="inputLastName"
-                                           placeholder="enter your last name">
+                                           placeholder="enter your last name"
+                                            ng-model="lastName" required />
                                 </div>
                             </div>
 
@@ -247,7 +250,8 @@
                                 <label for="inputPassword1" class="col-lg-2 control-label">Password</label>
                                 <div class="col-lg-10">
                                     <input type="password" class="form-control" id="inputPassword1"
-                                           placeholder="enter password">
+                                           placeholder="enter password"
+                                            ng-model="password1" required />
                                 </div>
                             </div>
 
@@ -255,7 +259,8 @@
                                 <label for="inputPassword2" class="col-lg-2 control-label">Confirm Password</label>
                                 <div class="col-lg-10">
                                     <input type="password" class="form-control" id="inputPassword2"
-                                           placeholder="reenter password">
+                                           placeholder="reenter password"
+                                            ng-model="password2" required />
                                 </div>
                             </div>
 
@@ -263,7 +268,8 @@
                                 <label for="inputPhoneNumber" class="col-lg-2 control-label">Phone Number</label>
                                 <div class="col-lg-10">
                                     <input type="number" class="form-control" id="inputPhoneNumber"
-                                           placeholder="phone number">
+                                           placeholder="phone number"
+                                            ng-model="phoneNumber" required />
                                 </div>
                             </div>
 
@@ -271,7 +277,8 @@
                                 <label for="inputBabyName" class="col-lg-2 control-label">Baby's Name</label>
                                 <div class="col-lg-10">
                                     <input type="text" class="form-control" id="inputBabyName"
-                                           placeholder="enter your baby's name">
+                                           placeholder="enter your baby's name"
+                                            ng-model="babyName" required />
                                 </div>
                             </div>
 
@@ -279,7 +286,8 @@
                                 <label for="inputBabyDOB" class="col-lg-2 control-label">Baby's date of birth</label>
                                 <div class="col-lg-10">
                                     <input type="date" class="form-control" id="inputBabyDOB"
-                                           placeholder="enter your baby's date of birth">
+                                           placeholder="enter your baby's date of birth"
+                                            ng-model="babyDOB" required />
                                 </div>
                             </div>
 
@@ -287,7 +295,8 @@
                                 <label for="inputBabyGender" class="col-lg-2 control-label">
                                     Baby's Gender</label>
                                 <div class="col-lg-10">
-                                    <select class="selectpicker" data-style="btn-primary">
+                                    <select class="selectpicker" data-style="btn-primary"
+                                           id="inputBabyGender" >
                                         <option>Female</option>
                                         <option>Male</option>
                                     </select>
@@ -299,7 +308,8 @@
                                 <label for="inputzipcode" class="col-lg-2 control-label">Zipcode</label>
                                 <div class="col-lg-10">
                                     <input type="number" class="form-control" id="inputzipcode"
-                                           placeholder="enter your zipcode">
+                                           placeholder="enter your zipcode"
+                                            ng-model="zipcode" required />
                                 </div>
                             </div>
 
@@ -310,6 +320,7 @@
                                     </a>
 
                                     <button type="submit" class="btn btn-primary"
+                                            ng-disabled="!signupForm.$valid"
                                             data-ng-click="submitSignupInfo()">Submit</button>
                                 </div>
                             </div>

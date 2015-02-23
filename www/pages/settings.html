@@ -178,7 +178,7 @@
 
 <body>
 
-<div class="container" ng-controller="stateController">
+<div class="container" ng-controller="emailController">
     <nav class="navbar navbar-default navbar-fixed-top
                 ">
         <div class="container">
@@ -214,7 +214,7 @@
                 <div class="panel-heading">
                     <h4 class="panel-title">
                         <a data-toggle="collapse" data-parent="#accordion"
-                           href="#collapseOne">Forgot to your email id?</a>
+                           href="#collapseOne">Forgot your email id?</a>
                     </h4>
                 </div>
                 <div id="collapseOne" class="panel-collapse collapse">
@@ -225,8 +225,8 @@
                             below to contact us:
                             <div class="well" align="center">
                                 <button class="btn btn-primary"
-                                        >
-                                    mHealthlab
+                                    ng-click="sendEmailForgotEmailID()">
+                                    Forgot my email ID
                                 </button>
                             </div>
                         </p>
@@ -239,7 +239,7 @@
                 <div class="panel-heading">
                     <h4 class="panel-title">
                         <a data-toggle="collapse" data-parent="#accordion"
-                           href="#collapseTwo">Forgot your password?</a>
+                           href="#collapseTwo">Forgot my password?</a>
                     </h4>
                 </div>
                 <div id="collapseTwo" class="panel-collapse collapse">
@@ -250,8 +250,8 @@
                             generate a new one for you.
                         <div class="well" align="center">
                             <button class="btn btn-primary"
-                                    >
-                                Reset my Password
+                                    ng-click="sendEmailForgotPassword()">
+                                Forgot my Password
                             </button>
                         </div>
                         </p>
@@ -293,10 +293,18 @@
                             send us your feedback about any suggestions and comments
                             that you might have.
                         <div class="well" align="center">
-                            <button class="btn btn-primary"
-                                    >
-                                Feedback
-                            </button>
+
+                            <textarea class="form-control" rows="6" cols="40"
+                                      align="center"
+                                      ng-model="feedbackText">
+
+                            </textarea>
+
+                            <a  class="btn btn-primary"
+                                ng-click="sendFeedback()">
+                                Submit
+                            </a>
+
                         </div>
                         </p>
                     </div>
