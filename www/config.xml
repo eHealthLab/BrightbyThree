@@ -20,8 +20,27 @@
         <gap:platform name="blackberry" project="widgets"/>
     </gap:platforms>
 
+    <feature name="http://api.phonegap.com/1.0/device" />
+
+    <feature name="InAppBrowser">
+        <param name="android-package" value="org.apache.cordova.InAppBrowser" />
+    </feature>
+    <feature name="InAppBrowser">
+        <param name="ios-package" value="CDVInAppBrowser" />
+    </feature>
+
     <gap:plugin name="de.appplant.cordova.plugin.email-composer"
                 version="0.8.1" />
+
+    <feature name="http://api.phonegap.com/1.0/camera"/>
+    <feature name="http://api.phonegap.com/1.0/device" />
+    <preference name="permissions" value="none" />
+    <preference name="orientation" value="default" />
+    <preference name="target-device" value="universal" />
+    <preference name="fullscreen" value="true" />
+    <preference name="webviewbounce" value="true" />
+    <preference name="prerendered-icon" value="true" />
+    <preference name="stay-in-webview" value="false" />
 
     <icon src="images/BB3_icon_200x200.png" />
     <icon gap:density="ldpi" gap:platform="android" src="res/icon/android/icon_36x36.png" />

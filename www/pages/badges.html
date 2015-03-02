@@ -1,3 +1,22 @@
+<!--
+* Bright by Three
+* Copyright (C) 2015 Regents of the University of Colorado.
+*
+* This program is free software; you can redistribute it and/or
+* modify it under the terms of the GNU General Public License
+* as published by the Free Software Foundation; either version 2
+* of the License, or (at your option) any later version.
+*
+* This program is distributed in the hope that it will be useful,
+* but WITHOUT ANY WARRANTY; without even the implied warranty of
+* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+* GNU General Public License for more details.
+*
+* You should have received a copy of the GNU General Public License
+* along with this program; if not, write to the Free Software
+* Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+-->
+
 <!DOCTYPE html>
 <html lang="en" ng-app="bb3">
 <head>
@@ -50,8 +69,17 @@
     <!-- app specific scripts -->
     <!-- build:js js/glimmpse.js -->
     <script src="../js/app.js"></script>
+    <script src="../js/services/participantService.js"></script>
     <script src="../js/controllers/controllers.js"></script>
     <!-- endbuild -->
+
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $('[data-toggle="popover"]').popover({
+                placement : 'top'
+            });
+        });
+    </script>
 
     <!-- build:css css/glimmpse.css -->
 
@@ -178,7 +206,8 @@
 
 <body>
 
-<div class="container" ng-controller="badgesController">
+<div class="container" ng-controller="badgesController"
+     ng-init="updateBadgeNotification()">
     <nav class="navbar navbar-default navbar-fixed-top
                 ">
         <div class="container">
@@ -209,9 +238,8 @@
     <div class="well">
 
         <p align="center">
-            Congratulations! Here are the badges you have earned so far
+            <b>Congratulations!</b> Here are the badges you have earned so far
         </p>
-
 
 
         <table>
@@ -407,9 +435,20 @@
 
         </table>
 
+
+
     </div>
 
-
+    <div align="center">
+        <a href="#" class="btn btn-success" data-toggle="popover"
+           tabindex="1" data-trigger="focus"
+           title="You are short by {{pointsToEarnNextBadge}} points to earn next
+           badge."
+           data-content="Go back to dashboard and earn more points by logging
+           minutes.">
+            Earn next badge
+        </a>
+    </div>
 
     <!-- bottom Navbar -->
     <div class="navbar navbar-default navbar-fixed-bottom">

@@ -1,3 +1,22 @@
+<!--
+* Bright by Three
+* Copyright (C) 2015 Regents of the University of Colorado.
+*
+* This program is free software; you can redistribute it and/or
+* modify it under the terms of the GNU General Public License
+* as published by the Free Software Foundation; either version 2
+* of the License, or (at your option) any later version.
+*
+* This program is distributed in the hope that it will be useful,
+* but WITHOUT ANY WARRANTY; without even the implied warranty of
+* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+* GNU General Public License for more details.
+*
+* You should have received a copy of the GNU General Public License
+* along with this program; if not, write to the Free Software
+* Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+-->
+
 <!DOCTYPE html>
 <html lang="en" ng-app="bb3">
 <head>
@@ -26,8 +45,6 @@
 
     <!-- replaced by gruntfile when building for mobile -->
     <!-- PHONEGAPJS -->
-
-
 
     <!-- build:js js/libraries.js -->
     <script src="../lib/jquery.min.js"></script>
@@ -60,6 +77,7 @@
           rel="stylesheet" id="bs-theme-stylesheet">
 
     <link type="text/css" rel="stylesheet" href="../css/bootstrap.min.css">
+    <link type="text/css" rel="stylesheet" href="../css/font-awesome.min.css">
 
     <link type="text/css" rel="stylesheet" href="../css/ng-grid.css">
     <link type="text/css" rel="stylesheet" href="../css/bb3.css">
@@ -174,6 +192,23 @@
 
     </style>
 
+    <script type="text/javascript">
+
+    document.addEventListener('deviceready', function () {
+    // window.plugin.email is now available
+
+        function sendEmailForgotEmailID()
+        {
+            $window.plugin.email.open({
+                to:      ['agileehealth@gmail.com'],
+                subject: 'Forgot my email id',
+                body:    'I have forgotten my email id. Please contact me at BLAH'
+            });
+        }
+
+    }, false);
+    </script>
+
 </head>
 
 <body>
@@ -222,7 +257,7 @@
                         <p>
                             If you have forgotten your email id and are unable
                             to access your account, please click the button
-                            below to contact us:
+                            below to contact us.
                             <div class="well" align="center">
                                 <button class="btn btn-primary"
                                     ng-click="sendEmailForgotEmailID()">
@@ -239,15 +274,15 @@
                 <div class="panel-heading">
                     <h4 class="panel-title">
                         <a data-toggle="collapse" data-parent="#accordion"
-                           href="#collapseTwo">Forgot my password?</a>
+                           href="#collapseTwo">Forgot your password?</a>
                     </h4>
                 </div>
                 <div id="collapseTwo" class="panel-collapse collapse">
                     <div class="panel-body">
                         <p>
-                            If you have forgotten your password, please
-                            click the button below and the system will e
-                            generate a new one for you.
+                            If you have forgotten your password, please click
+                            the button
+                            below to contact us.
                         <div class="well" align="center">
                             <button class="btn btn-primary"
                                     ng-click="sendEmailForgotPassword()">
@@ -265,23 +300,6 @@
                 <div class="panel-heading">
                     <h4 class="panel-title">
                         <a data-toggle="collapse" data-parent="#accordion"
-                           href="#collapseThree">Sample text 3</a>
-                    </h4>
-                </div>
-                <div id="collapseThree" class="panel-collapse collapse">
-                    <div class="panel-body">
-                        <p>
-                            You earn points when you log your reading minutes and by
-                            completing challenges.
-                        </p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="panel panel-danger">
-                <div class="panel-heading">
-                    <h4 class="panel-title">
-                        <a data-toggle="collapse" data-parent="#accordion"
                            href="#collapseFour">Submit Feedback</a>
                     </h4>
                 </div>
@@ -290,15 +308,18 @@
                         <p>
                             Thank you for participating in the Bright by Three
                             program. We would love to hear back from you. Please
-                            send us your feedback about any suggestions and comments
-                            that you might have.
+                            type your suggestions and comments in the area below
+                            and press the Submit button once done.
                         <div class="well" align="center">
 
-                            <textarea class="form-control" rows="6" cols="40"
+                            <textarea class="form-control" rows="6"
+                                      cols="40"
                                       align="center"
                                       ng-model="feedbackText">
 
                             </textarea>
+
+                            <br>
 
                             <a  class="btn btn-primary"
                                 ng-click="sendFeedback()">
@@ -310,6 +331,35 @@
                     </div>
                 </div>
             </div>
+
+            <div class="panel panel-danger">
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                        <a data-toggle="collapse" data-parent="#accordion"
+                           href="#collapseFive">Like us</a>
+                    </h4>
+                </div>
+                <div id="collapseFive" class="panel-collapse collapse">
+
+                    <div class="panel-body" align="center">
+
+                        <p>
+                            Thank you for participating in the Bright by Three
+                            program. Please like us on facebook.
+
+                        </p>
+                        <a class="btn btn-default btn-lg" target="_blank"
+
+                           title="Like On Facebook"
+                           href="http://www.facebook.com/plugins/like.php?href=http%3A%2F%2Fostr.io/code/html-social-like-share-buttons-no-javascript.html">
+                            <i class="fa fa-thumbs-o-up fa-lg fb"></i>
+                        </a>
+
+
+                    </div>
+                </div>
+            </div>
+
         </div>
 
     </div>

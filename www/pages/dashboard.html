@@ -1,3 +1,22 @@
+<!--
+* Bright by Three
+* Copyright (C) 2015 Regents of the University of Colorado.
+*
+* This program is free software; you can redistribute it and/or
+* modify it under the terms of the GNU General Public License
+* as published by the Free Software Foundation; either version 2
+* of the License, or (at your option) any later version.
+*
+* This program is distributed in the hope that it will be useful,
+* but WITHOUT ANY WARRANTY; without even the implied warranty of
+* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+* GNU General Public License for more details.
+*
+* You should have received a copy of the GNU General Public License
+* along with this program; if not, write to the Free Software
+* Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+-->
+
 <!DOCTYPE html>
 <html lang="en" ng-app="bb3">
 <head>
@@ -27,7 +46,7 @@
     <!-- replaced by gruntfile when building for mobile -->
     <!-- PHONEGAPJS -->
 
-
+    <script type="text/javascript" charset="utf-8" src="phonegap.js"></script>
 
     <!-- build:js js/libraries.js -->
     <script src="../lib/jquery.min.js"></script>
@@ -48,6 +67,7 @@
     <!-- app specific scripts -->
     <!-- build:js js/glimmpse.js -->
     <script src="../js/app.js"></script>
+    <script src="../js/services/participantService.js"></script>
     <script src="../js/controllers/controllers.js"></script>
     <!-- endbuild -->
 
@@ -180,7 +200,7 @@
 </head>
 <body>
 
-<div class="container" ng-controller="personalInfoController">
+<div class="container">
     <nav class="navbar navbar-default navbar-fixed-top">
         <div class="container">
             <div class="navbar-header">
@@ -190,7 +210,7 @@
                     <img src="../images/BB3_logo-icon_WEB_rgb.png" width="40" height="56">
                 </a>
 
-                <a  ng-show="!loginSucessful"
+                <a
                     style="margin-top: 10px; margin-left: 10px" class="navbar-left pull-left
                     btn btn-primary btn-circle btn-sm"
                     href="../index.html">
@@ -209,16 +229,14 @@
     </nav>
 
 
-    <div class="container" ng-show="!loginSucessful" ng-controller="personalInfoController">
+    <div class="container" ng-show="!login"
+         ng-controller="stateController">
                 <table align="center">
                     <tr>
                         <td>
 
                         </td>
                         <td align="center">
-
-                            {{loginSucessful}}
-
                             Please either login or signup to
                             access your Bright by Three account.
                         </td>
@@ -300,7 +318,7 @@
     <!-- Modal -->
     <div modal-show
             class="modal fade" id="loginModal"
-         modal-visible="!loginSucessful"
+         modal-visible="!login"
          tabindex="-1"
          role="dialog" aria-labelledby="loginModal" aria-hidden="true"
             ng-controller="personalInfoController">
@@ -336,7 +354,7 @@
                                 <label>Password</label>
                                 <input class="form-control" type="password"
                                        placeholder="Enter your password"
-                                       name="password" ng-model="password" required />
+                                       name="password" ng-model="password1" required />
                             </div>
                         </div>
                     </div>
@@ -356,8 +374,8 @@
     </div>
     <!-- endModal -->
 
-    <div class="container" ng-show="loginSucessful"
-         ng-controller="personalInfoController">
+    <div class="container" ng-controller="stateController"
+         ng-show="login">
 
         <div class="well">
             <table align="center">
@@ -375,11 +393,12 @@
                     </td>
                     <td align="center">
                         <a href="#" ng-click="updateFacebookClicks()"
-                           onclick="window.open('https://m.facebook.com/pages/Mothers-Milk-Messaging/570287563090720?ref=tn_tnmn', '_blank', 'location=yes')">
+                           onclick="window.open('https://www.facebook.com/coloradoBrightBeginnings',
+                           '_system', 'location=yes')">
 
                             <span class="btn btn-primary
                             btn-circle btn-xl">
-                                <i style="margin-top: 8px" class="fa fa-facebook"></i>
+                                <i style="margin-top: 10px" class="fa fa-facebook"></i>
                             </span>
                         </a>
                     </td>
@@ -389,7 +408,7 @@
                     <td align="center">
                         <strong>Set Goals</strong>
                     </td>
-                    <td width="70px">
+                    <td  width="70px">
 
                     </td>
                     <td>
@@ -429,8 +448,11 @@
                         <a href="badges.html">
                             <span class="btn btn-warning btn-circle btn-xl">
                                 <img src="../images/glyphish-icons/85-trophy.png" style="margin-top: 10px"></i>
+                                <sup ng-show="earnedNewBadge()">
+                                    <span class="badge">New</span></sup>
+
                             </span>
-                        </a>
+                                                    </a>
                     </td>
                     <td width="70px">
                     </td>
@@ -438,7 +460,7 @@
                     </td>
                     <td align="center">
                         <a href="network.html">
-                            <span class="btn btn-danger btn-circle btn-xl">
+                            <span class="btn btn-success btn-circle btn-xl">
                                 <i class="glyphicon glyphicon-stats" style="margin-top: 5px; margin-left: -0.05px"></i>
                             </span>
                         </a>
@@ -522,8 +544,38 @@
                     </td>
                 </tr>
 
+                <tr>
+                    <td>
 
+                    </td>
 
+                    <td>
+                        <a ng-click="logout()">
+                            <span class="btn btn-danger
+                            btn-circle btn-xl">
+                                <i style="margin-top: 8px" class="glyphicon glyphicon-log-out"></i>
+                            </span>
+                        </a>
+                    </td>
+
+                    <td>
+
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+
+                    </td>
+
+                    <td align="center">
+                        <strong>Logout</strong>
+                    </td>
+
+                    <td>
+
+                    </td>
+                </tr>
 
             </table>
         </div>
