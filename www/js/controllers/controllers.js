@@ -16,7 +16,8 @@ bb3App.controller('stateController',
         function init() {
 
             $scope.participantService = participantService;
-            $scope.login = true;
+            $scope.login = false;
+            $scope.userID = undefined;
             $scope.currentLanguage = "English";
             $scope.loginMinutesEnabled = false;
             $scope.badgesEnabled = false;
@@ -73,10 +74,11 @@ bb3App.controller('stateController',
     })
 
     .controller('personalInfoController',
-    function ($scope, $window, $http, $location, $element) {
+    function ($scope, $window, $http, $location, $element, participantService) {
         init();
         function init() {
 
+            $scope.participantService = participantService;
             $scope.newParticipant = {
                 firstName: undefined,
                 lastName: undefined,
@@ -103,37 +105,40 @@ bb3App.controller('stateController',
             window.alert('signup pressed');
             var email = $scope.newParticipant.emailID.toUpperCase();
 
+            var newDOB = '2014-06-06'; // $scope.formatDate($scope.newParticipant.babyDOB);
+
+            window.alert(newDOB);
+
             if($scope.newParticipant.password1 != $scope.newParticipant.password2) {
                 //$scope.signUpErrorNotification = "Passwords do not match. Correct them and try again.";
                 window.alert('Passwords do not match. Correct them and try again.');
             }
 
             $http({method: 'POST',
-                url: 'http://brightbythree.org:3000/loginSignup/' +
+                url: 'http://localhost:3000/loginSignup/' +
                 $scope.newParticipant.firstName + '/' +
                 $scope.newParticipant.lastName + '/' +
                 email + '/' +
                 $scope.newParticipant.password1 + '/' +
-                $scope.newParticipant.phoneNumber
-
-                /*
+                $scope.newParticipant.phoneNumber + '/'
                 +
-                $scope.newParticipant.babyName +
-                $scope.newParticipant.babyDOB +
-                $scope.newParticipant.babyGender +
-                $scope.newParticipant.babyGender
-                */
+                $scope.newParticipant.babyName + '/' +
+                newDOB + '/' +
+                $scope.newParticipant.babyGender + '/' +
+                $scope.newParticipant.zipcode
             }).
                 success(function(data, status, headers, config) {
                     $scope.appsData = data;
-                    if(data.status == "true") {
-                        window.alert("You have successfully signed up. " +
-                        "Please login to continue");
+                    window.alert("data is: " + data);
+                    //if(data.status == "true") {
+                        $scope.login = true;
+                        $scope.userID = data;
+                        window.alert("You have successfully signed up.");
                         $location.path("/dashboard");
-                    }
-                    else {
-                        window.alert("Email ID exists. Use a different Email ID.");
-                    }
+                    //}
+                    //else {
+                      //  window.alert("Email ID exists. Use a different Email ID.");
+                    //}
                 }).
                 error(function(data, status, headers, config) {
                     window.alert("Unable to contact server. Please try again later.");
@@ -143,16 +148,25 @@ bb3App.controller('stateController',
 
         };
 
+        $scope.formatDate = function(date){
+            //window.alert("date in: " + date);
+            var dateIn = date.split("-").join("/");
+            var dateOut = new Date(dateIn);
+            //window.alert("date out: " + dateOut);
+            return dateOut;
+        };
+
         $scope.submitLoginInfo = function() {
 
 
             window.alert('inside login in button pressed');
             var email = $scope.emailID.toUpperCase();
 
-                $http.get('http://brightbythree.org:3000/loginSignup/' + email + '/' + $scope.password1).
+                $http.get('http://localhost:3000/loginSignup/' + email + '/' + $scope.password1).
                     success(function (data, status, headers, config) {
                         $window.alert("values: " + email + $scope.password1);
                         $scope.appsData = data;
+                        window.alert("login data:" + data[0].email);
                         if ($scope.appsData != "false") {
                             window.alert('Login successful');
                             $scope.login = true;
@@ -298,6 +312,7 @@ bb3App.controller('stateController',
             $scope.statusBadge[11][0]= 5000;
             $scope.statusBadge[11][1]= false;
 
+            /*
             $scope.status150 = true;
             $scope.status400 = true;
             $scope.status700 = false;
@@ -310,7 +325,7 @@ bb3App.controller('stateController',
             $scope.status4000 = false;
             $scope.status4500 = false;
             $scope.status5000 = false;
-
+            */
             $scope.pointsToEarnNextBadge = 0;
             $scope.nextBadgeToEarn = 1;
 
@@ -322,19 +337,22 @@ bb3App.controller('stateController',
 
             //window.alert('badge information pressed');
 
+            $scope.totalPoints = 500;
+
             for (var i=0; i < 12; i++) {
 
 
                 if ($scope.totalPoints >= $scope.statusBadge[i][0]
-                    && $scope.totalPoints < $scope.statusBadge[i+1][0]) {
-                    $scope.statusBadge[i][1] = true;
+                    && $scope.totalPoints < $scope.statusBadge[i + 1][0]) {
+                    $scope.statusBadge[i + 1][1] = true;
                     participantService.setEarnedNewBadge(true);
                     //$scope.newBadgeEarned = participantService.se
                     window.alert('Congratulations! You just earned a new badge.')
                     break;
                     //return $scope.earnedNewBadge();
                 }
-
+            }
+            /*
             else if ($scope.totalPoints >= 400 && $scope.totalPoints < 700) {
                 $scope.status400 = true;
             }
@@ -377,7 +395,7 @@ bb3App.controller('stateController',
 
             else if ($scope.totalPoints >= 5000) {
                 $scope.status5000 = false;
-            }
+            }*/
 
         };
 
@@ -474,7 +492,7 @@ bb3App.controller('stateController',
                 //if(participantService.getLoginStatus() != "false") {
 
                     $http({method: 'POST',
-                        url: 'http://brightbythree.org:3000/feedback/' +
+                        url: 'http://localhost:3000/feedback/' +
                         //url: 'http://mothersmilk.ucdenver.edu:3000/feedback/' +
                         $scope.feedbackText
                     }).
