@@ -76,7 +76,7 @@
     <script type="text/javascript">
         $(document).ready(function(){
             $('[data-toggle="popover"]').popover({
-                placement : 'top'
+                placement : 'bottom'
             });
         });
     </script>
@@ -207,7 +207,7 @@
 <body>
 
 <div class="container" ng-controller="badgesController"
-     ng-init="updateBadgeNotification()">
+     ng-init="updateBadgeInformation()">
     <nav class="navbar navbar-default navbar-fixed-top
                 ">
         <div class="container">
@@ -229,13 +229,13 @@
                 <a class="navbar-brand" style="margin-left: 80px
                 ; margin-top: 10px"
                    >
-                    <strong>Badge</strong>
+                    <strong>Badges</strong>
                 </a>
             </div>
         </div>
     </nav>
 
-    <div class="well">
+    <div class="well" ng-show="!newUser">
 
         <p align="center">
             <b>Congratulations!</b> Here are the badges you have earned so far
@@ -352,7 +352,7 @@
 
             </tr>
 
-            <tr bgcolor="#87cefa" ng-show="status3000">
+            <tr bgcolor="#87cefa" ng-show="statusBadge[7][1]">
 
                 <td align="center"
                     width="200">
@@ -368,7 +368,7 @@
 
             </tr>
 
-            <tr bgcolor="#deb887" ng-show="status3500">
+            <tr bgcolor="#deb887" ng-show="statusBadge[8][1]">
 
                 <td align="center"
                     width="200">
@@ -384,7 +384,7 @@
 
             </tr>
 
-            <tr bgcolor="#90ee90" ng-show="status4000">
+            <tr bgcolor="#90ee90" ng-show="statusBadge[9][1]">
 
                 <td align="center"
                     width="200">
@@ -400,7 +400,7 @@
 
             </tr>
 
-            <tr bgcolor="#90ee90" ng-show="status4500">
+            <tr bgcolor="#90ee90" ng-show="statusBadge[10][1]">
 
                 <td align="center"
                     width="200">
@@ -416,7 +416,7 @@
 
             </tr>
 
-            <tr bgcolor="#7fffd4" ng-show="status5000">
+            <tr bgcolor="#7fffd4" ng-show="statusBadge[11][1]">
 
                 <td align="center"
                     width="200">
@@ -432,22 +432,47 @@
 
             </tr>
 
-
         </table>
-
-
 
     </div>
 
-    <div align="center">
+    <div align="center" ng-show="!newUser">
+        <button class="btn btn-success" data-toggle="popover"
+           tabindex="1" data-trigger="focus"
+           title="You are short by {{pointsToEarnNextBadge}} points to earn next
+           badge."
+           data-content="Go back to dashboard and earn more points by logging
+           minutes."
+                data-ng-click="updateBadgeInformation()">
+            Earn next badge
+        </button>
+    </div>
+
+    <div align="center" ng-show="newUser">
+        <p>
+            Welcome to Bright by Three! Please click the button below to start
+            collecting points to earn your first badge.
+        </p>
         <a href="#" class="btn btn-success" data-toggle="popover"
            tabindex="1" data-trigger="focus"
            title="You are short by {{pointsToEarnNextBadge}} points to earn next
            badge."
            data-content="Go back to dashboard and earn more points by logging
            minutes.">
-            Earn next badge
+            Earn your first badge
         </a>
+    </div>
+
+    <br>
+    <br>
+
+    <div class="progress">
+        <div class="progress-bar progress-bar-danger progress-bar-striped"
+             role="progressbar"
+             aria-valuenow="{{progressBarValue}}" aria-valuemin="0" aria-valuemax="100"
+             style="width: 80%">
+            <span class="sr-only">80% Complete (danger)</span>
+        </div>
     </div>
 
     <!-- bottom Navbar -->

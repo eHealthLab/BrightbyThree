@@ -31,8 +31,15 @@ app.post('/messages/:id/:messageID', getdata.setMessageAsRead);
 app.post('/messages/:message/:email/:messageID', getdata.addMessage);
 app.post('/loginSignup/:firstName/:lastName/:email/:password/:phoneNumber/' +
 ':babyName/:babyDOB/:babyGender/:zipcode', get.addUser);
-app.post('/setGoals/:days/:minutes', get.setGoals);
+app.post('/setGoals/:days/:minutes/:userID', get.setGoals);
+app.post('/logMinutes/:minutes/:userID', get.logMinutes);
 app.post('/feedback/:feedback', getdata.addFeedback);
+app.post('/updateBadge/:badgeNumber/:userID', get.setBadge);
+app.get('/badgeInfo/:userID', get.badgeInfo);
+app.get('/goalsInfo/:userID', get.goalsInfo);
+app.get('/totalPointsInfo/:userID', get.totalPointsInfo);
+
+
 app.post('/changeStatus/:id', get.changeStatus);
 app.post('/sendGCM/:id/:count', getdata.sendGCM);
 app.post('/sendAPN/:id/:count', getdata.sendAPN);

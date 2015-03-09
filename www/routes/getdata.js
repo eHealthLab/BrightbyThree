@@ -396,7 +396,7 @@ exports.addMessage = function(req, res) {
 };
 
 exports.addFeedback = function(req, res) {
-	
+    window.alert('inside addFeedback');
     var feedback = req.params.feedback;
     var lsRegExp = /'/g;
 

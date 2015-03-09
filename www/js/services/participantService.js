@@ -31,7 +31,7 @@ bb3App.factory('participantService', function($http, $q) {
 
     participantServiceInstance.numberOfUnread = 0;
 
-    participantServiceInstance.globalLoginStatus = 'false';
+    participantServiceInstance.globalLoginStatus = true;
 
     participantServiceInstance.ppStatus = "false";
 
@@ -56,6 +56,98 @@ bb3App.factory('participantService', function($http, $q) {
     participantServiceInstance.logMinutes = 10;
 
     participantServiceInstance.earnedNewBadge = true;
+
+    participantServiceInstance.userID = undefined;
+
+    participantServiceInstance.totalPoints = 0;
+
+    participantServiceInstance.nextBadgeToEarn = 1;
+
+    participantServiceInstance.pointsToEarnNextBadge = 0;
+
+    participantServiceInstance.textMessagesIDsArray = [];
+
+    participantServiceInstance.favoriteTextMessagesIDsArray = [];
+
+    participantServiceInstance.weeklyMinutes = undefined;
+
+    participantServiceInstance.monthlyMinutes = undefined;
+
+    participantServiceInstance.daysEnrolled = undefined;
+
+    participantServiceInstance.getDaysEnrolled = function () {
+        return participantServiceInstance.daysEnrolled;
+    }
+
+    participantServiceInstance.setDaysEnrolled = function (days) {
+        participantServiceInstance.daysEnrolled = days;
+    }
+
+    participantServiceInstance.getWeeklyMinutes = function () {
+        return participantServiceInstance.weeklyMinutes;
+    }
+
+    participantServiceInstance.getMonthlyMinutes = function () {
+        return participantServiceInstance.monthlyMinutes;
+    }
+
+    participantServiceInstance.setWeeklyMinutes = function (minutes) {
+        participantServiceInstance.weeklyMinutes = minutes;
+    }
+
+    participantServiceInstance.setMonthlyMinutes = function (minutes) {
+        participantServiceInstance.monthlyMinutes = minutes;
+    }
+
+    participantServiceInstance.AddFavoriteTextMessageID = function(id) {
+        //var length =
+        participantServiceInstance.favoriteTextMessagesIDsArray.push(id);
+    }
+
+    participantServiceInstance.getFavoriteTextMessagesIDsArray = function () {
+        return participantServiceInstance.favoriteTextMessagesIDsArray;
+    }
+
+    participantServiceInstance.AddTextMessageID = function(id) {
+        //var length =
+        participantServiceInstance.textMessagesIDsArray.push(id);
+    }
+
+    participantServiceInstance.getTextMessagesIDsArray = function () {
+        return participantServiceInstance.textMessagesIDsArray;
+    }
+
+    participantServiceInstance.getPointsToEarnNextBadge = function () {
+        return participantServiceInstance.pointsToEarnNextBadge;
+    }
+
+    participantServiceInstance.setPointsToEarnNextBadge = function (points) {
+        participantServiceInstance.pointsToEarnNextBadge = points;
+    }
+
+    participantServiceInstance.getNextBadgeToEarn = function () {
+        return participantServiceInstance.nextBadgeToEarn;
+    }
+
+    participantServiceInstance.setNextBadgeToEarn = function (number) {
+        participantServiceInstance.nextBadgeToEarn = number;
+    }
+
+    participantServiceInstance.getTotalPointsEarned = function () {
+        return participantServiceInstance.totalPoints;
+    }
+
+    participantServiceInstance.setTotalPointsEarned = function (points) {
+        participantServiceInstance.totalPoints = points;
+    }
+
+    participantServiceInstance.getUserID = function () {
+        return participantServiceInstance.userID;
+    }
+
+    participantServiceInstance.setUserID = function (id) {
+        participantServiceInstance.userID = id;
+    }
 
     participantServiceInstance.getEarnedNewBadge = function () {
         return participantServiceInstance.earnedNewBadge;

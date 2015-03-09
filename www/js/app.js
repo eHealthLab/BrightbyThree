@@ -9,7 +9,7 @@
 }());
 
 
-var bb3App = angular.module('bb3', [])
+var bb3App = angular.module('bb3', ['ui.bootstrap'])
     .config(['$routeProvider', function($routeProvider) {
         /*
          * Main route provider for the study design tab
@@ -20,8 +20,13 @@ var bb3App = angular.module('bb3', [])
         )
 
             .when('/dashboard',
-            {templateUrl: 'pages/dashboard.html', controller: 'goalsController'}
+            {templateUrl: 'pages/dashboard.html', controller: 'personalInfoController'}
         )
+            .when('/goals',
+            {templateUrl: 'pages/goals.html', controller: 'goalsController'}
+        )
+
+            .otherwise({ redirectTo: '/' });
 
     }]);
 

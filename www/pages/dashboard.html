@@ -87,7 +87,7 @@
     <!-- endbuild -->
 
     <style>
-        
+
         .navbar-brand-centered {
             display: block;
             max-width: 200px;
@@ -203,7 +203,7 @@
 
 <body>
 
-<div class="container">
+<div class="container" ng-controller="personalInfoController">
     <nav class="navbar navbar-default navbar-fixed-top">
         <div class="container">
             <div class="navbar-header">
@@ -232,8 +232,7 @@
     </nav>
 
 
-    <div class="container" ng-show="!login"
-         ng-controller="stateController">
+    <div ng-show="!getLoginStatus()">
                 <table align="center">
                     <tr>
                         <td>
@@ -294,6 +293,13 @@
 
                             </td>
                             <td align="center">
+
+                                <button class="btn btn-warning btn-circle btn-xl"
+                                        data-toggle="modal"
+                                        data-target="#signUpModal">
+                                    <i class="glyphicon glyphicon-edit"></i>
+                                </button>
+                                <!--
                                 <a href="signup.html">
                                     <span class="btn btn-warning btn-circle btn-xl">
                                         <i style="margin-top: 5px"
@@ -302,6 +308,7 @@
                                         </i>
                                     </span>
                                 </a>
+                                -->
 
                             </td>
                         </tr>
@@ -321,7 +328,7 @@
     <!-- Modal -->
     <div modal-show
             class="modal fade" id="loginModal"
-         modal-visible="!login"
+         modal-visible="!getLoginStatus()"
          tabindex="-1"
          role="dialog" aria-labelledby="loginModal" aria-hidden="true"
             ng-controller="personalInfoController">
@@ -335,15 +342,15 @@
                             used to register with BB3.</label>
                     </div>
                     <div class="modal-body">
-                        <div class="processing rounded-box" ng-show="designEmailProcessing">
-                            <label>Processing</label>
+                        
+                        <div class="alert alert-success" ng-show="getLoginStatus()">
+                            You are successfully logged in. Please close this window to access dashboard.
                         </div>
-                        <div class="alert alert-success" ng-show="!designEmailProcessing && designEmailSuccess !== undefined && designEmailSuccess">
-                            Your email has been sent.
-                        </div>
+                        <!--
                         <div class="alert alert-danger" ng-show="!designEmailProcessing && designEmailSuccess !== undefined && !designEmailSuccess">
                             We're sorry, but we were unable to submit your request at this time.  Please try again.
                         </div>
+                        -->
                         <div class="well">
 
 
@@ -364,12 +371,19 @@
                     <div class="modal-footer">
                         <button type="button" ng-click="submitLoginInfo()"
                                 class="btn btn-primary" aria-hidden="true"
-                                ng-disabled="!emailDesignForm.$valid">
+                                ng-disabled="!emailDesignForm.$valid || getLoginStatus()">
                             Login
                         </button>
                         <button class="btn btn-danger" data-dismiss="modal"
                                 ng-click="designEmailSuccess = undefined"
-                                aria-hidden="true">Cancel</button>
+                                 aria-hidden="true" ng-show="!getLoginStatus()"
+                                >Cancel</button>
+                        <button class="btn btn-danger" data-dismiss="modal"
+                                ng-click="designEmailSuccess = undefined"
+                                aria-hidden="true"
+                                ng-show="getLoginStatus()"
+
+                                >Close</button>
                     </div>
                 </div>
             </div>
@@ -377,8 +391,157 @@
     </div>
     <!-- endModal -->
 
-    <div class="container" ng-controller="stateController"
-         ng-show="login">
+    <!-- Modal -->
+    <div modal-show
+         class="modal fade" id="signUpModal"
+         modal-visible="!getLoginStatus()"
+         tabindex="-1"
+         role="dialog" aria-labelledby="loginModal" aria-hidden="true"
+         ng-controller="personalInfoController">
+        <form id="signupForm" enctype="multipart/form-data"
+              name="signupForm" method="post">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h3>Sign up</h3>
+                        <label>Please enter the following information
+                            and hit Submit when done.</label>
+                    </div>
+                    <div class="modal-body">
+
+                        <div class="alert alert-success" ng-show="getLoginStatus()">
+                            You are successfully signed up. Please close this window to access dashboard.
+                        </div>
+                        <!--
+                        <div class="alert alert-danger" ng-show="!designEmailProcessing && designEmailSuccess !== undefined && !designEmailSuccess">
+                            We're sorry, but we were unable to submit your request at this time.  Please try again.
+                        </div>
+                        -->
+                        <div class="well">
+
+                            <div class="form-group">
+                                <label for="inputFirstName"
+                                       class="col-lg-2 control-label">First Name</label>
+                                <div class="col-lg-10">
+                                    <input type="text" class="form-control" id="inputFirstName"
+                                           placeholder="enter your first name"
+                                           ng-model="newParticipant.firstName" required />
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="inputLastName" class="col-lg-2 control-label">Last Name</label>
+                                <div class="col-lg-10">
+                                    <input type="text" class="form-control" id="inputLastName"
+                                           placeholder="enter your last name"
+                                           ng-model="newParticipant.lastName" required />
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="inputEmail" class="col-lg-2 control-label">Email</label>
+                                <div class="col-lg-10">
+                                    <input type="email" class="form-control" id="inputEmail"
+                                           placeholder="enter your email" ng-model="newParticipant.emailID">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="inputPassword1" class="col-lg-2 control-label">Password</label>
+                                <div class="col-lg-10">
+                                    <input type="password" class="form-control" id="inputPassword1"
+                                           placeholder="enter password"
+                                           ng-model="newParticipant.password1" required />
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="inputPassword2" class="col-lg-2 control-label">Confirm Password</label>
+                                <div class="col-lg-10">
+                                    <input type="password" class="form-control" id="inputPassword2"
+                                           placeholder="reenter password"
+                                           ng-model="newParticipant.password2" required />
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="inputPhoneNumber" class="col-lg-2 control-label">Phone Number</label>
+                                <div class="col-lg-10">
+                                    <input type="number" class="form-control" id="inputPhoneNumber"
+                                           placeholder="phone number"
+                                           ng-model="newParticipant.phoneNumber" required />
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="inputBabyName" class="col-lg-2 control-label">Baby's Name</label>
+                                <div class="col-lg-10">
+                                    <input type="text" class="form-control" id="inputBabyName"
+                                           placeholder="enter your baby's name"
+                                           ng-model="newParticipant.babyName" required />
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="inputBabyDOB" class="col-lg-2 control-label">Baby's date of birth</label>
+                                <div class="col-lg-10">
+                                    <input type="date" class="form-control" id="inputBabyDOB"
+                                           placeholder="enter your baby's date of birth"
+                                           ng-model="newParticipant.babyDOB" required />
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="inputBabyGender" class="col-lg-2 control-label">
+                                    Baby's Gender</label>
+                                <div class="col-lg-10">
+                                    <select class="selectpicker" data-style="btn-primary"
+                                            id="inputBabyGender" ng-model="newParticipant.babyGender">
+                                        <option>Female</option>
+                                        <option>Male</option>
+                                    </select>
+
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="inputzipcode" class="col-lg-2 control-label">Zipcode</label>
+                                <div class="col-lg-10">
+                                    <input type="number" class="form-control" id="inputzipcode"
+                                           placeholder="enter your zipcode"
+                                           ng-model="newParticipant.zipcode" required />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" ng-click="submitSignupInfo()"
+                                class="btn btn-primary" aria-hidden="true"
+                                ng-disabled="!signupForm.$valid">
+                            Submit
+                        </button>
+
+                        <button class="btn btn-danger" data-dismiss="modal"
+                                ng-click="designEmailSuccess = undefined"
+                                aria-hidden="true" ng-show="!getLoginStatus()"
+                                >Cancel</button>
+
+                        <button class="btn btn-danger" data-dismiss="modal"
+                                ng-click="designEmailSuccess = undefined"
+                                aria-hidden="true"
+                                ng-show="getLoginStatus()"
+
+                                >Close</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+    <!-- endModal -->
+
+
+    <div
+         ng-show="getLoginStatus()">
 
         <div class="well">
             <table align="center">
@@ -595,6 +758,7 @@
                         <a href="dashboard.html" class="btn btn-primary btn-lg">
                 <span class="glyphicon glyphicon-th"
                       aria-hidden="true"></span>
+
                         </a>
                         <a href="library.html" class="btn btn-primary" >
                 <span class="glyphicon glyphicon-envelope"

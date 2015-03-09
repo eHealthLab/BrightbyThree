@@ -201,7 +201,7 @@
 
 
 
-<div class="container" ng-controller="stateController">
+<div class="container" ng-controller="personalInfoController">
     <!-- header bar -->
 
     <nav class="navbar navbar-default navbar-fixed-top">
@@ -231,8 +231,7 @@
         </div>
     </nav>
 
-    <div  ng-controller="personalInfoController"
-            ng-show="!loginSucessful">
+    <div>
 
         <div class="row">
             <div class="col-lg-6">
@@ -336,8 +335,14 @@
 
                             <div class="form-group">
                                 <div class="col-lg-10 col-lg-offset-2">
-                                    <a href="dashboard.html" class="btn btn-danger">
+                                    <a href="dashboard.html" class="btn btn-danger"
+                                            ng-show="!getLoginStatus()">
                                         Cancel
+                                    </a>
+
+                                    <a href="dashboard.html" class="btn btn-danger"
+                                       ng-show="getLoginStatus()">
+                                        Close
                                     </a>
 
                                     <button type="submit" class="btn btn-primary"

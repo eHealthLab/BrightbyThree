@@ -154,6 +154,8 @@ exports.addUser = function(req, res){
                         if(err) throw err;
                         var id = rows[0].ID
                             console.log("id is: " + id);
+                            res.send(data);
+                        /*
                         queryString =  "SET foreign_key_checks = 0;" + " create table user" + id + " (ID int auto_increment, inb varchar(30), outb boolean, foreign key(ID) references outbound(ID), primary key(ID));";
                         console.log(queryString);
 						connection = openConnection();
@@ -175,13 +177,14 @@ exports.addUser = function(req, res){
                                         status: "true"
                                     };
                                     console.log("id is: " + id);
-                                    res.send(id);
+                                    res.send(data);
                                 });
                                 connection.end();
                             });
                             connection.end();
-                        });
-                        connection.end();
+                        });*/
+                        //connection.end();
+                        //res.sendStatus(id);
                         });
                         connection.end();
                     });
@@ -195,19 +198,150 @@ exports.addUser = function(req, res){
 };
 
 exports.setGoals = function (req, res) {
-    var daysPerWeek = req.params.days;
-    var minutesPerDay = req.params.minutes;
+
+    var days = req.params.days;
+    var minutes = req.params.minutes;
+    var userid = req.params.userID;
+
+    //console.log("Connection Open");
+
+    var queryStringGet = "select * from goals where userID = ?";
+    console.log("Running the query");
+    if((connection = openConnection())) {
+        connection.query(queryStringGet, [userid], function (err, rows, fields) {
+            console.log("Entered");
+            if (err) throw err;
+            if (rows[0] != undefined) {
+                console.log("User goals exist");
+                /*var data = {
+                 status: "false",
+                 message: "Email ID exists. Use a different Email ID."
+                 };
+                 res.send(data);*/
+
+                if ((connection = openConnection())) {
+                    var queryString = "update goals set daysPerWeek = " + days + ',' + " minutesPerDay = " + minutes + " where userID= " + userid;
+                    console.log(queryString);
+                    connection.query(queryString, [days, minutes], function (err, rows, fields) {
+                        if (err) throw err;
+                        res.send("success");
+                    });
+                }
+
+            }
+            else {
+                ;
+            }
+        })
+    }
+};
+
+exports.logMinutes = function(req, res) {
+    console.log('inside log minutes');
+    var minutes = req.params.minutes;
+    var id = req.params.userID;
+
+    if ((connection = openConnection())) {
+
+        var queryString;
+        if (minutes == 0) {
+            queryString = "insert into totalMinutes (userID, totalPoints) values (id, 0)";
+            console.log(queryString);
+        }
+
+        else {
+            queryString = "update totalMinutes set totalPoints = totalPoints + " + minutes + " where userID = " + id;
+            console.log(queryString);
+        }
+
+        connection.query(queryString, function (err, rows, fields) {
+            if (err) throw err;
+            res.send('success');
+        });
+
+    }
+    connection.end();
+};
+
+exports.setBadge = function (req, res) {
+
+
+    var badge = req.params.badgeNumber;
+    var id = req.params.userID;
+    var flag=0;
+    console.log('inside set badge' + badge + id);
 
     if((connection = openConnection())) {
-        var queryString = "insert into goals (daysPerWeek, minutesPerDay) values('" + daysPerWeek  + '" , "' + minutesPerDay + "')";
+        var queryString;
+        queryString = "select badgeToEarn from badges where userID = " + id;
+        connection.query(queryString, function (err, rows, fields) {
+            //console.log("Entered");
+            if (err) throw err;
+            if (rows[0] != undefined) {
+                console.log("user badge Exists");
+                //flag = 1;
+                queryString = "update badges set badgeToEarn = " + badge + " where userID = " + id;
+            }
+            else {
+                console.log('user badge not there');
+                queryString = "insert into badges (userID, badgeToEarn) values ('" + id + "', '" + badge + "')";
+            }
+
+            if ((connection = openConnection())) {
+                console.log(queryString);
+                connection.query(queryString, function (err, rows, fields) {
+                    if (err) throw err;
+                    res.send("success");
+                });
+            }
+            connection.end();
+        });
+        //connection.end();
+    }
+    //connection.end();
+};
+
+exports.badgeInfo = function (req, res) {
+
+    var id = req.params.userID;
+    var queryString;
+    if((connection = openConnection())) {
+        queryString = "select * from badges where userID = " + id;
         connection.query(queryString, function(err, rows, fields) {
             if (err) throw err;
-            res.send("success");
+            if (rows[0] != undefined) {
+                console.log(rows[0].badgeToEarn)
+                res.sendStatus(rows[0].badgeToEarn);
+
+            }
         });
     }
-}
+};
+
+exports.goalsInfo = function (req, res) {
+
+    var id = req.params.userID;
+    var queryString;
+    if((connection = openConnection())) {
+        queryString = "select * from goals where userID = " + id;
+        connection.query(queryString, function(err, rows, fields) {
+            if (err) throw err;
+            if (rows[0] != undefined) {
+                //console.log(rows);
+                res.sendStatus(rows);
+
+            }
+        });
+    }
+};
+
+exports.totalPointsInfo = function (req, res) {
+
+    var id = req.params.userID;
+};
 
 exports.addFeedback = function(req, res){
+    window.alert('inside addFeedback');
     var feedback = req.params.feedback;
     var lsRegExp = /'/g;
 
