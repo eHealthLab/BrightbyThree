@@ -16,8 +16,7 @@ bb3App.controller('stateController',
         function init() {
 
             $scope.participantService = participantService;
-            $scope.login = true;
-            //$scope.userID = 2;
+            $scope.loginStatus = false;
             $scope.currentLanguage = "English";
             $scope.loginMinutesEnabled = false;
             $scope.badgesEnabled = false;
@@ -35,8 +34,6 @@ bb3App.controller('stateController',
 
         $scope.getLoginStatus = function() {
             return participantService.getLoginStatus();
-            //window.loginStatus = $scope.login;
-            //return $scope.login;
         };
 
         $scope.changeLoginStatus = function() {
@@ -98,10 +95,7 @@ bb3App.controller('stateController',
 
         $scope.logout = function () {
             if (confirm('Are you sure you want to logout?')) {
-                //$scope.loginSuccessful = false;
                 participantService.globalLoginStatus = false;
-                //window.alert($scope.login);
-                //return $scope.login;
             }
         };
 
@@ -111,10 +105,10 @@ bb3App.controller('stateController',
         };
 
         $scope.submitSignupInfo = function() {
-            //window.alert('signup pressed');
             var email = $scope.newParticipant.emailID.toUpperCase();
 
-            var newDOB = '2014-06-06'; // $scope.formatDate($scope.newParticipant.babyDOB);
+            var newDOB =  '2014-06-06'; //$scope.formatDate($scope.newParticipant.babyDOB);
+            // '2014-06-06';
 
             if($scope.newParticipant.password1 != $scope.newParticipant.password2) {
                 //$scope.signUpErrorNotification = "Passwords do not match. Correct them and try again.";
@@ -124,7 +118,7 @@ bb3App.controller('stateController',
             else {
 
                 $http({method: 'POST',
-                    url: 'http://brightbythree.org:3000/loginSignup/' +
+                    url: 'http://localhost:3000/loginSignup/' +
                     $scope.newParticipant.firstName + '/' +
                     $scope.newParticipant.lastName + '/' +
                     email + '/' +
@@ -164,7 +158,7 @@ bb3App.controller('stateController',
                         $scope.newParticipant.zipcode = "";
 /*
                             $http({method: 'POST',
-                                url: 'http://brightbythree.org:3000/logMinutes/' + 0
+                                url: 'http://localhost:3000/logMinutes/' + 0
                                 + '/' + userID
                                 //url: 'http://mothersmilk.ucdenver.edu:3000/feedback/' +
 
@@ -219,19 +213,17 @@ bb3App.controller('stateController',
             //window.alert('inside login in button pressed');
             var email = $scope.emailID.toUpperCase();
 
-                $http.get('http://brightbythree.org:3000/loginSignup/' + email + '/' + $scope.password1).
+                $http.get('http://cbb.ucdenver.edu:3000/loginSignup/' + email + '/' + $scope.password1).
                     success(function (data, status, headers, config) {
-                        //$window.alert("values: " + email + $scope.password1);
+
                         $scope.appsData = data;
-                        //window.alert("login data:" + data[0].ID);
+
                         if ($scope.appsData != "false") {
-                            //window.alert('Login successful');
+
                             $scope.login = true;
                             participantService.globalLoginStatus = true;
+                            $scope.loginStatus = participantService.globalLoginStatus;
                             participantService.setUserID(data[0].ID);
-                            //window.alert(participantService.userID);
-                            $location.path("dashboard.html");
-
 
                             $scope.emailID = "";
                             $scope.password1 = "";
@@ -240,12 +232,10 @@ bb3App.controller('stateController',
 
                             $scope.getBadgeInformation(id);
                             $scope.getGoalsInfo(id);
+                            $scope.getEarnedPointsInfo(id);
 
+                            //$location.path("/dashboard");
 
-                            //window.alert('setting path' + $location.path());
-                            $location.path("/dashboard");
-                            //$scope.apply();
-                            //window.alert('done setting path' + $location.path());
                         }
                         else {
                             $scope.loginErrorNotification = "check the info and login again.";
@@ -260,70 +250,61 @@ bb3App.controller('stateController',
 
         $scope.getBadgeInformation = function (userID) {
 
-            $http.get('http://brightbythree.org:3000/badgeInfo/' + userID).
+            $http.get('http://localhost:3000/badgeInfo/' + userID).
                 success(function (data, status, headers, config) {
-                    //$window.alert("values: " + email + $scope.password1);
+                    //window.alert('success');
                     $scope.appsData = data;
-                    //window.alert("login data:" + data[0].ID);
-                    if ($scope.appsData != undefined) {
-                        window.alert(data);
-                        participantService.setNextBadgeToEarn(data);
-                        //window.alert(data);
+                    if ($scope.appsData.status == "success") {
+                        var badge = $scope.appsData.badgeToEarn;
+                        participantService.setNextBadgeToEarn(badge);
                         $location.path("/dashboard");
                     }
-                    else {
-                        ;
-                    }
+                    else
+                        window.alert("unsuccessful");
                 }).
                 error(function (data, status, headers, config) {
-                    //window.alert("Unable to contact server. Please try again later.");
+                    window.alert("Unable to contact server. Please try again later.");
                 });
         };
 
 
         $scope.getGoalsInfo = function (userID) {
 
-            $http.get('http://brightbythree.org:3000/goalsInfo/' + userID).
+            $http.get('http://localhost:3000/goalsInfo/' + userID).
                 success(function (data, status, headers, config) {
-                    //$window.alert("values: " + email + $scope.password1);
+
                     $scope.appsData = data;
-                    //window.alert("login data:" + data[0].ID);
-                    if ($scope.appsData != undefined) {
-                        participantService.setGoalsDays($scope.appsData[0].daysPerWeek);
-                        participantService.setGoalsMinutes($scope.appsData[0].minutesPerDay);
+                    if ($scope.appsData.status == "success") {
+                        var goals = $scope.appsData.goals;
+                        participantService.setGoalsDays(goals.daysPerWeek);
+                        participantService.setGoalsMinutes(goals.minutesPerDay);
                     }
                     else {
-                        ;
+                        $window.alert('unsuccessful');
                     }
                 }).
                 error(function (data, status, headers, config) {
-                    //window.alert("Unable to contact server. Please try again later.");
+                    window.alert("Unable to contact server. Please try again later.");
                 });
-
         };
 
-        $scope.getEarnedPointsInfo = function () {
+        $scope.getEarnedPointsInfo = function (userID) {
 
-            $http.get('http://brightbythree.org:3000/totalPointsInfo/' + userID).
+            $http.get('http://localhost:3000/totalPointsInfo/' + userID).
                 success(function (data, status, headers, config) {
                     //$window.alert("values: " + email + $scope.password1);
                     $scope.appsData = data;
-                    //window.alert("login data:" + data[0].ID);
-                    if ($scope.appsData != "false") {
-                        participantService.setTotalPointsEarned(data[0].totalPoints);
+                    if ($scope.appsData.status == "success") {
+                        participantService.setTotalPointsEarned($scope.appsData.totalPoints);
                     }
                     else {
-                        ;
+                        $window.alert('unsuccessful');
                     }
                 }).
                 error(function (data, status, headers, config) {
-                    //window.alert("Unable to contact server. Please try again later.");
+                    window.alert("Unable to contact server. Please try again later.");
                 });
-
-
         }
-
-
     })
 
     .controller('goalsController',
@@ -334,7 +315,7 @@ bb3App.controller('stateController',
 
             $scope.participantService = participantService;
             $scope.reset = false;
-
+            $scope.updateStatus = false;
 
             $scope.goals =
             {
@@ -345,37 +326,31 @@ bb3App.controller('stateController',
 
         $scope.getGoalsInfo = function () {
 
-            // Put a http call here to grab these values and then set these two.
-
-            $scope.goals.daysPerWeek = 2;
-            $scope.goals.minutesPerDay = 10;
-            //return $scope.goals;
+            $scope.goals.daysPerWeek = participantService.getGoalsDays();
+            $scope.goals.minutesPerDay = participantService.getGoalsMinutes();
+            //window.alert("Goals: " + $scope.goals.daysPerWeek + ' ' +
+            //$scope.goals.minutesPerDay);
 
         };
 
+        $scope.getStatus = function () {
+            return $scope.updateStatus;
+        }
+
         $scope.setGoals = function () {
 
-            var id = participantService.userID;
+            var id = 2; // participantService.userID;
 
             $http({method: 'POST',
-                url: 'http://brightbythree.org:3000/setGoals/' +
+                url: 'http://localhost:3000/setGoals/' +
                 $scope.goals.daysPerWeek + '/' + $scope.goals.minutesPerDay + '/' + id
             }).
                 success(function (data, status, headers, config) {
-                    //$window.alert("values: " + email + $scope.password1);
-                    $scope.appsData = data;
-                    //window.alert("login data:" + data[0].email);
-                    if (data == "Success") {
-                        //window.alert('request successful');
-                        window.alert('Your goals have been set to ' +
-                        $scope.goals.daysPerWeek + ' days per week and '
-                        + $scope.goals.minutesPerDay + ' minutes per day');
-                        $location.path("/dashboard");
-                    }
-                    else {
-                        ;//$scope.loginErrorNotification = "check the info and login again.";
-                        //window.alert('Check the login information and try again.');
-                    }
+                    $scope.updateStatus = true;
+                    window.alert('Your goals have been set to ' +
+                    $scope.goals.daysPerWeek + ' days per week and '
+                    + $scope.goals.minutesPerDay + ' minutes per day');
+
                 }).
                 error(function (data, status, headers, config) {
                     //window.alert("sorry, error");
@@ -386,6 +361,9 @@ bb3App.controller('stateController',
                 $scope.goals.daysPerWeek;
             participantService.goalsMinutesPerDay =
                 $scope.goals.minutesPerDay;
+
+            //window.alert('goals have been set to: ' + participantService.getGoalsDays()
+            //+ ' ' + participantService.getGoalsMinutes());
 
             if ($scope.goals.daysPerWeek != 2
                 || $scope.goals.minutesPerDay != 10) {
@@ -434,70 +412,48 @@ bb3App.controller('stateController',
         function init() {
 
             $scope.participantService = participantService;
-            $scope.totalPoints = participantService.getTotalPointsEarned();
+            $scope.totalPoints = 800; // participantService.getTotalPointsEarned();
             $scope.participantID = participantService.getUserID();
+            $scope.nextBadgeToEarn = 4; //participantService.getNextBadgeToEarn();
+            // reload the status for each badge
+            $scope.statusBadge = participantService.statusBadge;
 
-            if (participantService.getNextBadgeToEarn() < 2) {
+
+            if ($scope.nextBadgeToEarn < 2) {
                 $scope.newUser = true;
             }
             else {
                 $scope.newUser = false;
+
+                for (var i=0; i < $scope.nextBadgeToEarn; i++) {
+                    //if ($scope.totalPoints >= $scope.statusBadge[i][0]) {
+                        $scope.statusBadge[i][1] = true;
+
+                        //if ($scope.totalPoints < $scope.statusBadge[i + 1][0]) {
+                          //  $scope.statusBadge[i + 1][1] = true;
+                            //break;
+                       // }
+                   // }
+                }
             }
 
-            $scope.pointsToEarnNextBadge =
-                participantService.getPointsToEarnNextBadge();
+            // reload points to earn next badge
+            $scope.pointsToEarnNextBadge = 120;
+            //participantService.getPointsToEarnNextBadge();
 
-            $scope.progressBarValue = $scope.pointsToEarnNextBadge/150;
-
-            $scope.statusBadge = [  [150, false],
-                                    [400, false],
-                                    [700, false],
-                                    [1000, false],
-                                    [1500, false],
-                                    [2000, false],
-                                    [2500, false],
-                                    [3000, false],
-                                    [3500, false],
-                                    [4000, false],
-                                    [4500, false],
-                                    [5000, false]];
-
+            // calculate the percent achieved
+            var number = $scope.statusBadge[$scope.nextBadgeToEarn][0];
+            window.alert('next badge points: ' + number);
+            $scope.progressBarValue = (1 - $scope.pointsToEarnNextBadge/number) * 100;
 
             $scope.nextBadgeToEarn = participantService.getNextBadgeToEarn();
 
         }
 
-
-        $scope.getBadgeInformation = function () {
-
-            // HTTP request to server and retrieve nextBadgeToEarn
-
-            //window.alert('badge information pressed');
-
-            $scope.totalPoints = participantService.getTotalPointsEarned();
-
-            for (var i=0; i < 12; i++) {
-
-
-                if ($scope.totalPoints >= $scope.statusBadge[i][0]
-                    && $scope.totalPoints < $scope.statusBadge[i + 1][0]) {
-                    $scope.statusBadge[i + 1][1] = true;
-                    participantService.setEarnedNewBadge(true);
-                    //$scope.newBadgeEarned = participantService.se
-                    window.alert('Congratulations! You just earned a new badge.')
-                    break;
-                    //return $scope.earnedNewBadge();
-                }
-            }
-
-
-        };
-
         $scope.updateBadgeInformation = function () {
-            //window.alert('update badge information pressed' + participantService.nextBadgeToEarn);
 
             $http({method: 'POST',
-                url: 'http://brightbythree.org:3000/updateBadge/' +
+                url: 'http://localhost:3000/updateBadge/' +
                 participantService.nextBadgeToEarn +
                 '/' + 2 //participantService.userID
             }).
@@ -622,7 +578,7 @@ bb3App.controller('stateController',
 
                     window.alert('defined');
                     $http({method: 'POST',
-                        url: 'http://brightbythree.org:3000/feedback/' + $scope.feedbackText
+                        url: 'http://localhost:3000/feedback/' + $scope.feedbackText
                         //url: 'http://mothersmilk.ucdenver.edu:3000/feedback/' +
                     }).
                     success(function(data, status, headers, config) {
@@ -677,59 +633,68 @@ bb3App.controller('stateController',
         init();
 
         function init() {
-
             $scope.participantService = participantService;
             $scope.logNumberOfMinutes = participantService.getLogMinutes();
+            $scope.minutesUpdated = false;
 
+        }
+
+        $scope.getStatus = function () {
+            return $scope.minutesUpdated;
         }
 
         $scope.logMinutes = function () {
 
             participantService.setLogMinutes($scope.logNumberOfMinutes);
-            //window.alert('save minutes');
 
-            var userID = participantService.getUserID();
-
-            //send an http request to badges table to update these minutes.
-
-            //window.alert('Your minutes have been logged in');
-            //$location.path("/dashboard");
-
-            //send http request to check the total points from badges.
-
+            var userID = 2;// participantService.getUserID();
+            var minutes = $scope.logNumberOfMinutes;
+            window.alert("userid is: " + userID);
+            if (userID == undefined) {
+                ;
+            }
+            else {
             $http({method: 'POST',
-                url: 'http://brightbythree.org:3000/logMinutes/' + $scope.logNumberOfMinutes
+                url: 'http://localhost:3000/logMinutes/' + minutes
                 + '/' + userID
-                    //url: 'http://mothersmilk.ucdenver.edu:3000/feedback/' +
-
             }).
-                success(function(data, status, headers, config) {
-                    $scope.appsData = data;
-                    if(data == "Success") {
-                        //if ($scope.currentLanguage == "English") {
-                            window.alert("Your minutes have been logged in.");
-                            var points = participantService.getTotalPointsEarned() + $scope.logNumberOfMinutes;
-                            participantService.setTotalPointsEarned(points);
-                            //$location.path("../pages/settings.html");
-                        //}
-                        //else if ($scope.currentLanguage == "Español") {
-                            //window.alert("¡Gracias! Sus comentarios fueron entregados.");
-                            $location.path("../pages/settings.html");
-                        //}
-                    }
-                }).
-                error(function(data, status, headers, config) {
-                    if ($scope.currentLanguage == "English") {
-                        window.alert("Unable to contact server. Please try again later.");
-                    }
-                    else if ($scope.currentLanguage == "Español") {
-                        window.alert("No puede comunicarse con el servidor. Por favor de intentarlo más tarde. ");
-                    }
+            success(function(data, status, headers, config) {
+
+                $scope.minutesUpdated = true;
+                $scope.logNumberOfMinutes = "";
+                $scope.appsData = data;
+
+                window.alert("Your minutes have been logged in!");
+
+                var points = participantService.getTotalPointsEarned()
+                    + minutes;
+
+                participantService.setTotalPointsEarned(points);
+
+                //if($scope.appsData.status == "Success") {
+                //if ($scope.currentLanguage == "English") {
+
+                    // check the total points and the current badge to be earned.
+
+                    //var currentBadgeToEarn = 2;
 
 
-                });
+
+                    //else if ($scope.currentLanguage == "Español") {
+                        //window.alert("¡Gracias! Sus comentarios fueron entregados.");
+                    //}
+                //}
+            }).
+            error(function(data, status, headers, config) {
+                if ($scope.currentLanguage == "English") {
+                    window.alert("Unable to contact server. Please try again later.");
+                }
+                else if ($scope.currentLanguage == "Español") {
+                    window.alert("No puede comunicarse con el servidor. Por favor de intentarlo más tarde. ");
+                }
+            });
+            }
         }
-
     })
 
     .controller('networkController',
@@ -766,7 +731,7 @@ bb3App.controller('stateController',
             }
 
             $http({method: 'POST',
-                url: 'http://brightbythree.org:3000/logMinutes/' + $scope.logNumberOfMinutes
+                url: 'http://localhost:3000/logMinutes/' + $scope.logNumberOfMinutes
                 + '/' + userID
                 //url: 'http://mothersmilk.ucdenver.edu:3000/feedback/' +
 

@@ -235,39 +235,30 @@
             <br>
 
             <div class="form-group" align="center">
+                    <label for="readingMinutes" class="col-lg-2 control-label">
 
-                <div class="col-lg-10">
-                    <select class="selectpicker" data-style="btn-primary"
-                            ng-model="logNumberOfMinutes">
-                        <option>5</option>
-                        <option>10</option>
-                        <option>15</option>
-                        <option>20</option>
-                        <option>25</option>
-                        <option>30</option>
-                    </select>
-                </div>
-<!--
-                <div class="col-sm-8-10" align="center">
-                    <input type="number" class="form-control" id="inputMinutes"
-                           ng-model="logNumberOfMinutes" />
--->
-                    <br>
-
-                    <button class="btn btn-primary"
-                            ng-click="logMinutes()">
-                        Save
-                    </button>
-
-
-                </div>
+                    </label>
+                    <div class="col-lg-10">
+                        <input type="number" class="form-control" id="readingMinutes"
+                               placeholder="Enter your reading minutes"
+                               ng-model="logNumberOfMinutes" required />
+                    </div>
             </div>
 
-        </div>
+            <br>
+
+            <div align="center">
+                <button class="btn btn-primary"
+                        ng-click="logMinutes()"
+                        ng-disabled = "getStatus()">
+                    Save
+                </button>
+            </div>
+
+
+            </div>
 
     </div>
-
-
 
     <!-- bottom Navbar -->
     <div class="navbar navbar-default navbar-fixed-bottom">
@@ -275,7 +266,7 @@
             <div class="navbar-header">
                 <div class="bs-component">
                     <div class="btn-group btn-group-justified">
-                        <a href="dashboard.html" class="btn btn-primary btn-lg">
+                        <a href="../index.html" class="btn btn-primary btn-lg">
                         <span class="glyphicon glyphicon-th"
                               aria-hidden="true"></span>
 

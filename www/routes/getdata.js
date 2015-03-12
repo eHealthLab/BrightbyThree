@@ -5,7 +5,7 @@ var qs = require('querystring');
 
 
 var openConnection = function() {
-    return mysql.createConnection({ host: 'localhost', user: 'munjala',
+    return mysql.createConnection({ host: 'localhost', user: 'root',
         database: 'bb3db'});
 };
 
@@ -469,7 +469,8 @@ exports.sendGCM = function(req, res){
 
 	// Value the payload data to send...
 	message.addData('message',"You have a new text message");
-	message.addData('title','Mothers Milk' );
+	message.addData('title','' +
+    ' Milk' );
 	message.addData('msgcnt',unreadCount); // Shows up in the notification in the status bar
 	message.addData('soundname','Voicemail.wav'); //Sound to play upon notification receipt - put in the www folder in app
 	message.timeToLive = 3000;// Duration in seconds to hold in GCM and retry before timing out. Default 4 weeks (2,419,200 seconds) if not specified.

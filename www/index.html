@@ -1,7 +1,6 @@
-<!DOCTYPE html>
 <!--
-* GLIMMPSE (General Linear Multivariate Model Power and Sample size)
-* Copyright (C) 2013 Regents of the University of Colorado.
+* Bright by Three
+* Copyright (C) 2015 Regents of the University of Colorado.
 *
 * This program is free software; you can redistribute it and/or
 * modify it under the terms of the GNU General Public License
@@ -17,13 +16,20 @@
 * along with this program; if not, write to the Free Software
 * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 -->
-<html lang="en" id="ng-app" ng-app="bb3">
 
+<!DOCTYPE html>
+<html lang="en" ng-app="bb3">
 <head>
-    <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;" />
-    <LINK REL="shortcut icon" href="/favicon.ico" type="image/x-icon">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
 
-    <title>Bright by Three</title>
+    <meta name="language" content="en" />
+    <meta name="keywords" content="IOS, tab bar, nav bar, navigation bar, menu, CSS, retina, Jquery Mobile, bartender, plugin, HTML, JQM, cross-browser" />
+    <meta name="description" content="the bartender-plugin is a CSS-only iOS-style tab bar for mobile and desktop browsers (based on the Jquery Mobile element structure)." />
+    <meta name="robots" content="index,follow">
+    <meta name="revisit-after" content="14 days">
+
+    <title>Dashboard</title>
 
     <script type="text/javascript">
         var _gaq = _gaq || [];
@@ -40,22 +46,18 @@
     <!-- replaced by gruntfile when building for mobile -->
     <!-- PHONEGAPJS -->
 
-
     <script type="text/javascript" charset="utf-8" src="phonegap.js"></script>
 
     <!-- build:js js/libraries.js -->
     <script src="lib/jquery.min.js"></script>
     <script src="lib/jquery-ui.min.js"></script>
     <script src="lib/jquery.form.min.js"></script>
-    <script src="lib/highcharts.js"></script>
-    <script src="lib/exporting.js"></script>
 
     <!-- order matters here, so be careful if you edit -->
     <!-- Angular.js scripts -->
     <script src="lib/angular.min.js"></script>
     <script src="lib/angular-touch.js"></script>
-    <script src="lib/ng-grid-2.0.7.min.js"></script>
-    <script src="lib/highcharts-ng.js"></script>
+
     <!-- bootstrap plugins - load after jquery -->
     <script src="lib/bootstrap.min.js"></script>
     <script src="lib/ui-bootstrap-tpls-0.6.0.min.js"></script>
@@ -76,11 +78,12 @@
           rel="stylesheet" id="bs-theme-stylesheet">
 
     <link type="text/css" rel="stylesheet" href="css/bootstrap.min.css">
+    <link type="text/css" rel="stylesheet" href="css/social-buttons.css">
+    <link type="text/css" rel="stylesheet" href="css/font-awesome.min.css">
 
     <link type="text/css" rel="stylesheet" href="css/ng-grid.css">
     <link type="text/css" rel="stylesheet" href="css/bb3.css">
     <link href="css/bootstrap-social.css" rel="stylesheet" >
-    <link href="css/carousel.css" rel="stylesheet">
     <!-- endbuild -->
 
     <style>
@@ -90,11 +93,12 @@
             max-width: 200px;
             margin-left: auto;
             margin-right: auto;
-         }
+            font-family: Helvetica, Arial, sans-serif;
+        }
 
         .navbar-default {
-            background-color: #ffffff;/*#F5F5F5 #357EC7 #3090C7 */
-            border-color: #E7E7E7;
+            background-color: #DCDCDC;/*#F5F5F5 #357EC7 #3090C7 */
+            border-color: #3090C7;
         }
         /* title */
         .navbar-default .navbar-brand {
@@ -164,136 +168,564 @@
 
         .brand { margin-left: auto; margin-right: auto; }
 
+        .btn-circle {
+            width: 30px;
+            height: 30px;
+            text-align: center;
+            padding: 6px 0;
+            font-size: 12px;
+            line-height: 1.428571429;
+            border-radius: 15px;
+        }
+        .btn-circle.btn-lg {
+            width: 50px;
+            height: 50px;
+            padding: 10px 16px;
+            font-size: 18px;
+            line-height: 1.33;
+            border-radius: 25px;
+        }
+        .btn-circle.btn-xl {
+            width: 70px;
+            height: 70px;
+            padding: 10px 16px;
+            font-size: 24px;
+            line-height: 1.33;
+            border-radius: 35px;
+        }
+
     </style>
 
-
-    <script type="text/javascript">
-        $('.carousel').carousel()
-    </script>
+    <!--<script>$("div.navbar-fixed-top").autoHidingNavbar();</script>-->
 
 </head>
 
+
+
 <body>
 
-<!--<div class="container" ng-controller="stateController">-->
-    <!-- header bar -->
-<div class="container">
-
-
-    <nav class="navbar navbar-default navbar-fixed-top
-    ">
+<div class="container" ng-controller="stateController">
+    <nav class="navbar navbar-default navbar-fixed-top">
         <div class="container">
             <div class="navbar-header">
-                <a style="margin-right: 10px" class="navbar-right pull-right">
+                <a style="margin-right: 10px" class="navbar-right pull-right"
+                   onclick="window.open('http://brightbythree.org',
+                    '_system', 'location=yes');">
                     <img src="images/BB3_logo-icon_WEB_rgb.png" width="40" height="56">
                 </a>
 
-                <a class="navbar-brand" style="margin-left: 100px
-                    ; margin-top: 10px"
-                   onclick="window.open('http://brightbythree.org',
-                        '_system', 'location=yes');">
-                    <strong>Bright by Three</strong>
+                <a class="navbar-brand" style="margin-left: 60px
+                ; margin-top: 10px">
+                    <strong>Dashboard</strong>
                 </a>
             </div>
         </div>
     </nav>
 
-    <div id="myCarousel" class="carousel slide" data-ride="carousel">
-        <!-- Indicators -->
-        <ol class="carousel-indicators">
-            <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-            <li data-target="#myCarousel" data-slide-to="1"></li>
-            <li data-target="#myCarousel" data-slide-to="2"></li>
-        </ol>
-        <div class="carousel-inner" role="listbox">
-            <div class="item active">
-                <img src="images/Baby%20-%20african%20american.jpg" alt="">
-                <div class="container">
-                    <div class="carousel-caption">
-                        <p><a class="btn btn-lg btn-primary" href="#" role="button">Sign up today</a></p>
-                    </div>
-                </div>
-            </div>
-            <div class="item">
-                <img src="images/Mom%20reading%20with%20baby%20-%20anglo.jpg" alt="">
-                <div class="container">
-                    <div class="carousel-caption">
-                        <!--<h1>Donate</h1>-->
-                        <p>
 
-                        </p>
-                        <p>
-                            <a class="btn btn-lg btn-primary" href="#" role="button">
-                                Learn more</a>
-                        </p>
-                    </div>
-                </div>
-            </div>
-            <div class="item">
-                <img src="images/Toddler%20on%20grass.jpg" alt="">
-                <div class="container">
-                    <div class="carousel-caption">
+    <div ng-show="!getLoginStatus()">
+        <table align="center">
+            <tr>
+                <td>
 
-                        <p>
+                </td>
+                <td align="center">
+                    Please either login or signup to
+                    access your Bright by Three account.
+                </td>
+            </tr>
+            <tr>
+                <td>
 
-                        </p>
-                        <p>
-                            <a class="btn btn-lg btn-primary" href="#" role="button">
-                                Browse gallery</a></p>
-                    </div>
-                </div>
-            </div>
+                </td>
+                <td>
+
+                </td>
+            </tr>
+            <tr>
+                <td>
+
+                </td>
+                <td>
+
+                </td>
+            </tr>
+        </table>
+
+        <div class="well">
+            <table align="center">
+                <tr>
+                    <td align="center">
+
+                    </td>
+                    <td align="center">
+                        <button class="btn btn-success btn-circle btn-xl"
+                                data-toggle="modal"
+                                data-target="#loginModal">
+                            <i class="glyphicon glyphicon-link"></i>
+                        </button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+
+                    </td>
+                    <td align="center">
+                        <strong>Login</strong>
+                    </td>
+                </tr>
+            </table>
         </div>
-        <a class="left carousel-control" href="#myCarousel"
-           role="button" data-slide="prev">
-            <span class="glyphicon glyphicon-chevron-left"
-                  aria-hidden="true"></span>
-            <span class="sr-only">Previous</span>
-        </a>
-        <a class="right carousel-control" href="#myCarousel"
-           role="button" data-slide="next">
-            <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-            <span class="sr-only">Next</span>
-        </a>
+
+        <div class="well">
+            <table align="center">
+                <tr>
+                    <td align="center">
+
+                    </td>
+                    <td align="center">
+
+                        <button class="btn btn-warning btn-circle btn-xl"
+                                data-toggle="modal"
+                                data-target="#signUpModal">
+                            <i class="glyphicon glyphicon-edit"></i>
+                        </button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+
+                    </td>
+                    <td align="center">
+                        <strong>Signup</strong>
+                    </td>
+                </tr>
+            </table>
+        </div>
+
     </div>
 
-    <!-- main Web application panel
-    <div class="well white-box shaded-box">
+    <!-- Modal -->
+    <div modal-show
+         class="modal fade" id="loginModal"
+         modal-visible="!getLoginStatus()"
+         tabindex="-1"
+         role="dialog" aria-labelledby="loginModal" aria-hidden="true"
+         ng-controller="personalInfoController">
+        <form id="loginForm" enctype="multipart/form-data"
+              name="emailDesignForm" method="post">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h3>Login</h3>
+                        <label>Please enter your email id and password
+                            used to register with BB3.</label>
+                    </div>
+                    <div class="modal-body">
 
-        <p>
-            Bright by Three leads the design, delivery, and evaluation of innovative programs to promote the
-            healthy development of all children in the first three years of life. Our programs are offered at
-            no charge to all parents and caregivers throughout Colorado.
-        </p>
-
-        <p>
-            Bright by Three visits with parents and other caregivers and provides a three-step program to
-            make sure their little ones get the best start at life.
-            And it's absolutely free for these families, supported entirely by charitable contributions.
-        </p>
-
-       <p>
-            To start using the app, please tap on any of the links below. For a quick information,
-            please browse through the tutorial page.
-        </p>
+                        <div class="alert alert-success" ng-show="getLoginStatus()">
+                            You are successfully logged in. Please close this window to access dashboard.
+                        </div>
+                        <div class="well">
+                            <div class="form-group">
+                                <label>Email</label>
+                                <input class="form-control" type="email"
+                                       placeholder="Enter your email id" name="email"
+                                       ng-model="emailID" required />
+                            </div>
+                            <div class="form-group">
+                                <label>Password</label>
+                                <input class="form-control" type="password"
+                                       placeholder="Enter your password"
+                                       name="password" ng-model="password1" required />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" ng-click="submitLoginInfo()"
+                                class="btn btn-primary" aria-hidden="true"
+                                ng-disabled="!emailDesignForm.$valid || getLoginStatus()">
+                            Login
+                        </button>
+                        <button class="btn btn-danger" data-dismiss="modal"
+                                aria-hidden="true" ng-show="!getLoginStatus()"
+                                >Cancel</button>
+                        <button class="btn btn-danger" data-dismiss="modal"
+                                aria-hidden="true"
+                                ng-show="getLoginStatus()"
+                                >Close</button>
+                    </div>
+                </div>
+            </div>
+        </form>
     </div>
--->
+    <!-- endModal -->
 
+    <!-- Modal -->
+    <div modal-show
+         class="modal fade" id="signUpModal"
+         modal-visible="!getLoginStatus()"
+         tabindex="-1"
+         role="dialog" aria-labelledby="loginModal" aria-hidden="true"
+         ng-controller="personalInfoController">
+        <form id="signupForm" enctype="multipart/form-data"
+              name="signupForm" method="post">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h3>Sign up</h3>
+                        <label>Please enter the following information
+                            and hit Submit when done.</label>
+                    </div>
+                    <div class="modal-body">
+
+                        <div class="alert alert-success" ng-show="getLoginStatus()">
+                            You are successfully signed up. Please close this window to access dashboard.
+                        </div>
+                        <div class="well">
+                            <div class="form-group">
+                                <label for="inputFirstName"
+                                       class="col-lg-2 control-label">First Name</label>
+                                <div class="col-lg-10">
+                                    <input type="text" class="form-control" id="inputFirstName"
+                                           placeholder="enter your first name"
+                                           ng-model="newParticipant.firstName" required />
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="inputLastName" class="col-lg-2 control-label">Last Name</label>
+                                <div class="col-lg-10">
+                                    <input type="text" class="form-control" id="inputLastName"
+                                           placeholder="enter your last name"
+                                           ng-model="newParticipant.lastName" required />
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="inputEmail" class="col-lg-2 control-label">Email</label>
+                                <div class="col-lg-10">
+                                    <input type="email" class="form-control" id="inputEmail"
+                                           placeholder="enter your email" ng-model="newParticipant.emailID">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="inputPassword1" class="col-lg-2 control-label">Password</label>
+                                <div class="col-lg-10">
+                                    <input type="password" class="form-control" id="inputPassword1"
+                                           placeholder="enter password"
+                                           ng-model="newParticipant.password1" required />
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="inputPassword2" class="col-lg-2 control-label">Confirm Password</label>
+                                <div class="col-lg-10">
+                                    <input type="password" class="form-control" id="inputPassword2"
+                                           placeholder="reenter password"
+                                           ng-model="newParticipant.password2" required />
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="inputPhoneNumber" class="col-lg-2 control-label">Phone Number</label>
+                                <div class="col-lg-10">
+                                    <input type="number" class="form-control" id="inputPhoneNumber"
+                                           placeholder="phone number"
+                                           ng-model="newParticipant.phoneNumber" required />
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="inputBabyName" class="col-lg-2 control-label">Baby's Name</label>
+                                <div class="col-lg-10">
+                                    <input type="text" class="form-control" id="inputBabyName"
+                                           placeholder="enter your baby's name"
+                                           ng-model="newParticipant.babyName" required />
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="inputBabyDOB" class="col-lg-2 control-label">Baby's date of birth</label>
+                                <div class="col-lg-10">
+                                    <input type="datetime-local" class="form-control" id="inputBabyDOB"
+                                           placeholder="enter your baby's date of birth"
+                                           ng-model="newParticipant.babyDOB" required />
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="inputBabyGender" class="col-lg-2 control-label">
+                                    Baby's Gender</label>
+                                <div class="col-lg-10">
+                                    <select class="selectpicker" data-style="btn-primary"
+                                            id="inputBabyGender" ng-model="newParticipant.babyGender">
+                                        <option>Female</option>
+                                        <option>Male</option>
+                                    </select>
+
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="inputzipcode" class="col-lg-2 control-label">Zipcode</label>
+                                <div class="col-lg-10">
+                                    <input type="number" class="form-control" id="inputzipcode"
+                                           placeholder="enter your zipcode"
+                                           ng-model="newParticipant.zipcode" required />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" ng-click="submitSignupInfo()"
+                                class="btn btn-primary" aria-hidden="true"
+                                ng-disabled="!signupForm.$valid">
+                            Submit
+                        </button>
+
+                        <button class="btn btn-danger" data-dismiss="modal"
+                                ng-click="designEmailSuccess = undefined"
+                                aria-hidden="true" ng-show="!getLoginStatus()"
+                                >Cancel</button>
+
+                        <button class="btn btn-danger" data-dismiss="modal"
+                                ng-click="designEmailSuccess = undefined"
+                                aria-hidden="true"
+                                ng-show="getLoginStatus()"
+
+                                >Close</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+    <!-- endModal -->
+
+
+    <div ng-show="getLoginStatus()">
+        <div class="well">
+            <table align="center">
+                <tr>
+                    <td align="center">
+                        <a href="pages/goals.html">
+                            <span class="btn btn-success btn-circle btn-xl">
+                                <i style="margin-top: 5px" class="glyphicon glyphicon-hand-right"></i>
+                            </span>
+                        </a>
+                    </td>
+                    <td width="70px">
+                    </td>
+                    <td>
+                    </td>
+                    <td align="center">
+                        <a href="#" ng-click="updateFacebookClicks()"
+                           onclick="window.open('https://www.facebook.com/coloradoBrightBeginnings',
+                           '_system', 'location=yes')">
+
+                            <span class="btn btn-primary
+                            btn-circle btn-xl">
+                                <i style="margin-top: 10px" class="fa fa-facebook"></i>
+                            </span>
+                        </a>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td align="center">
+                        <strong>Set Goals</strong>
+                    </td>
+                    <td  width="70px">
+
+                    </td>
+                    <td>
+
+                    </td>
+                    <td align="center">
+                        <strong>Facebook</strong>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td align="center">
+                        <a href="pages/badges.html">
+                            <span class="btn btn-warning btn-circle btn-xl">
+                                <img src="images/glyphish-icons/85-trophy.png" style="margin-top: 10px"></i>
+                                <sup ng-show="earnedNewBadge()">
+                                    <span class="badge">New</span></sup>
+
+                            </span>
+                        </a>
+                    </td>
+                    <td width="70px">
+                    </td>
+                    <td>
+                    </td>
+                    <td align="center">
+                        <a href="pages/network.html">
+                            <span class="btn btn-success btn-circle btn-xl">
+                                <i class="glyphicon glyphicon-stats" style="margin-top: 5px; margin-left: -0.05px"></i>
+                            </span>
+                        </a>
+                    </td>
+                </tr>
+                <tr>
+                    <td align="center">
+                        <strong>Badges</strong>
+                    </td>
+                    <td width="70px">
+
+                    </td>
+                    <td>
+
+                    </td>
+                    <td align="center">
+                        <strong>Network</strong>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+
+                    </td>
+                </tr>
+
+                <tr>
+                    <td align="center">
+                        <a href="pages/minutes.html">
+                            <span class="btn btn-info btn-circle btn-xl">
+                                <i style="margin-top: 8px"  class="glyphicon glyphicon-pencil" style="margin-top: 10px"></i>
+                            </span>
+                        </a>
+                    </td>
+                    <td width="70px">
+                    </td>
+                    <td>
+                    </td>
+                    <td align="center">
+                        <a href="pages/settings.html">
+                            <span class="btn btn-warning btn-circle btn-xl">
+
+                                <img src="images/settings.png" style="margin-top: 8px"  >
+                            </span>
+                        </a>
+                    </td>
+
+                </tr>
+                <tr>
+                    <td align="center">
+                        <strong>Log in minutes</strong>
+                    </td>
+                    <td width="70px">
+
+                    </td>
+                    <td>
+
+                    </td>
+                    <td align="center">
+                        <strong>Settings</strong>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+
+                    </td>
+
+                    <td>
+                        <a ng-click="logout()">
+                            <span class="btn btn-danger
+                            btn-circle btn-xl">
+                                <i style="margin-top: 8px" class="glyphicon glyphicon-log-out"></i>
+                            </span>
+                        </a>
+                    </td>
+
+                    <td>
+
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+
+                    </td>
+
+                    <td align="center">
+                        <strong>Logout</strong>
+                    </td>
+
+                    <td>
+
+                    </td>
+                </tr>
+
+            </table>
+        </div>
+
+
+    </div>
+
+    <!-- bottom Navbar -->
     <div class="navbar navbar-default navbar-fixed-bottom">
         <div class="container">
             <div class="navbar-header">
-
                 <div class="bs-component">
                     <div class="btn-group btn-group-justified">
-                        <a href="pages/dashboard.html" class="btn btn-primary btn-lg">
+                        <a href="#" class="btn btn-primary btn-lg">
                 <span class="glyphicon glyphicon-th"
                       aria-hidden="true"></span>
+
                         </a>
                         <a href="pages/library.html" class="btn btn-primary" >
                 <span class="glyphicon glyphicon-envelope"
-                      aria-hidden="true"></span>
-                            <sup>
-                                <span class="badge">2</span></sup>
+                      aria-hidden="true"></span><sup>
+                            <span class="badge">2</span></sup>
                         </a>
                         <a href="pages/favorites.html" class="btn btn-primary">
                 <span class="glyphicon glyphicon-star"
@@ -312,8 +744,10 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div><!-- end bottom Navbar -->
 
 </div>
 </body>
 </html>
+
+

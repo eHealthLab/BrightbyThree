@@ -53,7 +53,7 @@ bb3App.factory('participantService', function($http, $q) {
 
     participantServiceInstance.goalsMinutesPerDay = 10;
 
-    participantServiceInstance.logMinutes = 10;
+    participantServiceInstance.logMinutes = undefined;
 
     participantServiceInstance.earnedNewBadge = true;
 
@@ -74,6 +74,23 @@ bb3App.factory('participantService', function($http, $q) {
     participantServiceInstance.monthlyMinutes = undefined;
 
     participantServiceInstance.daysEnrolled = undefined;
+
+    participantServiceInstance.statusBadge = [
+        [150, false],
+        [400, false],
+        [700, false],
+        [1000, false],
+        [1500, false],
+        [2000, false],
+        [2500, false],
+        [3000, false],
+        [3500, false],
+        [4000, false],
+        [4500, false],
+        [5000, false]
+    ];
+
+
 
     participantServiceInstance.getDaysEnrolled = function () {
         return participantServiceInstance.daysEnrolled;

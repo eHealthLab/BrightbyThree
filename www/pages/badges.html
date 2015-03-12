@@ -221,7 +221,7 @@
 
                 <a style="margin-top: 10px; margin-left: 10px" class="navbar-left pull-left
                             btn btn-primary btn-circle btn-sm"
-                   href="dashboard.html">
+                   href="../index.html">
                                 <span class="glyphicon glyphicon-th"
                                       aria-hidden="true"></span>
                 </a>
@@ -246,6 +246,7 @@
 
             <tr bgcolor="#faebd7" ng-show="statusBadge[0][1]">
 
+                
                 <td align="center"
                     width="200">
                     Badge Name
@@ -466,14 +467,18 @@
     <br>
     <br>
 
+
     <div class="progress">
-        <div class="progress-bar progress-bar-danger progress-bar-striped"
+        <div class="progress-bar progress-bar-danger progress-bar-striped
+                    active"
              role="progressbar"
              aria-valuenow="{{progressBarValue}}" aria-valuemin="0" aria-valuemax="100"
-             style="width: 80%">
-            <span class="sr-only">80% Complete (danger)</span>
+             style="width: {{progressBarValue | number:0}}%">
+            <span class="sr-only">{{progressBarValue | number:0}}% Complete (danger)</span>
+            {{progressBarValue | number:0}}%
         </div>
     </div>
+
 
     <!-- bottom Navbar -->
     <div class="navbar navbar-default navbar-fixed-bottom">

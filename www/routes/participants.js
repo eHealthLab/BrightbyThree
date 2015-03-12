@@ -2,7 +2,7 @@ var mysql = require('mysql');
 //var gcm = require('node-gcm');
 
 var openConnection = function() {
-    return mysql.createConnection({ host: 'localhost', user: 'munjala',
+    return mysql.createConnection({ host: 'localhost', user: 'root',
         database: 'bb3db', multipleStatements: true });
 };
 
@@ -26,9 +26,10 @@ exports.one = function(req, res){
     //id = String(id).replace(lsRegExp, "''");
     //pwd = String(pwd).replace(lsRegExp, "''");
     if ((connection = openConnection())) {
-        console.log("Connection Open");
+        //console.log("Connection Open");
         var queryString = "select * from participants where email = ?";
-        console.log("Running the query");
+        console.log("Running the query:\n");
+        console.log(queryString);
         connection.query(queryString, [id], function(err, rows, fields) {
             console.log("Entered function");
             if (err) throw err;
@@ -201,28 +202,22 @@ exports.setGoals = function (req, res) {
 
     var days = req.params.days;
     var minutes = req.params.minutes;
-    var userid = req.params.userID;
+    var id = req.params.userID;
 
     //console.log("Connection Open");
 
-    var queryStringGet = "select * from goals where userID = ?";
-    console.log("Running the query");
+    var queryStringGet = "select * from goals where userID = " + id;
+
     if((connection = openConnection())) {
-        connection.query(queryStringGet, [userid], function (err, rows, fields) {
-            console.log("Entered");
+        console.log(queryStringGet);
+        connection.query(queryStringGet, function (err, rows, fields) {
+            //console.log("Entered");
             if (err) throw err;
             if (rows[0] != undefined) {
-                console.log("User goals exist");
-                /*var data = {
-                 status: "false",
-                 message: "Email ID exists. Use a different Email ID."
-                 };
-                 res.send(data);*/
-
                 if ((connection = openConnection())) {
-                    var queryString = "update goals set daysPerWeek = " + days + ',' + " minutesPerDay = " + minutes + " where userID= " + userid;
+                    var queryString = "update goals set daysPerWeek = " + days + ',' + " minutesPerDay = " + minutes + " where userID= " + id;
                     console.log(queryString);
-                    connection.query(queryString, [days, minutes], function (err, rows, fields) {
+                    connection.query(queryString, function (err, rows, fields) {
                         if (err) throw err;
                         res.send("success");
                     });
@@ -240,27 +235,27 @@ exports.logMinutes = function(req, res) {
     console.log('inside log minutes');
     var minutes = req.params.minutes;
     var id = req.params.userID;
-
+    var connection;
     if ((connection = openConnection())) {
-
         var queryString;
-        if (minutes == 0) {
-            queryString = "insert into totalMinutes (userID, totalPoints) values (id, 0)";
-            console.log(queryString);
-        }
-
-        else {
-            queryString = "update totalMinutes set totalPoints = totalPoints + " + minutes + " where userID = " + id;
-            console.log(queryString);
-        }
-
+        queryString = "select totalPoints from totalMinutes where userID =  " + id;
+        console.log(queryString);
         connection.query(queryString, function (err, rows, fields) {
             if (err) throw err;
-            res.send('success');
+            queryString = "update totalMinutes set totalPoints = totalPoints + " + minutes + " where userID = " + id;
+            console.log(queryString);
+            if ((connection = openConnection())) {
+                connection.query(queryString, function (err, rows, fields) {
+                    if (err) throw err;
+                    var data = {
+                        status: "success"
+                    };
+                    res.send(data);
+                });
+            }
         });
-
+        connection.end();
     }
-    connection.end();
 };
 
 exports.setBadge = function (req, res) {
@@ -291,7 +286,7 @@ exports.setBadge = function (req, res) {
                 console.log(queryString);
                 connection.query(queryString, function (err, rows, fields) {
                     if (err) throw err;
-                    res.send("success");
+                    res.sendStatus("success");
                 });
             }
             connection.end();
@@ -307,12 +302,23 @@ exports.badgeInfo = function (req, res) {
     var queryString;
     if((connection = openConnection())) {
         queryString = "select * from badges where userID = " + id;
+        console.log(queryString);
         connection.query(queryString, function(err, rows, fields) {
             if (err) throw err;
             if (rows[0] != undefined) {
-                console.log(rows[0].badgeToEarn)
-                res.sendStatus(rows[0].badgeToEarn);
+                console.log('next badge is: ' + rows[0].badgeToEarn);
 
+                var data = {
+                    status: "success",
+                    badgeToEarn: rows[0].badgeToEarn
+                };
+                res.send(data);
+            }
+            else {
+                var data = {
+                    status: "failure",
+                    badgeToEarn: -1
+                };
             }
         });
     }
@@ -327,9 +333,12 @@ exports.goalsInfo = function (req, res) {
         connection.query(queryString, function(err, rows, fields) {
             if (err) throw err;
             if (rows[0] != undefined) {
-                //console.log(rows);
-                res.sendStatus(rows);
-
+                console.log(rows[0]);
+                var data = {
+                    status: "success",
+                    goals: rows[0]
+                }
+                res.send(data);
             }
         });
     }
@@ -338,6 +347,21 @@ exports.goalsInfo = function (req, res) {
 exports.totalPointsInfo = function (req, res) {
 
     var id = req.params.userID;
+    var queryString;
+    if ((connection = openConnection())) {
+        queryString = "select * from totalMinutes where userID = " + id;
+        connection.query(queryString, function(err, rows, fields) {
+            if (err) throw err;
+            if (rows[0] != undefined) {
+                console.log(rows[0]);
+                var data = {
+                    status: "success",
+                    totalPoints: rows[0].totalPoints
+                }
+                res.send(data);
+            }
+        });
+    }
 };
 
 exports.addFeedback = function(req, res){

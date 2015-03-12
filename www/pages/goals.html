@@ -29,7 +29,7 @@
     <meta name="robots" content="index,follow">
     <meta name="revisit-after" content="14 days">
 
-    <title>Dashboard</title>
+    <title>Goals</title>
 
     <script type="text/javascript">
         var _gaq = _gaq || [];
@@ -72,8 +72,6 @@
     <script src="../js/services/participantService.js"></script>
     <script src="../js/controllers/controllers.js"></script>
     <!-- endbuild -->
-
-    <!-- build:css css/glimmpse.css -->
 
     <link href="data:text/css;charset=utf-8,"
           data-href="css/bootstrap-theme.min.css"
@@ -198,7 +196,8 @@
 
 <body>
 
-<div class="container" ng-controller="goalsController">
+<div class="container" ng-controller="goalsController"
+        ng-init="getGoalsInfo()">
     <nav class="navbar navbar-default navbar-fixed-top
                 ">
         <div class="container">
@@ -212,7 +211,7 @@
 
                 <a style="margin-top: 10px; margin-left: 10px" class="navbar-left pull-left
                             btn btn-primary btn-circle btn-sm"
-                   href="dashboard.html">
+                   href="../index.html">
                                 <span class="glyphicon glyphicon-th"
                                       aria-hidden="true"></span>
                 </a>
@@ -280,12 +279,24 @@
                 </td>
                 <td>
                     <button class="btn btn-primary"
-                            data-ng-click="setGoals()">
+                            data-ng-click="setGoals()"
+                            ng-disabled = "getStatus()">
                         Save
                     </button>
                 </td>
             </tr>
         </table>
+        <br>
+        <br>
+        <div class="progress">
+            <div class="progress-bar progress-bar-danger progress-bar-striped"
+                 role="progressbar"
+                 aria-valuenow="{{progressBarValue}}" aria-valuemin="0" aria-valuemax="100"
+                 style="width: 80%">
+
+                {{progressBarValue | number:0}}%
+            </div>
+        </div>
     </div>
 
 
@@ -296,7 +307,7 @@
             <div class="navbar-header">
                 <div class="bs-component">
                     <div class="btn-group btn-group-justified">
-                        <a href="dashboard.html" class="btn btn-primary btn-lg">
+                        <a href="../index.html" class="btn btn-primary btn-lg">
                         <span class="glyphicon glyphicon-th"
                               aria-hidden="true"></span>
 
