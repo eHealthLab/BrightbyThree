@@ -43,8 +43,13 @@ bb3App.controller('stateController',
 
         $scope.earnedNewBadge = function () {
             return participantService.getEarnedNewBadge();
-        }
+        };
 
+        $scope.logout = function () {
+            if (confirm('Are you sure you want to logout?')) {
+                participantService.globalLoginStatus = false;
+            }
+        }
 
 })
 
@@ -118,7 +123,7 @@ bb3App.controller('stateController',
             else {
 
                 $http({method: 'POST',
-                    url: 'http://localhost:3000/loginSignup/' +
+                    url: 'http://cbb.ucdenver.edu:3000/loginSignup/' +
                     $scope.newParticipant.firstName + '/' +
                     $scope.newParticipant.lastName + '/' +
                     email + '/' +
@@ -137,14 +142,15 @@ bb3App.controller('stateController',
                     if($scope.appsData != undefined) {
                         $scope.login = true;
                         window.alert("You have successfully signed up.");
-                        participantService.setUserID(2);
+                        window.alert("id is + " + $scope.appsData.userId);
+                        participantService.setUserID($scope.appsData.userId);
 
                         participantService.globalLoginStatus = true;
 
                         participantService.setNextBadgeToEarn(1);
                         participantService.setPointsToEarnNextBadge(150);
                         participantService.setTotalPointsEarned(0);
-                        var userID = participantService.getUserID();
+                        var userID = $scope.appsData.userId;
 
                         $scope.newParticipant.firstName = "";
                         $scope.newParticipant.lastName = "";
@@ -156,37 +162,29 @@ bb3App.controller('stateController',
                         $scope.newParticipant.babyGender = "";
                         $scope.newParticipant.babyDOB = "";
                         $scope.newParticipant.zipcode = "";
-/*
+
                             $http({method: 'POST',
-                                url: 'http://localhost:3000/logMinutes/' + 0
-                                + '/' + userID
+                                url: 'http://cbb.ucdenver.edu:3000/initialize/' + userID
                                 //url: 'http://mothersmilk.ucdenver.edu:3000/feedback/' +
 
                             }).
-                                success(function(data, status, headers, config) {
-                                    $scope.appsData = data;
-                                    if(data == "Success") {
-                                        //if ($scope.currentLanguage == "English") {
-                                        window.alert("Your minutes have been logged in.");
-                                        //$location.path("../pages/settings.html");
-                                        //}
-                                        //else if ($scope.currentLanguage == "Español") {
-                                        //window.alert("¡Gracias! Sus comentarios fueron entregados.");
-                                        $location.path("../pages/settings.html");
-                                        //}
-                                    }
-                                }).
-                                error(function(data, status, headers, config) {
-                                    if ($scope.currentLanguage == "English") {
-                                        window.alert("Unable to contact server. Please try again later.");
-                                    }
-                                    else if ($scope.currentLanguage == "Español") {
-                                        window.alert("No puede comunicarse con el servidor. Por favor de intentarlo más tarde. ");
-                                    }
-                                });
+                            success(function(data, status, headers, config) {
+                                $scope.appsData = data;
+                                if(data == "Success") {
+                                    ;
+                                }
+                            }).
+                            error(function(data, status, headers, config) {
+                                if ($scope.currentLanguage == "English") {
+                                    window.alert("Unable to contact server. Please try again later.");
+                                }
+                                else if ($scope.currentLanguage == "Español") {
+                                    window.alert("No puede comunicarse con el servidor. Por favor de intentarlo más tarde. ");
+                                }
+                            });
 
-                            $location.path("/dashboard");
-                            */
+                            //$location.path("/dashboard");
+
                     }
                     else {
                         window.alert("Email ID exists. Use a different Email ID.");
@@ -228,7 +226,8 @@ bb3App.controller('stateController',
                             $scope.emailID = "";
                             $scope.password1 = "";
 
-                            var id = participantService.getUserID();
+                            var id = data[0].ID; // participantService.getUserID();
+                            window.alert('id: '+ id);
 
                             $scope.getBadgeInformation(id);
                             $scope.getGoalsInfo(id);
@@ -250,7 +249,7 @@ bb3App.controller('stateController',
 
         $scope.getBadgeInformation = function (userID) {
 
-            $http.get('http://localhost:3000/badgeInfo/' + userID).
+            $http.get('http://cbb.ucdenver.edu:3000/badgeInfo/' + userID).
                 success(function (data, status, headers, config) {
                     //window.alert('success');
                     $scope.appsData = data;
@@ -270,7 +269,7 @@ bb3App.controller('stateController',
 
         $scope.getGoalsInfo = function (userID) {
 
-            $http.get('http://localhost:3000/goalsInfo/' + userID).
+            $http.get('http://cbb.ucdenver.edu:3000/goalsInfo/' + userID).
                 success(function (data, status, headers, config) {
 
                     $scope.appsData = data;
@@ -290,7 +289,7 @@ bb3App.controller('stateController',
 
         $scope.getEarnedPointsInfo = function (userID) {
 
-            $http.get('http://localhost:3000/totalPointsInfo/' + userID).
+            $http.get('http://cbb.ucdenver.edu:3000/totalPointsInfo/' + userID).
                 success(function (data, status, headers, config) {
                     //$window.alert("values: " + email + $scope.password1);
                     $scope.appsData = data;
@@ -342,7 +341,7 @@ bb3App.controller('stateController',
             var id = 2; // participantService.userID;
 
             $http({method: 'POST',
-                url: 'http://localhost:3000/setGoals/' +
+                url: 'http://cbb.ucdenver.edu:3000/setGoals/' +
                 $scope.goals.daysPerWeek + '/' + $scope.goals.minutesPerDay + '/' + id
             }).
                 success(function (data, status, headers, config) {
@@ -414,7 +413,7 @@ bb3App.controller('stateController',
             $scope.participantService = participantService;
             $scope.totalPoints = 800; // participantService.getTotalPointsEarned();
             $scope.participantID = participantService.getUserID();
-            $scope.nextBadgeToEarn = 4; //participantService.getNextBadgeToEarn();
+            $scope.nextBadgeToEarn = 1; //participantService.getNextBadgeToEarn();
             // reload the status for each badge
             $scope.statusBadge = participantService.statusBadge;
 
@@ -443,7 +442,6 @@ bb3App.controller('stateController',
 
             // calculate the percent achieved
             var number = $scope.statusBadge[$scope.nextBadgeToEarn][0];
-            window.alert('next badge points: ' + number);
             $scope.progressBarValue = (1 - $scope.pointsToEarnNextBadge/number) * 100;
 
             $scope.nextBadgeToEarn = participantService.getNextBadgeToEarn();
@@ -453,7 +451,7 @@ bb3App.controller('stateController',
         $scope.updateBadgeInformation = function () {
 
             $http({method: 'POST',
-                url: 'http://localhost:3000/updateBadge/' +
+                url: 'http://cbb.ucdenver.edu:3000/updateBadge/' +
                 participantService.nextBadgeToEarn +
                 '/' + 2 //participantService.userID
             }).
@@ -501,28 +499,30 @@ bb3App.controller('stateController',
             participantService.AddFavoriteTextMessageID(3);
             participantService.AddFavoriteTextMessageID(5);
 
-
-
-            $scope.sampleTextSubject1 = "Welcome to CBB!";
-            $scope.sampleTextContent1 = "Over the coming months you will be " +
+            $scope.sampleTextSubject1 = "Welcome";
+            $scope.sampleTextContent1 = "Welcome to CBB! Over the coming months you will be " +
             "receiving messages with ideas to promote your baby’s development.";
             $scope.sampleTextImage = "../images/BB3_logo_vert_rgb.png";
             $scope.sampleTextVideo1 = "https://www.youtube.com/embed/mN5rIVbUG7M";
+            $scope.inbound1 = false;
 
 
-            $scope.sampleTextSubject2 = "True or False?";
-            $scope.sampleTextContent2 = "Babies are born with all of the " +
-            "brain cells they need to learn to talk.";
+            $scope.sampleTextSubject2 = "Best Teacher";
+            $scope.sampleTextContent2 = "True or False? 80% of a baby's brain development will " +
+            "occur in the first 3 years of life";
             $scope.sampleTextImage2 = "../images/BB3_logo_vert_rgb.png";
-            $scope.sampleTextVideo2 = "https://www.youtube.com/embed/mN5rIVbUG7M";
+            //$scope.sampleTextVideo2 = "https://www.youtube.com/embed/mN5rIVbUG7M";
+            $scope.inbound2 = true;
 
             $scope.sampleTextSubject3 = "Quiz Answer";
-            $scope.sampleTextContent3 = "Correct! Babies are born with the brain cells they " +
-            "need to learn to talk! Talking to your baby strengthens the connections these cells " +
-            "need to survive.";
+            $scope.sampleTextContent3 = "Correct! Most of baby's brain development will" +
+            "occur during the early years of life. This is why it is so important to engage " +
+            "in talking, reading, playing, and encouragement right now!";
             $scope.sampleTextImage = "../images/BB3_logo_vert_rgb.png";
-            $scope.sampleTextVideo3 = "https://www.youtube.com/embed/mN5rIVbUG7M";
+            //$scope.sampleTextVideo3 = "https://www.youtube.com/embed/mN5rIVbUG7M";
+            $scope.inbound3 = false;
         }
+
 
         $scope.addToFavoritesPressed = function(){
             window.alert('add to favorites pressed');
@@ -545,59 +545,39 @@ bb3App.controller('stateController',
         function init() {
 
             $scope.feedbackText = undefined;
-
+            $scope.feedbackStatus = false;
         }
 
-        $scope.sendEmailForgotEmailID = function () {
-
-            window.alert('forgot email id called');
-            $window.plugin.email.open({
-                to:      ['agileehealth@gmail.com'],
-                subject: 'Forgot my email id',
-                body:    'I have forgotten my email id. Please contact me at BLAH'
-            });
-
-        };
-
-        $scope.sendEmailForgotPassword = function () {
-
-            window.alert('forgot password called');
-            $window.plugin.email.open({
-                to:      ['agileehealth@gmail.com'],
-                subject: 'Forgot my password',
-                body:    'I have forgotten my password. ' +
-                'Please contact me at BLAH'
-            });
-
-        };
-
         $scope.sendFeedback = function() {
-            window.alert("inside feedback function" + $scope.feedbackText);
+            var userID = 2; // participantService.getUserID();
             if ($scope.feedbackText != undefined) {
-                //if(participantService.getLoginStatus() != "false") {
-
-                    window.alert('defined');
-                    $http({method: 'POST',
-                        url: 'http://localhost:3000/feedback/' + $scope.feedbackText
-                        //url: 'http://mothersmilk.ucdenver.edu:3000/feedback/' +
+                if (userID == undefined) {
+                    ;
+                }
+                else {
+                    $http({
+                        method: 'POST',
+                        url: 'http://cbb.ucdenver.edu:3000/feedback/' + userID + '/' + $scope.feedbackText
                     }).
-                    success(function(data, status, headers, config) {
-                        window.alert('success');
+                    success(function (data, status, headers, config) {
+
+                        $scope.feedbackStatus = true;
+                        $scope.feedbackText = "";
                         $scope.appsData = data;
-                        if(data == "Success") {
+                        if (data == "Success") {
                             window.alert("Thank You! Your feedback has been submitted.");
-                            $location.path("/dashboard");
+                            //$location.path("/dashboard");
                             if ($scope.currentLanguage == "English") {
                                 window.alert("Thank You! Your feedback has been submitted.");
-                                $location.path("../pages/settings.html");
+                                //$location.path("../pages/settings.html");
                             }
                             else if ($scope.currentLanguage == "Español") {
                                 window.alert("¡Gracias! Sus comentarios fueron entregados.");
-                                $location.path("/dashboard");
+                                //$location.path("/dashboard");
                             }
                         }
                     }).
-                    error(function(data, status, headers, config) {
+                    error(function (data, status, headers, config) {
                         if ($scope.currentLanguage == "English") {
                             window.alert("Unable to contact server. Please try again later.");
                         }
@@ -607,11 +587,7 @@ bb3App.controller('stateController',
 
 
                     });
-
-                //}
-
-                //else {
-                    window.alert($scope.currentLanguage);
+                    //window.alert($scope.currentLanguage);
                     if ($scope.currentLanguage == "English") {
                         window.alert("Please login first.");
                         $location.path("/login");
@@ -620,11 +596,9 @@ bb3App.controller('stateController',
                         window.alert("Por favor de hacer login primero.");
                         $location.path("/spanish/login");
                     }
-
-
-               // }
-            }
-        }
+                } // end user id is !undefined
+            } // end feedback is !undefined
+        } // end sendFeedback function
 
     })
 
@@ -635,13 +609,15 @@ bb3App.controller('stateController',
         function init() {
             $scope.participantService = participantService;
             $scope.logNumberOfMinutes = participantService.getLogMinutes();
+            $scope.totalPointsEarnedSoFar = participantService.getTotalPointsEarned();
             $scope.minutesUpdated = false;
+            $scope.nextBadgeToEarn = participantService.getNextBadgeToEarn();
 
         }
 
         $scope.getStatus = function () {
             return $scope.minutesUpdated;
-        }
+        };
 
         $scope.logMinutes = function () {
 
@@ -649,50 +625,65 @@ bb3App.controller('stateController',
 
             var userID = 2;// participantService.getUserID();
             var minutes = $scope.logNumberOfMinutes;
-            window.alert("userid is: " + userID);
             if (userID == undefined) {
-                ;
+                    ;
             }
             else {
-            $http({method: 'POST',
-                url: 'http://localhost:3000/logMinutes/' + minutes
-                + '/' + userID
-            }).
-            success(function(data, status, headers, config) {
+                    $http({method: 'POST',
+                        url: 'http://cbb.ucdenver.edu:3000/logMinutes/' + minutes
+                        + '/' + userID
+                    }).
+                    success(function(data, status, headers, config) {
 
-                $scope.minutesUpdated = true;
-                $scope.logNumberOfMinutes = "";
-                $scope.appsData = data;
+                        $scope.minutesUpdated = true;
+                        $scope.logNumberOfMinutes = "";
+                        $scope.appsData = data;
 
-                window.alert("Your minutes have been logged in!");
+                        window.alert("Great! Your minutes have been logged in!");
 
-                var points = participantService.getTotalPointsEarned()
-                    + minutes;
+                        var points = participantService.getTotalPointsEarned()
+                            + minutes;
 
-                participantService.setTotalPointsEarned(points);
+                        participantService.setTotalPointsEarned(points);
 
-                //if($scope.appsData.status == "Success") {
-                //if ($scope.currentLanguage == "English") {
+                        $scope.nextBadgeToEarn = 1; //participantService.getNextBadgeToEarn();
+                        $scope.statusBadge = participantService.statusBadge;
 
-                    // check the total points and the current badge to be earned.
+                        window.alert('next badge to earn: ' + $scope.nextBadgeToEarn +
+                        'total points so far:' + points + 'statusBadge[$scope.nextBadgeToEarn][0]'
+                        + $scope.statusBadge[$scope.nextBadgeToEarn][0]);
+                        if (points >= $scope.statusBadge[$scope.nextBadgeToEarn][0]) {
+                            statusBadge[$scope.nextBadgeToEarn][1] = true;
+                            participantService.statusBadge[$scope.nextBadgeToEarn][1] = true;
+                            window.alert('Congratulations! You just earned a new badge.');
+                            participantServiceInstance.setNextBadgeToEarn($scope.nextBadgeToEarn+1);
 
-                    //var currentBadgeToEarn = 2;
-
-
-
-                    //else if ($scope.currentLanguage == "Español") {
-                        //window.alert("¡Gracias! Sus comentarios fueron entregados.");
-                    //}
-                //}
-            }).
-            error(function(data, status, headers, config) {
-                if ($scope.currentLanguage == "English") {
-                    window.alert("Unable to contact server. Please try again later.");
-                }
-                else if ($scope.currentLanguage == "Español") {
-                    window.alert("No puede comunicarse con el servidor. Por favor de intentarlo más tarde. ");
-                }
-            });
+                            $http({method: 'POST',
+                                url: 'http://cbb.ucdenver.edu:3000/updateBadge/' +
+                                participantService.nextBadgeToEarn +
+                                '/' + 2 //participantService.userID
+                            }).
+                            success(function (data, status, headers, config) {
+                                $scope.appsData = data;
+                                if (data == "Success") {
+                                }
+                                else {
+                                    ;
+                                }
+                            }).
+                            error(function (data, status, headers, config) {
+                                    window.alert("Unable to contact server. Please try again later.");
+                            });
+                        }
+                    }).
+                    error(function(data, status, headers, config) {
+                        if ($scope.currentLanguage == "English") {
+                            window.alert("Unable to contact server. Please try again later.");
+                        }
+                        else if ($scope.currentLanguage == "Español") {
+                            window.alert("No puede comunicarse con el servidor. Por favor de intentarlo más tarde. ");
+                        }
+                    });
             }
         }
     })
@@ -731,7 +722,7 @@ bb3App.controller('stateController',
             }
 
             $http({method: 'POST',
-                url: 'http://localhost:3000/logMinutes/' + $scope.logNumberOfMinutes
+                url: 'http://cbb.ucdenver.edu:3000/logMinutes/' + $scope.logNumberOfMinutes
                 + '/' + userID
                 //url: 'http://mothersmilk.ucdenver.edu:3000/feedback/' +
 

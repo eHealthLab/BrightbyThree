@@ -214,7 +214,7 @@
             <div class="navbar-header">
                 <a style="margin-right: 10px" class="navbar-right pull-right"
                    onclick="window.open('http://brightbythree.org',
-                        '_system', 'location=yes');">
+                        '_blank', 'location=yes');">
                     <img src="../images/BB3_logo-icon_WEB_rgb.png"
                          width="40" height="56">
                 </a>
@@ -242,193 +242,106 @@
         </p>
 
 
-        <table>
+        <table align="center">
 
-            <tr bgcolor="#faebd7" ng-show="statusBadge[0][1]">
+            <tr bgcolor="#faebd7">
 
-                
-                <td align="center"
-                    width="200">
-                    Badge Name
-                </td>
-
-                <td>
+                <td  ng-show="statusBadge[0][1]">
                     <img src="../images/Badge150.png"
                          align="center" width="100" height="150"
-                         class="img-thumbnail"
-                         >
+                         class="img-thumbnail">
+                </td>
+
+                <td  ng-show="statusBadge[1][1]">
+                    <img src="../images/Badge400.png"
+                         align="center" width="100" height="150"
+                         class="img-thumbnail">
                 </td>
 
             </tr>
 
             <tr bgcolor="#ff7f50" ng-show="statusBadge[1][1]">
 
-                <td align="center"
-                    width="200">
-                    Badge Name
-                </td>
-
-                <td>
-                    <img src="../images/Badge400.png"
-                         align="center" width="100" height="150"
-                         class="img-thumbnail"
-                         >
-                </td>
-
-            </tr>
-
-            <tr bgcolor="#7fffd4" ng-show="statusBadge[2][1]">
-
-                <td align="center"
-                    width="200">
-                    Badge Name
-                </td>
-
-                <td>
+                <td ng-show="statusBadge[2][1]">
                     <img src="../images/Badge700.png"
                          align="center" width="100" height="150"
-                         class="img-thumbnail"
-                         >
+                         class="img-thumbnail">
+                </td>
+
+                <td ng-show="statusBadge[3][1]">
+                    <img src="../images/Badge1000.png"
+                         align="center" width="100" height="150"
+                         class="img-thumbnail">
                 </td>
 
             </tr>
 
-            <tr bgcolor="#87cefa" ng-show="statusBadge[3][1]">
+            <tr bgcolor="#87cefa">
 
-                <td align="center"
-                    width="200">
-                    Badge Name
-                </td>
-
-                <td>
-                    <img src="../images/Badge1000.png"
-                         align="center" width="100" height="150"
-                         class="img-thumbnail"
-                         >
-                </td>
-
-            <tr bgcolor="#ff7f50" ng-show="statusBadge[4][1]">
-
-                <td align="center"
-                    width="200">
-                    Badge Name
-                </td>
-
-                <td>
+                <td ng-show="statusBadge[4][1]">
                     <img src="../images/Badge1500.png"
                          align="center" width="100" height="150"
                          class="img-thumbnail"
-                         >
+                            >
                 </td>
 
-            <tr bgcolor="#deb887" ng-show="statusBadge[5][1]">
-
-                <td align="center"
-                    width="200">
-                    Badge Name
-                </td>
-
-                <td>
+                <td ng-show="statusBadge[5][1]">
                     <img src="../images/Badge2000.png"
                          align="center" width="100" height="150"
                          class="img-thumbnail"
-                         >
+                            >
                 </td>
 
-            </tr>
+            <tr bgcolor="#ff7f50">
 
-            <tr bgcolor="#90ee90" ng-show="statusBadge[6][1]">
-
-                <td align="center"
-                    width="200">
-                    Badge Name
-                </td>
-
-                <td>
+                <td ng-show="statusBadge[6][1]">
                     <img src="../images/Badge2500.png"
                          align="center" width="100" height="150"
                          class="img-thumbnail"
-                         >
+                            >
                 </td>
 
-            </tr>
-
-            <tr bgcolor="#87cefa" ng-show="statusBadge[7][1]">
-
-                <td align="center"
-                    width="200">
-                    Badge Name
-                </td>
-
-                <td>
+                <td ng-show="statusBadge[7][1]">
                     <img src="../images/Badge3000.png"
                          align="center" width="100" height="150"
                          class="img-thumbnail"
-                         >
+                            >
                 </td>
 
             </tr>
 
-            <tr bgcolor="#deb887" ng-show="statusBadge[8][1]">
 
-                <td align="center"
-                    width="200">
-                    Badge Name
-                </td>
+            <tr bgcolor="#deb887" ng-show="statusBadge[8][1]">
 
                 <td>
                     <img src="../images/Badge3500.png"
                          align="center" width="100" height="150"
-                         class="img-thumbnail"
-                         >
+                         class="img-thumbnail">
                 </td>
 
-            </tr>
-
-            <tr bgcolor="#90ee90" ng-show="statusBadge[9][1]">
-
-                <td align="center"
-                    width="200">
-                    Badge Name
-                </td>
-
-                <td>
+                <td ng-show="statusBadge[9][1]">
                     <img src="../images/Badge4000.png"
                          align="center" width="100" height="150"
-                         class="img-thumbnail"
-                         >
+                         class="img-thumbnail">
                 </td>
 
             </tr>
 
-            <tr bgcolor="#90ee90" ng-show="statusBadge[10][1]">
+            <tr bgcolor="#90ee90">
 
-                <td align="center"
-                    width="200">
-                    Badge Name
-                </td>
 
-                <td>
+                <td ng-show="statusBadge[10][1]">
                     <img src="../images/Badge4500.png"
                          align="center" width="100" height="150"
                          class="img-thumbnail"
-                         >
+                            >
                 </td>
 
-            </tr>
-
-            <tr bgcolor="#7fffd4" ng-show="statusBadge[11][1]">
-
-                <td align="center"
-                    width="200">
-                    Badge Name
-                </td>
-
-                <td>
+                <td ng-show="statusBadge[11][1]">
                     <img src="../images/Badge5000.png"
                          align="center" width="100" height="150"
                          class="img-thumbnail"
-                         >
+                            >
                 </td>
 
             </tr>
@@ -438,15 +351,15 @@
     </div>
 
     <div align="center" ng-show="!newUser">
-        <button class="btn btn-success" data-toggle="popover"
+        <a href="#" class="btn btn-success" data-toggle="popover"
            tabindex="1" data-trigger="focus"
-           title="You are short by {{pointsToEarnNextBadge}} points to earn next
-           badge."
+           title="You are short by {{pointsToEarnNextBadge}} points to earn
+           your next badge."
            data-content="Go back to dashboard and earn more points by logging
-           minutes."
-                data-ng-click="updateBadgeInformation()">
-            Earn next badge
-        </button>
+           minutes.">
+            <!--data-ng-click="updateBadgeInformation()">-->
+            Earn your next badge
+        </a>
     </div>
 
     <div align="center" ng-show="newUser">
@@ -456,8 +369,7 @@
         </p>
         <a href="#" class="btn btn-success" data-toggle="popover"
            tabindex="1" data-trigger="focus"
-           title="You are short by {{pointsToEarnNextBadge}} points to earn next
-           badge."
+           title="You are short by {{pointsToEarnNextBadge}} points to earn your first           badge."
            data-content="Go back to dashboard and earn more points by logging
            minutes.">
             Earn your first badge
@@ -486,7 +398,7 @@
             <div class="navbar-header">
                 <div class="bs-component">
                     <div class="btn-group btn-group-justified">
-                        <a href="dashboard.html" class="btn btn-primary btn-lg">
+                        <a href="../index.html" class="btn btn-primary btn-lg">
                         <span class="glyphicon glyphicon-th"
                               aria-hidden="true"></span>
 

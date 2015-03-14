@@ -66,6 +66,8 @@
 
     <!-- app specific scripts -->
     <!-- build:js js/glimmpse.js -->
+
+    <script type="text/javascript" charset="utf-8" src="../cordova.js"></script>
     <script src="../js/app.js"></script>
     <script src="../js/controllers/controllers.js"></script>
     <!-- endbuild -->
@@ -197,9 +199,22 @@
     document.addEventListener('deviceready', function () {
     // window.plugin.email is now available
 
+        //cordova.plugins.email.open();
+
+        window.alert('inside email send now');
+
+
+
+        /*
+        cordova.plugins.email.isAvailable(
+                function (isAvailable) {
+                    // alert('Service is not available') unless isAvailable;
+                }
+        );*/
+
         function sendEmailForgotEmailID()
         {
-            $window.plugin.email.open({
+            cordova.plugins.email.open({
                 to:      ['agileehealth@gmail.com'],
                 subject: 'Forgot my email id',
                 body:    'I have forgotten my email id. Please contact me at BLAH'
@@ -220,14 +235,14 @@
             <div class="navbar-header">
                 <a style="margin-right: 10px" class="navbar-right pull-right"
                    onclick="window.open('http://brightbythree.org',
-                        '_system', 'location=yes');">
+                        '_blank', 'location=yes');">
                     <img src="../images/BB3_logo-icon_WEB_rgb.png"
                          width="40" height="56">
                 </a>
 
                 <a style="margin-top: 10px; margin-left: 10px" class="navbar-left pull-left
                             btn btn-primary btn-circle btn-sm"
-                   href="dashboard.html">
+                   href="../index.html">
                                 <span class="glyphicon glyphicon-th"
                                       aria-hidden="true"></span>
                 </a>
@@ -259,10 +274,11 @@
                             to access your account, please click the button
                             below to contact us.
                             <div class="well" align="center">
-                                <button class="btn btn-primary"
-                                    ng-click="sendEmailForgotEmailID()">
-                                    Forgot my email ID
-                                </button>
+
+                            <a  class="btn btn-primary"
+                                href="mailto:agileehealth@gmail.com?subject=Forgot my BB3 login ID&body=I forgot my email ID to login. Please send me one. My name is: TYPE YOUR FULL NAME HERE."
+                                target="_blank">Forgot my email ID
+                            </a>
                             </div>
                         </p>
 
@@ -284,10 +300,10 @@
                             the button
                             below to contact us.
                         <div class="well" align="center">
-                            <button class="btn btn-primary"
-                                    ng-click="sendEmailForgotPassword()">
-                                Forgot my Password
-                            </button>
+                        <a  class="btn btn-primary"
+                            href="mailto:agileehealth@gmail.com?subject=Forgot my BB3 login password&body=I forgot my password to login to BB3 app. Please send me one. My name is: TYPE YOUR FULL NAME HERE."
+                            target="_blank">Forgot my password
+                        </a>
                         </div>
                         </p>
 
@@ -316,13 +332,13 @@
                                       cols="40"
                                       align="center"
                                       ng-model="feedbackText">
-
                             </textarea>
 
                             <br>
 
                             <a  class="btn btn-primary"
-                                ng-click="sendFeedback()">
+                                ng-click="sendFeedback()"
+                                ng-disabled = "feedbackStatus">
                                 Submit
                             </a>
 
@@ -332,6 +348,7 @@
                 </div>
             </div>
 
+            <!--
             <div class="panel panel-danger">
                 <div class="panel-heading">
                     <h4 class="panel-title">
@@ -359,7 +376,7 @@
                     </div>
                 </div>
             </div>
-
+            -->
         </div>
 
     </div>

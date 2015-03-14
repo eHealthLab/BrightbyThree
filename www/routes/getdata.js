@@ -5,8 +5,8 @@ var qs = require('querystring');
 
 
 var openConnection = function() {
-    return mysql.createConnection({ host: 'localhost', user: 'root',
-        database: 'bb3db'});
+    return mysql.createConnection({ host: 'localhost', user: 'munjala',
+        password: 'artika12', database: 'bb3db', multipleStatements: true });
 };
 
 exports.onemessage = function(req, res){
@@ -396,14 +396,15 @@ exports.addMessage = function(req, res) {
 };
 
 exports.addFeedback = function(req, res) {
-    window.alert('inside addFeedback');
+    //console.log('inside addFeedback');
     var feedback = req.params.feedback;
+    var id = req.params.userID;
     var lsRegExp = /'/g;
 
     feedback = String(feedback).replace(lsRegExp, "''");
     if((connection = openConnection())) {
 		
-        var queryString = "insert into feedback (feedback) values('" + feedback + "')";
+        var queryString = "insert into feedback (userID, feedback) values('" + id + "', '" + feedback + "')";
         connection.query(queryString, function(err, rows, fields) {
             if (err) throw err;
             res.send("Success");

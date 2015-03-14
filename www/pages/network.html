@@ -206,14 +206,14 @@
             <div class="navbar-header">
                 <a style="margin-right: 10px" class="navbar-right pull-right"
                    onclick="window.open('http://brightbythree.org',
-                        '_system', 'location=yes');">
+                        '_blank', 'location=yes');">
                     <img src="../images/BB3_logo-icon_WEB_rgb.png"
                          width="40" height="56">
                 </a>
 
                 <a style="margin-top: 10px; margin-left: 10px" class="navbar-left pull-left
                             btn btn-primary btn-circle btn-sm"
-                   href="dashboard.html">
+                   href="../index.html">
                                 <span class="glyphicon glyphicon-th"
                                       aria-hidden="true"></span>
                 </a>
@@ -248,7 +248,7 @@
 
         <div ng-show="totalWeeklyMinutes == undefined && totalMonthlyMinutes == undefined">
             <p>
-                You haven't enrolled in the trial long enough to track your weekly and monthly
+                Thank you for participating in the Bright by Three program. You haven't enrolled in the trial long enough to track your weekly and monthly
                 minutes against other users in the network. Information on this will be
                 displayed when you have made sufficient progress.
             </p>
@@ -256,9 +256,9 @@
 
         <div ng-show="totalMonthlyMinutes == undefined && totalWeeklyMinutes != undefined">
             <p>
-                You haven't enrolled in the trial long enough to track your monthly
-                minutes against other users in the network. Information on this will be
-                displayed when you have made sufficient progress.
+                Thank you for participating in the Bright by Three program.
+                Here are the statistics on how you compare against other users in the
+                network.
             </p>
         </div>
 

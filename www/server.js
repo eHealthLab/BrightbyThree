@@ -33,7 +33,8 @@ app.post('/loginSignup/:firstName/:lastName/:email/:password/:phoneNumber/' +
 ':babyName/:babyDOB/:babyGender/:zipcode', get.addUser);
 app.post('/setGoals/:days/:minutes/:userID', get.setGoals);
 app.post('/logMinutes/:minutes/:userID', get.logMinutes);
-app.post('/feedback/:feedback', getdata.addFeedback);
+app.post('/initialize/:userID', get.initialize);
+app.post('/feedback/:userID/:feedback', getdata.addFeedback);
 app.post('/updateBadge/:badgeNumber/:userID', get.setBadge);
 app.get('/badgeInfo/:userID', get.badgeInfo);
 app.get('/goalsInfo/:userID', get.goalsInfo);

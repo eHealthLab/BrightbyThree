@@ -476,6 +476,22 @@
                                            ng-model="newParticipant.zipcode" required />
                                 </div>
                             </div>
+
+                            <!--
+                            <div class="form-group">
+                                <label for="inputClinic" class="col-lg-2 control-label">
+                                    Clinic</label>
+                                <div class="col-lg-10">
+                                    <select class="selectpicker" data-style="btn-primary"
+                                            id="inputClinic" ng-model="newParticipant.clinic">
+                                        <option>ClinicA</option>
+                                        <option>ClinicB</option>
+                                    </select>
+
+                                </div>
+                            </div>
+                            -->
+
                         </div>
                     </div>
                     <div class="modal-footer">
@@ -521,8 +537,8 @@
                     </td>
                     <td align="center">
                         <a href="#" ng-click="updateFacebookClicks()"
-                           onclick="window.open('https://www.facebook.com/coloradoBrightBeginnings',
-                           '_system', 'location=yes')">
+                           onclick="window.open('https://m.facebook.com/coloradoBrightBeginnings',
+                           '_blank', 'location=yes')">
 
                             <span class="btn btn-primary
                             btn-circle btn-xl">
@@ -576,8 +592,8 @@
                         <a href="pages/badges.html">
                             <span class="btn btn-warning btn-circle btn-xl">
                                 <img src="images/glyphish-icons/85-trophy.png" style="margin-top: 10px"></i>
-                                <sup ng-show="earnedNewBadge()">
-                                    <span class="badge">New</span></sup>
+                                <!--<sup ng-show="earnedNewBadge()">
+                                    <span class="badge">1</span></sup>-->
 
                             </span>
                         </a>

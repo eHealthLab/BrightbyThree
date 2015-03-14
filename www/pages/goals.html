@@ -204,7 +204,7 @@
             <div class="navbar-header">
                 <a style="margin-right: 10px" class="navbar-right pull-right"
                    onclick="window.open('http://brightbythree.org',
-                        '_system', 'location=yes');">
+                        '_blank', 'location=yes');">
                     <img src="../images/BB3_logo-icon_WEB_rgb.png"
                          width="40" height="56">
                 </a>
@@ -291,9 +291,11 @@
         <div class="progress">
             <div class="progress-bar progress-bar-danger progress-bar-striped"
                  role="progressbar"
-                 aria-valuenow="{{progressBarValue}}" aria-valuemin="0" aria-valuemax="100"
-                 style="width: 80%">
-
+                 aria-valuenow="{{progressBarValue}}" aria-valuemin="0"
+                 aria-valuemax="100"
+                 style="width: {{progressBarValue | number:0}}%">
+                <span class="sr-only">{{progressBarValue | number:0}}%
+                    Complete (danger)</span>
                 {{progressBarValue | number:0}}%
             </div>
         </div>

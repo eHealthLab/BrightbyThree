@@ -2,8 +2,8 @@ var mysql = require('mysql');
 //var gcm = require('node-gcm');
 
 var openConnection = function() {
-    return mysql.createConnection({ host: 'localhost', user: 'root',
-        database: 'bb3db', multipleStatements: true });
+    return mysql.createConnection({ host: 'localhost', user: 'munjala',
+        password: 'artika12', database: 'bb3db', multipleStatements: true });
 };
 
 exports.all = function(req, res){
@@ -153,9 +153,12 @@ exports.addUser = function(req, res){
                         console.log('executing' + queryStringGet);
                         connection.query(queryStringGet, [email], function(err, rows, fields) {
                         if(err) throw err;
-                        var id = rows[0].ID
-                            console.log("id is: " + id);
-                            res.send(data);
+                        var data = {
+                            status: "success",
+                            userId: rows[0].ID
+                        }
+                        //console.log("id is: " + id);
+                        res.send(data);
                         /*
                         queryString =  "SET foreign_key_checks = 0;" + " create table user" + id + " (ID int auto_increment, inb varchar(30), outb boolean, foreign key(ID) references outbound(ID), primary key(ID));";
                         console.log(queryString);
@@ -229,6 +232,51 @@ exports.setGoals = function (req, res) {
             }
         })
     }
+};
+
+exports.initialize = function(req, res) {
+
+    console.log('inside initialize');
+
+    var id = req.params.userID;
+    var connection;
+
+    if ((connection = openConnection())) {
+        console.log('inside total');
+        var queryString;
+        queryString = "insert into totalMinutes (userID, totalPoints) values ('" + id + "', '" + 0 + "')";
+        console.log(queryString);
+        connection.query(queryString, function (err, rows, fields) {
+            if (err) throw err;
+        });
+        connection.end();
+    }
+
+    if ((connection = openConnection())) {
+        console.log('inside goals');
+        var queryString;
+        queryString = "insert into goals (userID, daysPerWeek, minutesPerDay) values ('" + id + "', '" + 2  + "', '" + 10 + "')";
+        console.log(queryString);
+        connection.query(queryString, function (err, rows, fields) {
+            if (err) throw err;
+        });
+        connection.end();
+    }
+
+    if ((connection = openConnection())) {
+        console.log('inside badges');
+        var queryString;
+        queryString = "insert into badges (userID, badgeToEarn) values ('" + id + "', '" + 1 + "')";
+        console.log(queryString);
+        connection.query(queryString, function (err, rows, fields) {
+            if (err) throw err;
+        });
+        connection.end();
+    }
+    var data = {
+        status: "success"
+    };
+    res.send(data);
 };
 
 exports.logMinutes = function(req, res) {
@@ -365,7 +413,7 @@ exports.totalPointsInfo = function (req, res) {
 };
 
 exports.addFeedback = function(req, res){
-    window.alert('inside addFeedback');
+    console.log('inside addFeedback');
     var feedback = req.params.feedback;
     var lsRegExp = /'/g;
 

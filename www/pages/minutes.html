@@ -205,13 +205,13 @@
             <div class="navbar-header">
                 <a style="margin-right: 10px" class="navbar-right pull-right"
                    onclick="window.open('http://brightbythree.org',
-                        '_system', 'location=yes');">
+                        '_blank', 'location=yes');">
                     <img src="../images/BB3_logo-icon_WEB_rgb.png" width="40" height="56">
                 </a>
 
                 <a style="margin-top: 10px; margin-left: 10px" class="navbar-left pull-left
                             btn btn-primary btn-circle btn-sm"
-                   href="dashboard.html">
+                   href="../index.html">
                                 <span class="glyphicon glyphicon-th"
                                       aria-hidden="true"></span>
                 </a>
@@ -228,8 +228,11 @@
 
         <div class="well">
 
-            Please enter your minutes on this screen to update your total minutes
+            <p>
+                You have earned a total of {{totalPointsEarnedSoFar}} points so far.
+                Please enter your minutes on this screen to update your total minutes
             of activity done so far.
+            </p>
 
             <br>
             <br>

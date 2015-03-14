@@ -69,6 +69,7 @@
     <!-- app specific scripts -->
     <!-- build:js js/glimmpse.js -->
     <script src="../js/app.js"></script>
+    <script src="../js/services/participantService.js"></script>
     <script src="../js/controllers/controllers.js"></script>
     <!-- endbuild -->
 
@@ -217,7 +218,7 @@
             <div class="navbar-header">
                 <a style="margin-right: 10px" class="navbar-right pull-right"
                    onclick="window.open('http://brightbythree.org',
-                        '_system', 'location=yes');">
+                        '_blank', 'location=yes');">
                     <img src="../images/BB3_logo-icon_WEB_rgb.png"
                          width="40" height="56">
                 </a>
@@ -238,85 +239,78 @@
     </nav>
 
 
-        <div class="well">
-            {{sampleTextContent2}}
-        </div>
+    <div class="well">
+        {{sampleTextContent2}}
+    </div>
 
-        <div class="well">
-            <table>
-                <tr>
-                    <td>
+    <div class="well">
+        <table>
+            <tr>
+                <td>
 
-                    </td>
-                    <td align="center">
-                        <p>
-                            <img src={{sampleTextImage}}
-                                 width="200" height="100">
-                        </p>
+                </td>
+                <td align="center">
+                    <p>
+                        <img src={{sampleTextImage}}
+                             width="200" height="100">
+                    </p>
 
-                    </td>
-                    <td>
+                </td>
+                <td>
 
-                    </td>
-                </tr>
+                </td>
+            </tr>
 
-                <tr>
-                    <td>
+            <tr>
+                <td>
 
-                    </td>
+                </td>
 
-                    <td>
+                <td>
 
-                    </td>
+                </td>
 
-                    <td>
+                <td>
 
-                    </td>
-                </tr>
+                </td>
+            </tr>
 
-                <tr>
-                    <td>
+            <tr>
+                <td>
 
-                    </td>
+                </td>
 
-                    <td>
+                <td>
 
-                    </td>
+                </td>
 
-                    <td>
+                <td>
 
-                    </td>
-                </tr>
+                </td>
+            </tr>
 
-                <tr>
-                    <td>
+            <tr>
+                <td>
 
-                    </td>
+                </td>
 
-                    <td>
+                <td>
 
-                    </td>
+                </td>
 
-                    <td>
+                <td>
 
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                    </td>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                </td>
 
-                        <td >
-                            <iframe
-                                    src={{sampleTextVideo2}}
-                                    frameborder="3" allowfullscreen
-                                    width="250px">
-                            </iframe>
-                        </td>
-                    <td>
-                    </td>
-                </tr>
-            </table>
-        </div>
+                <td>
+                </td>
+            </tr>
+        </table>
+    </div>
 
     <!-- Modal -->
     <div class="modal fade" id="brainyBackgroundModal" tabindex="-1"
@@ -364,7 +358,8 @@
 
                             <input id="input-1" class="rating" data-min="0"
                                    data-size="xs"
-                                   data-max="5" data-step="1">
+                                   data-max="5" data-step="1"
+                                   ng-model="ratingText1">
 
                         </div>
                         <div class="well">
@@ -396,64 +391,64 @@
 
     <!-- bottom Navbar -->
     <!--<div class="navbar navbar-default navbar-fixed-bottom">-->
-        <div class="container" ng-controller="textMessageController">
-            <div class="navbar-header">
-                <div class="bs-component" align="right">
-                    <!--<div class="btn-group btn-group-justified">-->
+    <div class="container" ng-controller="textMessageController">
+        <div class="navbar-header">
+            <div class="bs-component" align="right">
+                <!--<div class="btn-group btn-group-justified">-->
 
-                    <table>
-                        <tr>
-                            <td>
-                                <button class="btn btn-danger"
-                                        ng-click="addToFavoritesPressed()">
+                <table>
+                    <tr>
+                        <td>
+                            <button class="btn btn-danger"
+                                    ng-click="addToFavoritesPressed()">
                         <span class="glyphicon glyphicon-star"
                               aria-hidden="true"></span>
-                                </button>
-                            </td>
+                            </button>
+                        </td>
 
-                            <td>
+                        <td>
                                 <span ng-click="startCameraPressed()"
                                       class="btn btn-warning">
                                 <i class="glyphicon glyphicon-camera"
                                    style="margin-right: 4px">
                                 </i>
                         </span>
-                            </td>
-                            <td>
-                                <button class="btn btn-primary"
-                                        data-toggle="modal"
-                                        data-target="#brainyBackgroundModal">
-                                    <i class="glyphicon glyphicon-cloud">
+                        </td>
+                        <td>
+                            <button class="btn btn-primary"
+                                    data-toggle="modal"
+                                    data-target="#brainyBackgroundModal">
+                                <i class="glyphicon glyphicon-cloud">
 
-                                    </i>
-                                </button>
-                            </td>
-                            <td>
-                                <button class="btn btn-success btn-primary"
-                                        data-toggle="modal"
-                                        data-target="#moreOptionsModal">
-                                    <i class="glyphicon glyphicon-share"></i>
-                                </button>
-                            </td>
-                        </tr>
+                                </i>
+                            </button>
+                        </td>
+                        <td>
+                            <button class="btn btn-success btn-primary"
+                                    data-toggle="modal"
+                                    data-target="#moreOptionsModal">
+                                <i class="glyphicon glyphicon-share"></i>
+                            </button>
+                        </td>
+                    </tr>
 
-                        <tr>
+                    <tr>
 
 
 
-                        </tr>
-                    </table>
-                    <!--<button type="button" class="btn btn-default"
-                            data-container="body" data-toggle="popover"
-                            data-placement="top"
-                            data-content="TEST">
-                        Share
-                    </button>-->
-                    <!--</div>-->
-                </div>
+                    </tr>
+                </table>
+                <!--<button type="button" class="btn btn-default"
+                        data-container="body" data-toggle="popover"
+                        data-placement="top"
+                        data-content="TEST">
+                    Share
+                </button>-->
+                <!--</div>-->
             </div>
         </div>
-   <!-- </div>--><!-- end bottom Navbar -->
+    </div>
+    <!-- </div>--><!-- end bottom Navbar -->
 
 </div>
 </body>
