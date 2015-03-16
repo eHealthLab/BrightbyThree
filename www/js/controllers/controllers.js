@@ -123,7 +123,7 @@ bb3App.controller('stateController',
             else {
 
                 $http({method: 'POST',
-                    url: 'http://cbb.ucdenver.edu:3000/loginSignup/' +
+                    url: 'htt/loginSignup/' +
                     $scope.newParticipant.firstName + '/' +
                     $scope.newParticipant.lastName + '/' +
                     email + '/' +
@@ -164,7 +164,7 @@ bb3App.controller('stateController',
                         $scope.newParticipant.zipcode = "";
 
                             $http({method: 'POST',
-                                url: 'http://cbb.ucdenver.edu:3000/initialize/' + userID
+                                url: 'http://localhost:3000/initialize/' + userID
                                 //url: 'http://mothersmilk.ucdenver.edu:3000/feedback/' +
 
                             }).
@@ -211,7 +211,7 @@ bb3App.controller('stateController',
             //window.alert('inside login in button pressed');
             var email = $scope.emailID.toUpperCase();
 
-                $http.get('http://cbb.ucdenver.edu:3000/loginSignup/' + email + '/' + $scope.password1).
+                $http.get('http://localhost:3000/loginSignup/' + email + '/' + $scope.password1).
                     success(function (data, status, headers, config) {
 
                         $scope.appsData = data;
@@ -233,7 +233,7 @@ bb3App.controller('stateController',
                             $scope.getGoalsInfo(id);
                             $scope.getEarnedPointsInfo(id);
 
-                            //$location.path("/dashboard");
+                            $location.path("/");
 
                         }
                         else {
@@ -249,7 +249,7 @@ bb3App.controller('stateController',
 
         $scope.getBadgeInformation = function (userID) {
 
-            $http.get('http://cbb.ucdenver.edu:3000/badgeInfo/' + userID).
+            $http.get('http://localhost:3000/badgeInfo/' + userID).
                 success(function (data, status, headers, config) {
                     //window.alert('success');
                     $scope.appsData = data;
@@ -269,7 +269,7 @@ bb3App.controller('stateController',
 
         $scope.getGoalsInfo = function (userID) {
 
-            $http.get('http://cbb.ucdenver.edu:3000/goalsInfo/' + userID).
+            $http.get('http://localhost:3000/goalsInfo/' + userID).
                 success(function (data, status, headers, config) {
 
                     $scope.appsData = data;
@@ -289,7 +289,7 @@ bb3App.controller('stateController',
 
         $scope.getEarnedPointsInfo = function (userID) {
 
-            $http.get('http://cbb.ucdenver.edu:3000/totalPointsInfo/' + userID).
+            $http.get('http://localhost:3000/totalPointsInfo/' + userID).
                 success(function (data, status, headers, config) {
                     //$window.alert("values: " + email + $scope.password1);
                     $scope.appsData = data;
@@ -338,10 +338,12 @@ bb3App.controller('stateController',
 
         $scope.setGoals = function () {
 
+            window.alert('inside goals controller');
+
             var id = 2; // participantService.userID;
 
             $http({method: 'POST',
-                url: 'http://cbb.ucdenver.edu:3000/setGoals/' +
+                url: 'http://localhost:3000/setGoals/' +
                 $scope.goals.daysPerWeek + '/' + $scope.goals.minutesPerDay + '/' + id
             }).
                 success(function (data, status, headers, config) {
@@ -451,7 +453,7 @@ bb3App.controller('stateController',
         $scope.updateBadgeInformation = function () {
 
             $http({method: 'POST',
-                url: 'http://cbb.ucdenver.edu:3000/updateBadge/' +
+                url: 'http://localhost:3000/updateBadge/' +
                 participantService.nextBadgeToEarn +
                 '/' + 2 //participantService.userID
             }).
@@ -557,7 +559,7 @@ bb3App.controller('stateController',
                 else {
                     $http({
                         method: 'POST',
-                        url: 'http://cbb.ucdenver.edu:3000/feedback/' + userID + '/' + $scope.feedbackText
+                        url: 'http://localhost:3000/feedback/' + userID + '/' + $scope.feedbackText
                     }).
                     success(function (data, status, headers, config) {
 
@@ -630,7 +632,7 @@ bb3App.controller('stateController',
             }
             else {
                     $http({method: 'POST',
-                        url: 'http://cbb.ucdenver.edu:3000/logMinutes/' + minutes
+                        url: 'http://localhost:3000/logMinutes/' + minutes
                         + '/' + userID
                     }).
                     success(function(data, status, headers, config) {
@@ -659,7 +661,7 @@ bb3App.controller('stateController',
                             participantServiceInstance.setNextBadgeToEarn($scope.nextBadgeToEarn+1);
 
                             $http({method: 'POST',
-                                url: 'http://cbb.ucdenver.edu:3000/updateBadge/' +
+                                url: 'http://localhost:3000/updateBadge/' +
                                 participantService.nextBadgeToEarn +
                                 '/' + 2 //participantService.userID
                             }).
@@ -722,7 +724,7 @@ bb3App.controller('stateController',
             }
 
             $http({method: 'POST',
-                url: 'http://cbb.ucdenver.edu:3000/logMinutes/' + $scope.logNumberOfMinutes
+                url: 'http://localhost:3000/logMinutes/' + $scope.logNumberOfMinutes
                 + '/' + userID
                 //url: 'http://mothersmilk.ucdenver.edu:3000/feedback/' +
 

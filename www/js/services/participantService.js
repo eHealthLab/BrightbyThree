@@ -31,7 +31,7 @@ bb3App.factory('participantService', function($http, $q) {
 
     participantServiceInstance.numberOfUnread = 0;
 
-    participantServiceInstance.globalLoginStatus = true;
+    participantServiceInstance.globalLoginStatus = false;
 
     participantServiceInstance.ppStatus = "false";
 

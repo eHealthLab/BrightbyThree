@@ -19,13 +19,10 @@ var bb3App = angular.module('bb3', ['ui.bootstrap'])
             {templateUrl: 'index.html', controller: 'stateController' }
         )
 
-            .when('/dashboard',
-            {templateUrl: 'index.html', controller: 'stateController' }
-        )
-            .when('/goals',
+           .when('/goals',
             {templateUrl: 'pages/goals.html', controller: 'goalsController' }
         )
-            .when('badges',
+            .when('/badges',
             {templateUrl: 'pages/badges.html', controller: 'badgesController' }
         )
 
