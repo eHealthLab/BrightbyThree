@@ -334,13 +334,22 @@ bb3App.controller('stateController',
 
         $scope.getStatus = function () {
             return $scope.updateStatus;
-        }
+        };
 
         $scope.setGoals = function () {
 
             window.alert('inside goals controller');
 
-            var id = 2; // participantService.userID;
+            var id = participantService.userID;
+
+            window.alert('id: ' + participantService.userID);
+
+            if (id == undefined) {
+                ;
+            }
+            else {
+
+
 
             $http({method: 'POST',
                 url: 'http://localhost:3000/setGoals/' +
@@ -374,7 +383,7 @@ bb3App.controller('stateController',
                 $scope.reset = false;
             //$location.path("/dashboard");
 
-
+            }
 
         };
 

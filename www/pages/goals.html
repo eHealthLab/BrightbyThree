@@ -18,7 +18,7 @@
 -->
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="bb3">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
@@ -69,8 +69,8 @@
     <!-- app specific scripts -->
 
     <script src="../js/app.js"></script>
-    <!--<script src="../js/services/participantService.js"></script>-->
-    <!--<script src="../js/controllers/controllers.js"></script>-->
+    <!--<script src="../js/services/participantService.js"></script>
+    <script src="../js/controllers/controllers.js"></script>
 
     <!-- endbuild -->
 
@@ -197,7 +197,7 @@
 
 <body>
 
-<div class="container"
+<div class="container" ng-controller="goalsController"
         ng-init="getGoalsInfo()">
     <nav class="navbar navbar-default navbar-fixed-top
                 ">

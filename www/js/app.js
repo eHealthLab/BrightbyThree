@@ -26,6 +26,10 @@ var bb3App = angular.module('bb3', ['ui.bootstrap'])
             {templateUrl: 'pages/badges.html', controller: 'badgesController' }
         )
 
+            .when('/about',
+            {templateUrl: 'pages/aboutUs.html', controller: 'badgesController' }
+        )
+
             .otherwise({ redirectTo: '/' });
 
     }]);
